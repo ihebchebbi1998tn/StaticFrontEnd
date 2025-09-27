@@ -1,51 +1,23 @@
-import { useState } from 'react';
-import { useSignIn } from '@clerk/clerk-react';
-import { useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { authService } from '@/services/authService';
-import { useAuth as useAppAuth } from '@/contexts/AuthContext';
-import { toast } from '@/hooks/use-toast';
-import { ClerkWrapper } from '@/components/ClerkWrapper';
 
-// Internal component that uses Clerk hooks - only rendered when Clerk is available
-function ClerkOAuthButtons() {
-  const { signIn } = useSignIn();
-  const { login } = useAppAuth();
-  const navigate = useNavigate();
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { toast } from '@/hooks/use-toast';
+
+// OAuth buttons component that works without Clerk
+function OAuthButtons() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleOAuthSignIn = async (strategy: 'oauth_google' | 'oauth_microsoft') => {
-    if (!signIn) {
-      // Show static behavior when Clerk is not available
-      setIsLoading(true);
-      setTimeout(() => {
-        toast({
-          title: 'Demo Mode',
-          description: 'OAuth login is not configured. This is a demo interface.',
-          variant: 'default',
-        });
-        setIsLoading(false);
-      }, 1000);
-      return;
-    }
-    
+    // Show demo behavior - no actual OAuth functionality
     setIsLoading(true);
-    try {
-      // Start the OAuth flow with Clerk
-      await signIn.authenticateWithRedirect({
-        strategy,
-        redirectUrl: '/sso-callback',
-        redirectUrlComplete: '/dashboard',
-      });
-    } catch (error) {
-      console.error('OAuth error:', error);
+    setTimeout(() => {
       toast({
-        title: 'Error',
-        description: 'Authentication failed. Please try again.',
-        variant: 'destructive',
+        title: 'Demo Mode',
+        description: 'OAuth login is not configured. This is a demo interface.',
+        variant: 'default',
       });
       setIsLoading(false);
-    }
+    }, 1000);
   };
 
   return (
@@ -115,11 +87,7 @@ function ClerkOAuthButtons() {
   );
 }
 
-// Main component that wraps the Clerk buttons
+// Main export - simplified OAuth login component
 export function OAuthLogin() {
-  return (
-    <ClerkWrapper>
-      <ClerkOAuthButtons />
-    </ClerkWrapper>
-  );
+  return <OAuthButtons />;
 }
