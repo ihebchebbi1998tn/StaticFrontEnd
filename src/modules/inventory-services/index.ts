@@ -1,0 +1,1 @@
+export { InventoryServicesModule } from "./InventoryServicesModule";

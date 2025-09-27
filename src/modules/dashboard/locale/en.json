@@ -1,0 +1,51 @@
+
+{
+  "dashboard": "Dashboard",
+  "contacts": "Contacts",
+  "offers": "Offers",
+  "sales": "Sales",
+  "inventory": "Inventory",
+  "articles": "Articles",
+  "projects": "Projects",
+  "calendar": "Calendar",
+  "analytics": "Analytics",
+  "orders": "Orders",
+  "dispatch": "Dispatch",
+  "planner": "Planner",
+  "customers": "Customers",
+  "reports": "Reports",
+  "lookups": "Lookups",
+  "settings": "Settings",
+  "documents": "Documents",
+  "workflow": "Workflow",
+  "onboarding": {
+    "progress": "Setup progress",
+    "step": "Step {{current}} of {{total}}",
+    "steps": {
+      "personal": {
+        "title": "Personal Information",
+        "description": "Tell us a bit about yourself to personalize your experience",
+        "fields": {
+          "firstName": "First Name",
+          "firstNamePlaceholder": "Enter your first name",
+          "lastName": "Last Name",
+          "lastNamePlaceholder": "Enter your last name",
+          "phone": "Phone Number",
+          "phonePlaceholder": "Enter your phone number",
+          "country": "Country",
+          "countryPlaceholder": "Select your country"
+        },
+        "button": "Continue"
+      },
+      "preferences": {
+        "title": "Your Preferences"
+      },
+      "workArea": {
+        "title": "Work Area Setup"
+      },
+      "company": {
+        "finalize": "Company Setup Complete"
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+[
+  { "id": "value", "name": "Value" },
+  { "id": "date", "name": "Date" },
+  { "id": "status", "name": "Status" },
+  { "id": "custom", "name": "Custom" }
+]

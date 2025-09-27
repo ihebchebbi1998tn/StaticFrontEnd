@@ -1,0 +1,16 @@
+{
+  "import": {
+    "title": "Importer des Contacts",
+    "dynamic_import": "Import Dynamique", 
+    "structured_import": "Import Structuré",
+    "upload_success": "Fichier téléchargé avec succès",
+    "import_success": "Contacts importés avec succès",
+    "validation_failed": "Validation échouée"
+  },
+  "contacts": {
+    "title": "Contacts",
+    "subtitle": "Gérez votre base de clients",
+    "import": "Importer",
+    "add": "Ajouter un contact"
+  }
+}

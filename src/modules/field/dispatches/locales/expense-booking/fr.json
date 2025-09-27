@@ -1,0 +1,31 @@
+{
+  "title": "Réservation de Frais",
+  "new_expense": "Nouveau Frais",
+  "expense_type": "Type de Frais",
+  "amount": "Montant",
+  "currency": "Devise",
+  "receipt": "Reçu",
+  "date": "Date",
+  "add_expense": "Ajouter Frais",
+  "no_expenses": "Aucun frais enregistré",
+  "upload_receipt": "Télécharger Reçu",
+  "description": "Description",
+  "expense_description_placeholder": "Décrivez la dépense...",
+  "choose_file": "Choisir fichier",
+  "file": "Fichier",
+  "types": {
+    "travel": "Déplacement",
+    "meal": "Repas",
+    "accommodation": "Hébergement",
+    "materials": "Matériaux",
+    "other": "Autre"
+  },
+  "statuses": {
+    "pending": "En Attente",
+    "approved": "Approuvé",
+    "rejected": "Rejeté"
+  }
+  ,
+  "edit_expense": "Modifier dépense",
+  "save_changes": "Enregistrer les modifications"
+}

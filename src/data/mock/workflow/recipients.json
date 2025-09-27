@@ -1,0 +1,5 @@
+[
+  { "id": "contact", "name": "Contact" },
+  { "id": "team", "name": "Team" },
+  { "id": "custom", "name": "Custom" }
+]

@@ -1,0 +1,22 @@
+{
+  "lookups": {
+    "title": "Lookups",
+    "subtitle": "Manage task statuses, event types, currencies, and service categories",
+    "selectLookup": "Select a lookup to manage",
+    "categoriesInGroup": "{{count}} categories in {{group}}",
+    "allLookups": "All lookups",
+    "filters": "Filters",
+    "color": "Color",
+    "default": "Default",
+    "showDefaultOnly": "Show default only",
+    "searchCategories": "Search categories...",
+    "searchItems": "Search {{title}}...",
+    "noItems": "No items found",
+    "tryAdjusting": "Try adjusting your search or filters",
+    "taskStatusTypes": "Task Status Types",
+    "eventTypes": "Event Types",
+  "serviceCategories": "Service Categories",
+  "technicianStatuses": "Technician Statuses",
+    "currencies": "Currencies"
+  }
+}

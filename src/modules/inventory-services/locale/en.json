@@ -1,0 +1,11 @@
+{
+  "inventory_services": "Inventory & Services",
+  "add_inventory_item": "Add Inventory Item",
+  "add_service": "Add Service",
+  "inventory_item": "Inventory Item",
+  "service": "Service",
+  "location": "Location",
+  "duration": "Duration",
+  "base_price": "Base Price",
+  "skills_required": "Skills Required"
+}

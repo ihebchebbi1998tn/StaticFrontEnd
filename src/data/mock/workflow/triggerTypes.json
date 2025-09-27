@@ -1,0 +1,6 @@
+[
+  { "id": "manual", "name": "Manual" },
+  { "id": "webhook", "name": "Webhook" },
+  { "id": "schedule", "name": "Schedule" },
+  { "id": "event", "name": "Event" }
+]

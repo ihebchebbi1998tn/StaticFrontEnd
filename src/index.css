@@ -1,0 +1,378 @@
+@import "react-day-picker/dist/style.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Compact table styles for import preview */
+.compact-table {
+  --row-height: 40px;
+  --header-height: 44px;
+}
+
+.compact-table .virtual-table-row {
+  min-height: var(--row-height);
+  border-bottom: 1px solid hsl(var(--border));
+  transition: background-color 0.15s ease;
+}
+
+.compact-table .virtual-table-row:hover {
+  background-color: hsl(var(--muted) / 0.5);
+}
+
+.compact-table .virtual-table-header {
+  min-height: var(--header-height);
+  background-color: hsl(var(--muted) / 0.8);
+  border-bottom: 2px solid hsl(var(--border));
+  font-weight: 600;
+}
+
+/* Status indicators */
+.status-valid {
+  color: hsl(142 76% 36%);
+}
+
+.status-error {
+  color: hsl(0 84% 60%);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 640px) {
+  .compact-table {
+    --row-height: 48px;
+    --header-height: 48px;
+  }
+}
+
+/* FlowSolution Design System - Professional SaaS Theme */
+/* Import statement removed - fonts loaded via HTML link tags */
+
+@layer base {
+  :root {
+    /* Professional Brand Colors */
+    --primary: 237 84% 67%;           /* Primary Purple #6366f1 */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 237 84% 57%;
+    --primary-light: 237 84% 95%;
+    
+    --accent: 172 85% 32%;            /* Accent Teal #0D9488 */
+    --accent-foreground: 0 0% 100%;
+    --accent-hover: 172 85% 22%;
+    --accent-light: 172 85% 95%;
+    
+    --secondary: 210 20% 96%;         /* Light neutral */
+    --secondary-foreground: 217 33% 17%;
+    --secondary-hover: 210 20% 92%;
+    --secondary-light: 210 20% 98%;
+
+    /* Professional Status Colors */
+    --success: 142 76% 36%;           /* Success #16A34A */
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 76% 95%;
+    --warning: 43 96% 56%;            /* Warning #F59E0B */
+    --warning-foreground: 0 0% 100%;
+    --warning-light: 43 96% 95%;
+    --destructive: 0 84% 60%;         /* Danger #DC2626 */
+    --destructive-foreground: 0 0% 100%;
+    --destructive-light: 0 84% 95%;
+    --info: 237 84% 67%;              /* Use primary purple for info */
+    --info-foreground: 0 0% 100%;
+    --info-light: 237 84% 95%;
+
+    /* Professional Chart Colors */
+    --chart-1: 237 84% 67%;           /* Primary Purple */
+    --chart-2: 172 85% 32%;           /* Accent Teal */
+    --chart-3: 142 76% 36%;           /* Success Green */
+    --chart-4: 43 96% 56%;            /* Warning Orange */
+    --chart-5: 0 84% 60%;             /* Danger Red */
+    --chart-6: 237 84% 50%;           /* Darker Purple */
+
+    /* Clean Professional Interface */
+    --background: 220 14% 97%;          /* Light Background #f2f4f7 */
+    --foreground: 217 33% 17%;        /* Dark Text #111827 */
+    --card: 0 0% 100%;
+    --card-foreground: 217 33% 17%;
+    
+    --muted: 210 20% 94%;
+    --muted-foreground: 217 19% 35%;
+    --border: 214 20% 88%;
+    --input: 0 0% 100%;
+    --ring: 237 84% 67%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 217 33% 17%;
+
+    /* Professional Shadows & Effects */
+    --radius: 0.75rem;
+    --shadow-soft: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-medium: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-strong: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-glow: 0 0 40px rgb(59 130 246 / 0.15);
+    --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    
+    /* Modern Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-hover)) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent-hover)) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--info)) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)) 0%, hsl(142 76% 46%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(240 4.8% 99%) 100%);
+    
+    /* Smooth Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Professional Sidebar Colors */
+    --sidebar-background: 210 20% 98%;
+    --sidebar-foreground: 217 33% 17%;
+    --sidebar-primary: 237 84% 67%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 20% 94%;
+    --sidebar-accent-foreground: 217 33% 17%;
+    --sidebar-border: 214 20% 88%;
+    --sidebar-ring: 237 84% 67%;
+  }
+
+  .dark {
+    /* Enhanced Dark Mode Brand Colors */
+    --primary: 237 84% 70%; /* Brighter primary for dark mode */
+  --primary-foreground: 0 0% 100%;
+    --primary-hover: 237 84% 75%;
+    --primary-light: 237 84% 15%;
+    
+    --accent: 172 85% 40%; /* Brighter accent for dark mode */
+    --accent-foreground: 0 0% 100%;
+    --accent-hover: 172 85% 45%;
+    --accent-light: 172 85% 12%;
+
+    /* Enhanced Dark Background Colors */
+    --background: 217 33% 6%; /* Darker, richer background */
+    --foreground: 210 20% 95%; /* Brighter text */
+    --card: 217 33% 8%;
+    --card-foreground: 210 20% 95%;
+    
+    /* Enhanced Dark Interface Colors */
+    --muted: 217 33% 11%;
+    --muted-foreground: 217 19% 70%; /* Better contrast */
+    --border: 217 33% 18%; /* More visible borders */
+    --input: 217 33% 10%;
+    --ring: 237 84% 70%;
+    
+    /* Enhanced Dark Status Colors */
+    --success: 142 76% 50%;         /* Brighter for dark mode */
+    --success-foreground: 0 0% 100%;
+    --warning: 43 96% 60%;          /* Brighter warning */
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 84% 65%;       /* Brighter danger */
+    --destructive-foreground: 0 0% 100%;
+    --info: 237 84% 70%;            /* Brighter info */
+    --info-foreground: 0 0% 100%;
+
+    /* Enhanced Dark Secondary & Popover */
+    --secondary: 217 33% 10%;
+    --secondary-foreground: 210 20% 95%;
+    --popover: 217 33% 8%;
+    --popover-foreground: 210 20% 95%;
+
+    /* Enhanced Dark Shadows */
+    --shadow-soft: 0 2px 8px -2px hsl(0 0% 0% / 0.4);
+    --shadow-medium: 0 4px 16px -4px hsl(0 0% 0% / 0.5);
+    --shadow-strong: 0 8px 32px -8px hsl(0 0% 0% / 0.6);
+    --shadow-card: 0 2px 12px -2px hsl(0 0% 0% / 0.3);
+    
+    /* Enhanced Dark Professional Sidebar Colors */
+    --sidebar-background: 217 33% 7%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 237 84% 70%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 33% 10%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 217 33% 18%;
+    --sidebar-ring: 237 84% 70%;
+
+    /* Dark Mode Gradients */
+    --gradient-card: linear-gradient(145deg, hsl(217 33% 8%) 0%, hsl(217 33% 10%) 100%);
+  }
+}
+
+/* Remove list bullets from sidebar */
+[data-sidebar] ul,
+[data-sidebar] li {
+  list-style: none !important;
+  list-style-type: none !important;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-geist;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+
+  /* Professional Utility Classes */
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .shadow-strong {
+    box-shadow: var(--shadow-strong);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  /* Modern Gradients */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-success {
+    background: var(--gradient-success);
+  }
+  
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+  
+  /* Smooth Transitions */
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+  
+  .transition-fast {
+    transition: var(--transition-fast);
+  }
+  
+  /* Interactive Elements */
+  .hover-lift {
+    @apply transition-smooth;
+  }
+  
+  .hover-lift:hover {
+    @apply -translate-y-1 shadow-medium;
+  }
+  
+  .card-interactive {
+    @apply shadow-card hover-lift cursor-pointer;
+  }
+  
+  /* Chart Color Classes */
+  .chart-1 { color: hsl(var(--chart-1)); }
+  .chart-2 { color: hsl(var(--chart-2)); }
+  .chart-3 { color: hsl(var(--chart-3)); }
+  .chart-4 { color: hsl(var(--chart-4)); }
+  .chart-5 { color: hsl(var(--chart-5)); }
+  .chart-6 { color: hsl(var(--chart-6)); }
+  
+  .bg-chart-1 { background-color: hsl(var(--chart-1)); }
+  .bg-chart-2 { background-color: hsl(var(--chart-2)); }
+  .bg-chart-3 { background-color: hsl(var(--chart-3)); }
+  .bg-chart-4 { background-color: hsl(var(--chart-4)); }
+  .bg-chart-5 { background-color: hsl(var(--chart-5)); }
+  .bg-chart-6 { background-color: hsl(var(--chart-6)); }
+  
+  /* Status Indicators */
+  .status-success { 
+    @apply bg-success/10 text-success border border-success/20 rounded-full px-3 py-1 text-xs font-medium;
+  }
+  
+  .status-warning { 
+    @apply bg-warning/10 text-warning border border-warning/20 rounded-full px-3 py-1 text-xs font-medium;
+  }
+  
+  .status-error { 
+    @apply bg-destructive/10 text-destructive border border-destructive/20 rounded-full px-3 py-1 text-xs font-medium;
+  }
+  
+  .status-info { 
+    @apply bg-info/10 text-info border border-info/20 rounded-full px-3 py-1 text-xs font-medium;
+  }
+}
+
+/* Custom global scrollbars (uses --primary so it follows light/dark mode) */
+:root {
+  --scrollbar-size: 12px;
+}
+
+/* WebKit browsers (Chrome, Edge, Safari) */
+*::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--primary));
+  border-radius: 9999px;
+  border: 3px solid transparent; /* adds padding around the thumb for a clean look */
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--primary-hover));
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin; /* auto | thin | none */
+  scrollbar-color: hsl(var(--primary)) transparent; /* thumb track */
+}
+
+/* Optional: make scrollbar thumb slightly darker when active/focused for accessibility */
+*::-webkit-scrollbar-thumb:active {
+  background-color: hsl(var(--primary-hover));
+}
+
+/* Hide module header subtitles globally
+   Many module headers render a small subtitle using the classes
+   "text-[11px] text-muted-foreground" (or the same order reversed).
+   The product request is to remove those descriptions site-wide. This
+   CSS rule hides those subtitle <p> elements without changing markup
+   or translations. If you prefer explicit edits, we can remove the
+   <p> tags from each header component instead.
+*/
+.text-\[11px\].text-muted-foreground,
+.text-muted-foreground.text-\[11px\] {
+  display: none !important;
+}
+
+/* Horizontal mask for scrollable tab lists: soft fade on the right edge */
+.mask-fade-right {
+  /* hide native scrollbar visuals on supporting browsers */
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+  overflow: auto;
+  -webkit-mask-image: linear-gradient(to right, black 0%, black calc(100% - 2.5rem), transparent 100%);
+  mask-image: linear-gradient(to right, black 0%, black calc(100% - 2.5rem), transparent 100%);
+}
+.mask-fade-right::-webkit-scrollbar {
+  display: none;
+}

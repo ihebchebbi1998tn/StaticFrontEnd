@@ -1,0 +1,5 @@
+[
+  { "id": "material", "name": "Materials" },
+  { "id": "service", "name": "Services" },
+  { "id": "low_stock", "name": "Low Stock" }
+]

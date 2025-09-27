@@ -1,0 +1,6 @@
+[
+  { "id": "any", "name": "Any time" },
+  { "id": "7", "name": "Last 7 days" },
+  { "id": "30", "name": "Last 30 days" },
+  { "id": "365", "name": "Last year" }
+]

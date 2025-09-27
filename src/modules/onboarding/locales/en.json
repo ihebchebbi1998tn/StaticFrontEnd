@@ -1,0 +1,161 @@
+{
+  "onboarding": {
+    "progress": "Setup progress",
+    "step": "Step {{current}} of {{total}}",
+    "back": "Go back",
+    "continue": "Continue",
+    "finish": "Finish Setup",
+    "complete": "Complete",
+    "loading": "Setting up your workspace...",
+    
+    "steps": {
+      "personal": {
+        "title": "Let's get to know you",
+        "description": "We'll use this information to personalize your experience",
+        "fields": {
+          "firstName": "First Name",
+          "lastName": "Last Name", 
+          "phone": "Phone Number (Optional)",
+          "country": "Country",
+          "firstNamePlaceholder": "Enter your first name",
+          "lastNamePlaceholder": "Enter your last name",
+          "phonePlaceholder": "Enter your phone number",
+          "countryPlaceholder": "Select your country"
+        },
+        "validation": {
+          "firstNameRequired": "First name is required",
+          "lastNameRequired": "Last name is required",
+          "countryRequired": "Please select your country"
+        },
+        "button": "Continue to Preferences"
+      },
+      
+      "preferences": {
+        "title": "Customize your workspace",
+        "description": "Choose how FlowSolution looks and feels for you",
+        "theme": {
+          "title": "Choose Your Theme",
+          "description": "Select how you'd like FlowSolution to look. You can always change this later.",
+          "light": "Light",
+          "lightDesc": "Clean and bright interface",
+          "dark": "Dark", 
+          "darkDesc": "Easy on the eyes",
+          "system": "System",
+          "systemDesc": "Matches your device setting"
+        },
+        "language": {
+          "title": "Select Your Language",
+          "description": "Choose your preferred language for the interface.",
+          "placeholder": "Select your preferred language"
+        },
+        "color": {
+          "title": "Choose Your Primary Color",
+          "description": "Select a color that represents your brand or preference."
+        },
+        "layout": {
+          "title": "Layout Preference",
+          "description": "Choose how you prefer to navigate through the application.",
+          "sidebar": "Sidebar Navigation",
+          "sidebarDesc": "Classic navigation on the left side",
+          "topbar": "Top Navigation", 
+          "topbarDesc": "Modern horizontal navigation bar"
+        },
+        "dataView": {
+          "title": "Default Data View",
+          "description": "How would you like to view your data by default?",
+          "table": "Table View",
+          "tableDesc": "Structured rows and columns",
+          "list": "List View",
+          "listDesc": "Simplified vertical listing"
+        },
+        "button": "Continue to Industry"
+      },
+      
+      "workArea": {
+        "title": "What's your industry?",
+        "description": "This helps us tailor features to your specific needs",
+        "placeholder": "Search for your industry...",
+        "button": "Continue to Company Info"
+      },
+      
+      "company": {
+        "title": "Company details",
+        "description": "Optional: Add your branding to make it yours",
+        "finalize": "Finalize setup",
+        "finalizeDesc": "Company details and setup",
+        "fields": {
+          "name": "Company Name",
+          "namePlaceholder": "Enter your company name",
+          "website": "Website (Optional)",
+          "websitePlaceholder": "https://yourcompany.com",
+          "logo": "Company Logo (Optional)",
+          "logoDesc": "Upload your logo to personalize documents and reports",
+          "logoButton": "Upload Logo",
+          "logoChange": "Change Logo"
+        },
+        "validation": {
+          "websiteInvalid": "Please enter a valid website URL"
+        },
+        "button": "Complete Setup"
+      },
+      
+      "setup": {
+        "title": "You're all set!",
+        "description": "Creating your personalized workspace",
+        "loading": "Setting up your workspace...",
+        "complete": "Welcome to FlowSolution!"
+      }
+    },
+    
+    "countries": {
+      "US": "United States",
+      "CA": "Canada", 
+      "GB": "United Kingdom",
+      "FR": "France",
+      "DE": "Germany",
+      "AU": "Australia",
+      "JP": "Japan",
+      "CN": "China",
+      "IN": "India",
+      "BR": "Brazil"
+    },
+    
+    "languages": {
+      "en": "English",
+      "fr": "Français", 
+      "de": "Deutsch"
+    },
+    
+    "colors": {
+      "blue": "Ocean Blue",
+      "red": "Ruby Red",
+      "green": "Forest Green", 
+      "purple": "Royal Purple",
+      "orange": "Sunset Orange",
+      "indigo": "Deep Indigo"
+    },
+    
+    "industries": {
+      "technology": "Technology & Software",
+      "healthcare": "Healthcare & Medical",
+      "finance": "Finance & Banking",
+      "education": "Education & Training",
+      "retail": "Retail & E-commerce",
+      "manufacturing": "Manufacturing & Production",
+      "construction": "Construction & Engineering",
+      "consulting": "Consulting & Services",
+      "real-estate": "Real Estate",
+      "transportation": "Transportation & Logistics",
+      "hospitality": "Hospitality & Tourism",
+      "media": "Media & Entertainment",
+      "nonprofit": "Non-profit & NGO",
+      "government": "Government & Public Sector",
+      "other": "Other"
+    },
+    
+    "languageSwitcher": {
+      "title": "Language",
+      "tooltip": "Change language"
+    }
+  }
+}

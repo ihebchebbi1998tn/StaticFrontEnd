@@ -1,0 +1,17 @@
+{
+  "models": [
+    {
+      "id": "deepseek",
+      "name": "DeepSeek R1",
+      "model": "deepseek/deepseek-r1-0528-qwen3-8b:free",
+      "apiKey": "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",
+      "apiUrl": "https://openrouter.ai/api/v1/chat/completions",
+      "enabled": true,
+      "priority": 5
+    }
+  ],
+  "defaultModel": "deepseek",
+  "fallbackEnabled": true,
+  "timeout": 30000,
+  "maxRetries": 2
+}

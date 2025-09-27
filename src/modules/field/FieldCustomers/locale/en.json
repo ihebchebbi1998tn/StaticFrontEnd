@@ -1,0 +1,18 @@
+{
+  "title": "Field Customers",
+  "subtitle": "Manage customers on the field — clients and to-dos",
+  "add_client": "Add Client",
+  "search_placeholder": "Search clients...",
+  "filters": "Filters",
+  "list": "List",
+  "grid": "Grid",
+  "all_clients": "All Clients",
+  "clients_count": "{{count}} clients in your database",
+  "view_details": "View Details",
+  "edit": "Edit",
+  "delete": "Delete",
+  "overview": "Overview",
+  "todos": "To-Dos",
+  "documents": "Documents",
+  "service_orders": "Service Orders"
+}

@@ -1,0 +1,12 @@
+{
+  "field": {
+    "service_orders": "Service Orders",
+    "dispatches": "Dispatches",
+    "dispatch": "Dispatches",
+    "dispatch_placeholder": "Interactive calendar & map, drag-and-drop assignments, technician availability.",
+    "customers_lite": "Customer Management",
+    "inventory": "Inventory & Asset Management",
+    "reports": "Reporting & Analytics",
+    "time-expenses": "Time & Expenses"
+  }
+}

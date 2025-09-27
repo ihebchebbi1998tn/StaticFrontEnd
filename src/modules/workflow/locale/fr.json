@@ -1,0 +1,434 @@
+{
+  "workflow": "Workflow",
+  "builderTitle": "Concepteur de workflow",
+  "builderSubtitle": "Créez et gérez vos processus métier intelligents",
+  "builderHelp": "Créez des processus métier automatisés en connectant différents nœuds. Glissez des composants depuis la barre latérale, connectez-les et configurez chaque étape pour construire des automatisations puissantes.",
+
+  "importTitle": "Importer le workflow",
+  "importDescription": "Chargez un workflow précédemment enregistré au format JSON ou YAML.",
+
+  "exportTitle": "Exporter le workflow",
+  "exportDescription": "Sauvegardez votre workflow pour le partager ou le réutiliser en tant que modèle.",
+
+  "executeTitle": "Exécuter le workflow",
+  "executeDescription": "Validez et exécutez votre workflow pour simuler son comportement.",
+
+  "componentsTitle": "Composants",
+  "componentsHelp": "Glissez un composant depuis cette barre d'outils sur la zone pour construire votre workflow. Chaque catégorie contient différents types de nœuds: Processus métier, Communication, IA, Logique, etc.",
+
+  "importExportInfoTitle": "Importer / Exporter",
+  "importExportInfoDescription": "Utilisez le bouton d'import pour charger un workflow sauvegardé (JSON/YAML). Utilisez le bouton d'export pour télécharger le workflow actuel au format JSON.",
+
+  "componentsInfoTitle": "Qu'est-ce que les composants ?",
+  "componentsInfoDescription": "Les composants sont des blocs (nœuds) que vous glissez sur la zone pour construire les processus métier : déclencheurs, actions, conditions et utilitaires IA.",
+
+  "processTitle": "Processus Métier",
+  "communicationTitle": "Communication",
+  "aiTitle": "Intelligence Artificielle",
+  "triggersTitle": "Déclencheurs",
+  "advancedLogicTitle": "Logique Avancée",
+  "simpleLogicTitle": "Logique Simple",
+  "genericActionsTitle": "Actions Génériques",
+
+  "gettingStartedTitle": "Commencez",
+  "gettingStartedDescription": "Ajoutez un nœud de déclenchement pour démarrer. Glissez des composants depuis la barre latérale et connectez-les.",
+  "emptyAddTrigger": "Ajouter un déclencheur",
+
+  "templateCreated": "Template de workflow métier créé!",
+
+  "save": "Sauvegarder",
+  "saveWorkflow": "Sauvegarder le workflow",
+  "editWorkflow": "Modifier le workflow",
+  "saveDialogDescription": "Donnez un nom et une description à votre workflow",
+  "workflowNameLabel": "Nom du workflow",
+  "workflowDescriptionLabel": "Description (optionnel)",
+  "workflowDescriptionPlaceholder": "Décrivez ce que fait ce workflow...",
+  "cancel": "Annuler",
+
+  "myWorkflows": "Mes workflows",
+  "manageYourWorkflows": "Gérez vos workflows sauvegardés",
+  "workflowsCount": "{{count}} workflow(s)",
+  "new": "Nouveau",
+  "noSavedWorkflows": "Aucun workflow sauvegardé",
+  "createFirstWorkflow": "Créez votre premier workflow et sauvegardez-le",
+
+  "nodesCount": "{{count}} nœuds",
+  "edgesCount": "{{count}} connexions",
+
+  "copiedToClipboard": "Copié dans le presse-papiers!",
+  "copyError": "Erreur lors de la copie",
+  "fileDownloaded": "Fichier {{filename}} téléchargé!",
+
+  "exportWorkflow": "Exporter le workflow",
+  "exportWorkflowDescription": "Exportez votre workflow dans différents formats pour le partager ou le sauvegarder.",
+
+  "templateTitle": "Template de workflow",
+  "templateDescription": "Ce workflow peut être réutilisé comme template pour créer de nouveaux processus similaires.",
+
+  "name": "Nom",
+  "nodes": "Nœuds",
+  "edges": "Connexions",
+
+  "running": "En cours...",
+  "runAction": "Exécuter",
+  "executionInProgress": "Exécution du workflow en cours...",
+  "executionSuccess": "Workflow exécuté avec succès!",
+  "workflowLoaded": "Workflow '{{name}}' chargé",
+  "newWorkflowCreated": "Nouveau workflow créé",
+  "configSaved": "Configuration sauvegardée",
+  "importedWorkflowLoaded": "Workflow '{{name}}' importé avec succès",
+  "importedDefaultName": "Importé",
+
+  "errors": {
+    "noNodesToRun": "Ajoutez au moins un nœud pour exécuter le workflow",
+    "validationErrors": "Erreurs de validation: {{errors}}"
+  },
+
+  "templateLabel": "Template",
+  "template": {
+    "welcome": "Bienvenue",
+    "offer": "Offre commerciale",
+    "confirmation": "Confirmation",
+    "reminder": "Rappel"
+  },
+
+  "recipientType": "Type de destinataire",
+  "recipient": {
+    "contact": "Contact principal",
+    "team": "Équipe",
+    "custom": "Personnalisé"
+  },
+
+  "sendDelay": "Délai d'envoi",
+  "delay": {
+    "immediate": "Immédiat",
+    "1h": "Délai 1h",
+    "24h": "Délai 24h",
+    "custom": "Personnalisé"
+  },
+
+  "model": "Modèle",
+  "prompt": "Prompt",
+  "parameters": "Paramètres",
+  "llmModel": "Modèle LLM",
+
+  "general": "Général",
+  "fields": "Champs",
+  "validation": "Validation",
+  "processName": "Nom du processus",
+  "description": "Description",
+  "processDescriptionPlaceholder": "Décrivez ce que fait ce processus...",
+  "requiredFields": "Champs requis",
+
+  "subject": "Sujet",
+  "chooseTemplate": "Choisir un template",
+  "templateTab": "Modèle",
+  "recipientsTab": "Destinataires",
+  "timingTab": "Planification",
+
+  "template-business": { "label": "Workflow Complet", "desc": "Contact → Offre → Vente → Service" },
+
+  "fieldToTest": "Champ à tester",
+  "operatorLabel": "Opérateur",
+  "operator": {
+    "equals": "Est égal à",
+    "not_equals": "N'est pas égal à",
+    "contains": "Contient",
+    "not_contains": "Ne contient pas",
+    "greater_than": "Plus grand que",
+    "less_than": "Plus petit que",
+    "is_empty": "Est vide",
+    "is_not_empty": "N'est pas vide"
+  },
+  "comparisonValue": "Valeur de comparaison",
+  "preview": "Aperçu",
+  "previewCondition": "Si {{field}} {{operator}} {{value}}",
+  "field": "champ",
+  "value": "valeur",
+  "node": {
+    "contact": { "label": "Nouveau contact", "desc": "Créer un nouveau contact" },
+    "offer": { "label": "Créer une offre", "desc": "Générer une offre commerciale" },
+    "sale": { "label": "Vente", "desc": "Convertir en vente" },
+    "service-order": { "label": "Ordre de service", "desc": "Planifier un ordre de service" },
+    "dispatch": { "label": "Intervention", "desc": "Assigner un technicien" },
+    "email": { "label": "Email", "desc": "Envoyer un email standard" },
+    "email-template": { "label": "Email modèle", "desc": "Envoyer un email avec modèle" },
+    "email-llm": { "label": "Email IA", "desc": "Email personnalisé par IA" },
+    "llm-writer": { "label": "Rédacteur IA", "desc": "Génère du contenu automatiquement" },
+    "llm-analyzer": { "label": "Analyseur IA", "desc": "Analyse et traite les données" },
+    "llm-personalizer": { "label": "Personnaliseur IA", "desc": "Personnalise le contenu avec l'IA" },
+    "trigger": { "label": "Déclencheur", "desc": "Démarrer le workflow manuellement" },
+    "webhook": { "label": "Webhook", "desc": "Déclenché par appel API" },
+    "scheduled": { "label": "Planifié", "desc": "Exécution programmée" },
+    "if-else": { "label": "Si / Sinon", "desc": "Condition simple avec deux sorties" },
+    "switch": { "label": "Commutateur", "desc": "Branchement multiple selon valeur" },
+    "loop": { "label": "Boucle", "desc": "Répète des actions" },
+    "parallel": { "label": "Parallèle", "desc": "Exécute plusieurs tâches simultanément" },
+    "try-catch": { "label": "Try / Catch", "desc": "Gère les erreurs et tentatives" },
+    "action": { "label": "Action", "desc": "Action personnalisée" },
+    "database": { "label": "Base de données", "desc": "Opération base de données" },
+    "api": { "label": "API", "desc": "Appel API externe" },
+    "template-business": { "label": "Workflow Complet", "desc": "Contact → Offre → Vente → Service" },
+    "condition": { "label": "Condition", "desc": "Tester une condition et diriger le flux" },
+    "filter": { "label": "Filtre", "desc": "Filtrer les éléments selon des critères" },
+    "default": { "desc": "Nœud personnalisé" }
+  }
+  ,
+  "nodeHelp": {
+    "contact": {
+      "title": "Nouveau contact",
+      "fullDescription": "Crée une fiche contact dans le CRM. Utile pour capturer des leads depuis des formulaires, des imports ou des saisies manuelles.",
+      "configureDescription": "Créer ou mettre à jour un contact ; mappez les champs requis et gérez la déduplication.",
+      "how": "Utilisez ce nœud pour créer ou mettre à jour un contact. Mappez les champs entrants (nom, email, téléphone) et configurez les règles de déduplication.",
+      "examples": ["Créer un contact lors de la soumission d'un formulaire","Mettre à jour un contact lorsqu'un webhook fournit un email"]
+    },
+    "offer": {
+      "title": "Créer une offre",
+      "fullDescription": "Génère un document d'offre commerciale (PDF) en utilisant les articles sélectionnés et les règles de tarification.",
+      "configureDescription": "Générer une offre à partir des articles et règles de tarification sélectionnés.",
+      "how": "Sélectionnez les articles et la tarification, puis générez l'offre. Vous pouvez joindre l'offre au contact ou l'envoyer par email.",
+      "examples": ["Générer automatiquement une offre après validation de prix","Créer une offre lorsqu'un commercial sélectionne des articles"]
+    },
+    "email": {
+      "title": "Email",
+      "fullDescription": "Envoie un email à partir d'un modèle ou d'un contenu libre. Supporte les pièces jointes et la sélection de destinataires.",
+      "configureDescription": "Choisissez le modèle, les destinataires et la planification pour l'email.",
+      "how": "Choisissez un modèle, définissez les destinataires et la planification. Utilisez des variables pour personnaliser le contenu.",
+      "examples": ["Envoyer un email de bienvenue au nouveau contact","Envoyer la facture lorsque la vente est confirmée"]
+    },
+    "sale": {
+      "title": "Vente",
+      "fullDescription": "Crée une fiche de vente à partir d'une offre ou d'une autre source. Gère les détails financiers, l'affectation du client, et peut déclencher la facturation ou la réservation de stock.",
+      "configureDescription": "Mappez les champs de l'offre pour créer une vente et choisissez la facturation/la gestion du stock.",
+      "how": "Mappez les champs de l'offre (articles, prix, client) et configurez la génération automatique de la facture ou la réservation de stock. Utilisez ce nœud après l'acceptation d'une offre ou pour conversion automatique.",
+      "examples": [
+        "Convertir une offre acceptée en vente et envoyer la facture",
+        "Créer automatiquement une vente lorsque l'offre passe en 'accepté'",
+        "Réserver le stock et notifier l'entrepôt lors de la création de la vente"
+      ]
+    },
+    "dispatch": {
+      "title": "Intervention",
+      "fullDescription": "Crée ou met à jour une fiche d'intervention pour assigner des techniciens, planifier des tâches et suivre le statut des interventions. S'intègre avec la vue calendrier et la carte pour la planification et le routage.",
+      "configureDescription": "Créer ou mettre à jour des interventions ; configurer les règles d'affectation et les notifications.",
+      "how": "Mappez les données source (ordre de service, client, adresse, plage horaire) pour créer une intervention. Configurez les règles d'affectation des techniciens, la priorité et les notifications. Utilisez ce nœud lorsqu'un service doit être planifié ou lorsqu'une commande nécessite une intervention sur site.",
+      "examples": [
+        "Créer une intervention lorsque l'ordre de service est confirmé",
+        "Assigner automatiquement le technicien selon les compétences et la disponibilité",
+        "Mettre à jour le statut de l'intervention et notifier le client lorsque le technicien est en route"
+      ]
+    },
+    "loop": {
+      "title": "Boucle",
+      "fullDescription": "Répète un ensemble d'actions soit pour un nombre d'itérations fixe, soit tant qu'une condition est vraie. Utile pour traiter des listes ou réessayer des opérations.",
+      "configureDescription": "Traitez des éléments ou réessayez des opérations ; configurez le mode d'itération et le nombre max d'essais.",
+      "how": "Configurez le mode d'itération (compte ou condition), mappez le corps de la boucle et définissez des règles de terminaison ou un nombre maximal d'itérations. Utilisez les boucles pour traiter des tableaux, réessayer des erreurs transitoires ou effectuer des opérations par lot.",
+      "examples": [
+        "Traiter chaque article d'une facture",
+        "Réessayer un appel API jusqu'à 3 fois jusqu'à succès",
+        "Itérer sur les abonnements d'un client pour appliquer une mise à jour de facturation"
+      ]
+    }
+    ,
+    "service-order": {
+      "title": "Ordre de service",
+      "fullDescription": "Crée ou planifie un ordre de service pour gérer les opérations sur le terrain, les tâches et les demandes clients.",
+      "how": "Mappez le client, les articles et les créneaux horaires pour créer un ordre de service. Configurez les techniciens, les priorités et les notifications.",
+      "examples": ["Créer un ordre de service lorsqu'un client demande une installation","Planifier des visites de maintenance automatiquement selon le contrat"]
+    },
+    "email-template": {
+      "title": "Email modèle",
+      "fullDescription": "Envoie un email en utilisant un modèle sélectionné, avec support des variables et des pièces jointes.",
+      "how": "Choisissez un modèle, mappez les variables et sélectionnez les destinataires. Utile pour les communications standardisées.",
+      "examples": ["Envoyer une facture avec le modèle facture","Envoyer la confirmation de rendez-vous via un modèle"]
+    },
+    "email-llm": {
+      "title": "Email IA",
+      "fullDescription": "Génère du contenu d'email personnalisé en utilisant un modèle LLM et l'envoie aux destinataires.",
+      "how": "Fournissez un prompt ou un modèle et laissez le modèle générer le corps de l'email. Relisez ou envoyez automatiquement selon les règles.",
+      "examples": ["Générer un email d'approche personnalisé pour un lead","Créer un message de relance basé sur l'activité récente"]
+    },
+    "llm-writer": {
+      "title": "Rédacteur IA",
+      "fullDescription": "Génère du contenu textuel en utilisant un modèle de langage pour des emails, descriptions ou autres champs textuels.",
+      "how": "Fournissez un prompt et des paramètres (ton, longueur). Le modèle générera du contenu à relire ou envoyer automatiquement.",
+      "examples": ["Générer un email de relance pour un lead","Créer une description produit à partir des détails"]
+    },
+    "llm-analyzer": {
+      "title": "Analyseur IA",
+      "fullDescription": "Analyse du texte ou des données avec un modèle IA pour extraire des insights, résumés ou classifications.",
+      "how": "Fournissez le texte ou les données à analyser et configurez le type de sortie (résumé, tags, sentiment). Utilisez les résultats pour piloter les décisions du workflow.",
+      "examples": ["Résumer les retours clients","Classer les tickets support par sujet"]
+    },
+    "llm-personalizer": {
+      "title": "Personnaliseur IA",
+      "fullDescription": "Personnalise les messages ou contenus par destinataire en utilisant des données et modèles IA.",
+      "how": "Fournissez les données du destinataire et un modèle ; le personnalisateur remplit les variables et adapte le ton ou le contenu.",
+      "examples": ["Personnaliser le corps de l'email avec les informations client","Adapter le texte marketing par segment"]
+    },
+    "trigger": {
+      "title": "Déclencheur",
+      "fullDescription": "Démarre le workflow suite à une action manuelle, un événement ou une planification.",
+      "how": "Choisissez comment démarrer: manuellement, via webhook, planifié ou suite à un événement externe.",
+      "examples": ["Lancer le workflow manuellement depuis l'interface","Démarrer quand une nouvelle commande est créée"]
+    },
+    "webhook": {
+      "title": "Webhook",
+      "fullDescription": "Démarre ou interagit avec le workflow lorsqu'un système externe envoie une requête HTTP.",
+      "how": "Exposez un endpoint ou utilisez une intégration webhook pour déclencher le workflow et mappez le payload vers les entrées du nœud.",
+      "examples": ["Déclencher le workflow quand le fournisseur de paiement envoie un webhook","Recevoir les soumissions de formulaire via webhook"]
+    },
+    "scheduled": {
+      "title": "Planifié",
+      "fullDescription": "Exécute le workflow selon un planning défini (cron ou règles temporelles).",
+      "how": "Définissez des expressions cron ou des fenêtres temporelles pour exécuter automatiquement les workflows à des moments précis.",
+      "examples": ["Exécuter des tâches de maintenance la nuit","Envoyer un résumé hebdomadaire"]
+    },
+    "if-else": {
+      "title": "Si / Sinon",
+      "fullDescription": "Évalue une condition et dirige le workflow sur deux branches : vrai ou faux.",
+      "how": "Définissez une condition basée sur des champs ou des données et configurez les actions pour les chemins vrai et faux.",
+      "examples": ["Si le crédit client > 1000 alors approuver","Si le total de la commande est 0 alors ignorer l'étape de paiement"]
+    },
+    "switch": {
+      "title": "Commutateur",
+      "fullDescription": "Dirige l'exécution vers plusieurs branches selon une valeur.",
+      "how": "Spécifiez le champ utilisé et définissez des cas pour chaque valeur possible afin de diriger le flux.",
+      "examples": ["Diriger par pays vers des handlers différents","Basculer selon le mode de paiement"]
+    },
+    "parallel": {
+      "title": "Parallèle",
+      "fullDescription": "Exécute plusieurs branches simultanément et peut attendre toutes ou la première terminée.",
+  "how": "Configurez plusieurs branches et choisissez d'attendre toutes ou de continuer dès la première terminée.",
+  "configureDescription": "Exécutez les branches en parallèle; choisissez d'attendre toutes ou de continuer sur la première.",
+      "examples": ["Exécuter plusieurs vérifications en parallèle","Traitement fan-out des éléments"]
+    },
+    "try-catch": {
+      "title": "Try / Catch",
+      "fullDescription": "Tente une action et fournit des branches de gestion d'erreur en cas d'échec.",
+      "how": "Encapsulez les opérations risquées et configurez des réessais, actions de secours ou notifications d'erreur.",
+      "examples": ["Réessayer un appel API en cas d'erreur transitoire","Utiliser un service alternatif en cas d'erreur"]
+    },
+    "action": {
+      "title": "Action",
+      "fullDescription": "Exécute une action personnalisée, comme mettre à jour des enregistrements, appeler des APIs ou exécuter des scripts.",
+      "how": "Configurez le type d'action et fournissez les paramètres nécessaires. Utilisez les actions pour muter des données ou déclencher des effets de bord.",
+      "examples": ["Mettre à jour un enregistrement dans le CRM","Appeler une API externe pour pousser des données"]
+    },
+    "database": {
+      "title": "Base de données",
+      "fullDescription": "Effectue des opérations sur la base de données comme créer, mettre à jour, supprimer ou interroger des enregistrements.",
+      "how": "Configurez l'action base de données, la table/collection et le mapping des champs. Utilisez des requêtes pour récupérer des données pour les décisions.",
+      "examples": ["Insérer un enregistrement sur nouveau lead","Mettre à jour le statut après traitement"]
+    },
+    "api": {
+      "title": "API",
+      "fullDescription": "Appelle des APIs externes pour récupérer ou pousser des données dans le workflow.",
+      "how": "Configurez l'endpoint, la méthode, les headers et le body. Mappez les réponses vers des variables et gérez les erreurs.",
+      "examples": ["Appeler la passerelle de paiement pour débiter une carte","Récupérer les informations produit par SKU"]
+    },
+    "condition": {
+      "title": "Condition",
+      "fullDescription": "Évalue une condition pour décider du routage du workflow en fonction des données ou champs.",
+      "how": "Définissez les opérateurs et les valeurs de comparaison. Utilisez le résultat pour diriger le flux.",
+      "examples": ["Si le client est premium alors diriger vers flux prioritaire","Vérifier si le stock > 0 avant de créer une intervention"]
+    },
+    "filter": {
+      "title": "Filtre",
+      "fullDescription": "Filtre les éléments selon des critères pour ne laisser passer que les éléments correspondants dans le flux.",
+      "how": "Définissez les conditions du filtre et les paramètres de passage. Utile pour réduire les listes ou événements avant traitement.",
+      "examples": ["Filtrer les commandes avec total > 100","Filtrer les leads d'une campagne spécifique"]
+    }
+  }
+  ,
+  "nodeRemoved": "Nœud supprimé"
+  ,
+  "nodeUi": {
+    "clickToConfigure": "Cliquez pour configurer",
+    "yes": "OUI",
+    "no": "NON",
+    "basedOn": "Basé sur",
+    "moreCases": "autres cas",
+    "addCases": "Ajouter des cas",
+    "default": "Défaut",
+    "repeatTimes": "Répéter {{count}} fois",
+    "whileCondition": "Tant que {{condition}}",
+    "loopBody": "Corps de la boucle",
+    "branches": "Branches",
+    "waitForAll": "⏳ Attendre toutes",
+    "firstCompleted": "🏃 Première terminée",
+    "branch": "Branche",
+    "attempts": "Tentatives",
+    "delay": "Délai",
+    "try": "Essayer",
+    "onError": "En cas d'erreur",
+    "finished": "Terminé"
+  }
+  ,
+  "dispatch": {
+    "title": "Tableau des interventions",
+    "subtitle": "Gérez les interventions par statut",
+    "scheduled": "Planifié",
+    "enRoute": "En route",
+    "inProgress": "En cours",
+    "cancelled": "Annulé",
+    "calendarView": "Vue calendrier",
+    "mapView": "Vue carte",
+    "newDispatch": "Nouvelle intervention"
+  }
+  ,
+  "sale": {
+    "backToSales": "Retour aux ventes",
+    "title": "Vente {{id}}",
+    "subtitle": "Détails de la vente",
+    "confirmed": "Confirmée",
+    "invoice": "Facturer",
+    "sendInvoice": "Envoyer facture",
+    "detailsTitle": "Détails de la vente",
+    "detailsPlaceholder": "Implémentation à venir - Détails de la vente {{id}}"
+  }
+  ,
+  "quickCreate": {
+  "description": "Devis {{offerId}} créé{{saleId, ''}}",
+  "itemsTitle": "Articles & Services",
+  "pricingTitle": "Tarification",
+  "deliveryTitle": "Livraison & Localisation",
+  "notificationsTitle": "Notifications",
+  "reviewTitle": "Révision & Envoi",
+  "addItemButton": "Ajouter un article",
+  "itemCodeLabel": "Code article",
+  "itemNameLabel": "Nom",
+  "itemNamePlaceholder": "Nom de l'article",
+  "typeLabel": "Type",
+  "typeOptionArticle": "Article",
+  "typeOptionService": "Service",
+  "quantityLabel": "Quantité",
+  "removeButton": "Supprimer",
+  "unitPriceLabel": "Prix unitaire (€)",
+  "totalPriceLabel": "Prix total (€)",
+  "descriptionLabel": "Description (optionnel)",
+  "descriptionPlaceholder": "Description de l'article",
+  "subtotalLabel": "Sous-total",
+  "discountLabel": "Remise (€)",
+  "taxLabel": "TVA (20%)",
+  "totalLabel": "Total",
+  "addressLabel": "Adresse de livraison",
+  "addressPlaceholder": "Adresse complète de livraison",
+  "deliveryNotesLabel": "Notes de livraison",
+  "deliveryNotesPlaceholder": "Instructions spéciales, horaires de livraison, etc.",
+  "summaryTitle": "Résumé du workflow",
+  "itemsSummaryTitle": "Articles & Services ({{count}})",
+  "unnamedItem": "Article sans nom",
+  "totalTitle": "Total",
+  "enabledOptionsTitle": "Options activées",
+  "badgeAutoSale": "Vente automatique",
+  "badgeNotifyCustomer": "Notification client",
+  "badgeSendReminders": "Rappels automatiques",
+  "prevButton": "Précédent",
+  "nextButton": "Suivant",
+  "createButton": "Créer le workflow",
+  "creating": "Création..."
+  }
+  ,
+  "howItWorks": "Comment ça fonctionne"
+}

@@ -1,0 +1,21 @@
+{
+  "lookups": {
+    "title": "Référentiels",
+    "subtitle": "Gérez les statuts des tâches, types d'événements, devises et catégories de services",
+    "selectLookup": "Sélectionnez un référentiel à gérer",
+    "categoriesInGroup": "{{count}} catégories dans {{group}}",
+    "allLookups": "Tous les référentiels",
+    "filters": "Filtres",
+    "color": "Couleur",
+    "default": "Par défaut",
+    "showDefaultOnly": "Afficher uniquement le défaut",
+    "searchCategories": "Rechercher des catégories...",
+    "searchItems": "Rechercher {{title}}...",
+    "noItems": "Aucun élément trouvé",
+    "tryAdjusting": "Essayez d'ajuster votre recherche ou vos filtres",
+    "taskStatusTypes": "Types de statut de tâche",
+    "eventTypes": "Types d'événements",
+    "serviceCategories": "Catégories de service",
+    "currencies": "Devises"
+  }
+}

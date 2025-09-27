@@ -1,0 +1,32 @@
+{
+  "title": "Time Booking",
+  "new_entry": "New Time Entry",
+  "work_type": "Work Type",
+  "start_time": "Start Time",
+  "end_time": "End Time",
+  "duration": "Duration",
+  "billable": "Billable",
+  "hourly_rate": "Hourly Rate",
+  "total_cost": "Total Cost",
+  "status": "Status",
+  "book_time": "Book Time",
+  "no_time_entries": "No time entries recorded",
+  "description": "Description",
+  "work_description_placeholder": "Describe the work performed...",
+  "types": {
+    "travel": "Travel",
+    "work": "Work",
+    "waiting": "Waiting",
+    "preparation": "Preparation",
+    "break": "Break"
+  },
+  "statuses": {
+    "active": "Active",
+    "completed": "Completed",
+    "approved": "Approved",
+    "rejected": "Rejected"
+  }
+  ,
+  "edit_entry": "Edit Time Entry",
+  "save_changes": "Save Changes"
+}

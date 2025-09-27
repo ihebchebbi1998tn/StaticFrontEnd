@@ -1,0 +1,7 @@
+[
+  { "id": "draft", "name": "Draft" },
+  { "id": "sent", "name": "Sent" },
+  { "id": "accepted", "name": "Accepted" },
+  { "id": "in_progress", "name": "In Progress" },
+  { "id": "completed", "name": "Completed" }
+]

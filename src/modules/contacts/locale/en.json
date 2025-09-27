@@ -1,0 +1,16 @@
+{
+  "import": {
+    "title": "Import Contacts",
+    "dynamic_import": "Dynamic Import",
+    "structured_import": "Structured Import",
+    "upload_success": "File uploaded successfully",
+    "import_success": "Contacts imported successfully",
+    "validation_failed": "Validation failed"
+  },
+  "contacts": {
+    "title": "Contacts",
+    "subtitle": "Manage your customer database",
+    "import": "Import",
+    "add": "Add Contact"
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "dispatches": {
+    "title": "Interventions",
+    "subtitle": "Gérer et suivre les interventions de terrain",
+    "job_details": "Détails de l'Intervention",
+    "service_order": "Ordre de Service",
+    "description": "Description",
+    "work_location": "Lieu d'Intervention",
+    "scheduled_start": "Début Planifié",
+    "scheduled_end": "Fin Planifiée",
+    "scheduled_date": "Date Planifiée",
+    "estimated_duration": "Durée Estimée",
+    "customer_details": "Détails Client",
+    "company": "Entreprise",
+    "contact_person": "Personne de Contact",
+    "technicians": "Techniciens",
+    "time_booked": "Temps Réservé",
+    "expenses": "Frais",
+    "edit": "Modifier l'Intervention",
+    "mark_complete": "Marquer Terminé",
+    "cancel_job": "Annuler l'Intervention",
+    "view": "Voir Détails",
+    "search_placeholder": "Rechercher interventions...",
+    "all_statuses": "Tous les Statuts",
+    "no_dispatches": "Aucune Intervention Trouvée",
+    "no_dispatches_description": "Aucune intervention ne correspond à vos filtres actuels.",
+    "no_articles_used": "Aucun article n'a été utilisé pour cette intervention",
+    "article_name": "Nom de l'Article",
+    "sku": "Référence",
+    "quantity": "Quantité",
+    "unit_price": "Prix Unitaire",
+    "total_price": "Prix Total",
+    "used_at": "Utilisé le",
+
+    "statuses": {
+      "pending": "En Attente",
+      "assigned": "Assigné",
+      "acknowledged": "Accusé",
+      "en_route": "En Route",
+      "on_site": "Sur Site",
+      "in_progress": "En Cours",
+      "completed": "Terminé",
+      "cancelled": "Annulé"
+    },
+
+    "priorities": {
+      "low": "Faible",
+      "medium": "Moyenne",
+      "high": "Élevée",
+      "urgent": "Urgente"
+    },
+
+    "tabs": {
+      "overview": "Aperçu",
+      "time_expenses": "Temps & Frais",
+      "attachments": "Pièces Jointes",
+      "notes": "Notes",
+      "articles": "Articles",
+      "technician": "Technicien"
+    },
+
+    "time_booking": {
+      "title": "Réservation de Temps",
+      "new_entry": "Nouvelle Entrée de Temps",
+      "work_type": "Type de Travail",
+      "start_time": "Heure de Début",
+      "end_time": "Heure de Fin",
+      "duration": "Durée",
+      "billable": "Facturable",
+      "hourly_rate": "Taux Horaire",
+      "total_cost": "Coût Total",
+      "status": "Statut",
+      "book_time": "Réserver Temps",
+      "no_time_entries": "Aucune entrée de temps enregistrée",
+      "types": {
+        "travel": "Déplacement",
+        "work": "Travail",
+        "waiting": "Attente",
+        "preparation": "Préparation",
+        "break": "Pause"
+      },
+      "statuses": {
+        "active": "Actif",
+        "completed": "Terminé",
+        "approved": "Approuvé",
+        "rejected": "Rejeté"
+      }
+    },
+
+    "expense_booking": {
+      "title": "Réservation de Frais",
+      "new_expense": "Nouveau Frais",
+      "expense_type": "Type de Frais",
+      "amount": "Montant",
+      "currency": "Devise",
+      "receipt": "Reçu",
+      "date": "Date",
+      "add_expense": "Ajouter Frais",
+      "no_expenses": "Aucun frais enregistré",
+      "upload_receipt": "Télécharger Reçu",
+      "types": {
+        "travel": "Déplacement",
+        "meal": "Repas",
+        "accommodation": "Hébergement", 
+        "materials": "Matériaux",
+        "other": "Autre"
+      },
+      "statuses": {
+        "pending": "En Attente",
+        "approved": "Approuvé",
+        "rejected": "Rejeté"
+      }
+    },
+
+    "attachments": {
+      "title": "Pièces Jointes & Photos",
+      "upload_files": "Télécharger Fichiers",
+      "take_photo": "Prendre Photo",
+      "drag_drop": "Glissez-déposez les fichiers ici, ou cliquez pour sélectionner",
+      "max_file_size": "Taille maximale du fichier : 10MB",
+      "supported_formats": "Formats supportés : JPG, PNG, PDF, DOC, DOCX",
+      "no_attachments": "Aucune pièce jointe téléchargée",
+      "category": "Catégorie",
+      "file_name": "Nom du Fichier",
+      "file_size": "Taille du Fichier",
+      "uploaded_by": "Téléchargé par",
+      "uploaded_at": "Téléchargé le",
+      "categories": {
+        "photo": "Photo",
+        "document": "Document",
+        "diagnostic": "Diagnostic",
+        "completion": "Achèvement",
+        "other": "Autre"
+      }
+    },
+
+    "notes": {
+      "title": "Notes & Problèmes",
+      "add_note": "Ajouter Note",
+      "note_content": "Contenu de la Note",
+      "note_category": "Catégorie",
+      "priority": "Priorité",
+      "attach_files": "Joindre Fichiers",
+      "save_note": "Sauvegarder Note",
+      "no_notes": "Aucune note ajoutée",
+      "created_by": "Créé par",
+      "created_at": "Créé le",
+      "categories": {
+        "general": "Général",
+        "issue": "Problème",
+        "work_performed": "Travail Effectué",
+        "customer_interaction": "Interaction Client",
+        "internal": "Interne"
+      }
+    },
+
+    "technician_info": {
+      "title": "Informations Technicien",
+      "assigned_technicians": "Techniciens Assignés",
+      "name": "Nom",
+      "email": "Email",
+      "phone": "Téléphone",
+      "skills": "Compétences",
+      "status": "Statut",
+      "no_technicians": "Aucun technicien assigné",
+      "call": "Appeler",
+      "email_action": "Email",
+      "locate": "Localiser"
+    },
+
+    "common": {
+      "billable": "Facturable",
+      "resolved": "Résolu",
+      "view": "Voir",
+      "file": "Fichier",
+      "choose_file": "Choisir fichier",
+      "upload": "Télécharger",
+      "download": "Télécharger",
+      "uploaded_on": "Téléchargé le",
+      "resolved_on": "Résolu le",
+      "by": "par",
+      "attachments_count": "pièce(s) jointe(s)",
+      "select_priority": "Sélectionner priorité",
+      "work_description_placeholder": "Décrivez le travail effectué...",
+      "expense_description_placeholder": "Décrivez la dépense...",
+      "file_description_placeholder": "Description du fichier...",
+      "note_description_placeholder": "Décrivez la note, le problème ou l'observation..."
+    }
+  }
+}

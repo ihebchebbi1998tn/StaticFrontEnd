@@ -1,0 +1,6 @@
+[
+  { "id": "immediate", "name": "Immediate" },
+  { "id": "delay-1h", "name": "1 hour" },
+  { "id": "delay-24h", "name": "24 hours" },
+  { "id": "custom", "name": "Custom" }
+]

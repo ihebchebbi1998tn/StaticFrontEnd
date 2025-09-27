@@ -1,0 +1,11 @@
+{
+  "inventory_services": "Inventaire et Services",
+  "add_inventory_item": "Ajouter un Article",
+  "add_service": "Ajouter un Service",
+  "inventory_item": "Article d'Inventaire",
+  "service": "Service",
+  "location": "Emplacement",
+  "duration": "Durée",
+  "base_price": "Prix de Base",
+  "skills_required": "Compétences Requises"
+}

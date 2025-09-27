@@ -1,0 +1,421 @@
+{
+  "workflow": "Workflow",
+  "builderTitle": "Workflow Builder",
+  "builderSubtitle": "Create and manage your intelligent business processes",
+  "builderHelp": "Create automated business processes by connecting different nodes. Drag components from the toolbar, connect them with arrows, and configure each step to build powerful automations.",
+
+  "importTitle": "Import Workflow",
+  "importDescription": "Load a previously saved workflow from JSON or YAML format.",
+
+  "exportTitle": "Export Workflow",
+  "exportDescription": "Save your current workflow to share or reuse as a template.",
+
+  "executeTitle": "Execute Workflow",
+  "executeDescription": "Validate and run your workflow to simulate execution.",
+
+  "componentsTitle": "Components",
+  "componentsHelp": "Drag any component from this toolbar onto the canvas to build your workflow. Each category contains different types of nodes: Business Process, Communication, AI, Logic, and more.",
+
+  "importExportInfoTitle": "Import / Export",
+  "importExportInfoDescription": "Use the import button to load a saved workflow (JSON/YAML). Use the export button to download the current workflow as JSON.",
+
+  "componentsInfoTitle": "What are components?",
+  "componentsInfoDescription": "Components are building blocks (nodes) you drag to the canvas to construct business processes: triggers, actions, conditions, and AI helpers.",
+
+  "processTitle": "Business Processes",
+  "communicationTitle": "Communication",
+  "aiTitle": "Artificial Intelligence",
+  "triggersTitle": "Triggers",
+  "advancedLogicTitle": "Advanced Logic",
+  "simpleLogicTitle": "Simple Logic",
+  "genericActionsTitle": "Generic Actions",
+
+  "gettingStartedTitle": "Get started",
+  "gettingStartedDescription": "Start by adding a trigger node to begin your workflow. Drag components from the toolbar and connect them.",
+  "emptyAddTrigger": "Add a trigger",
+
+  "templateCreated": "Business workflow template created!",
+
+  "save": "Save",
+  "saveWorkflow": "Save workflow",
+  "editWorkflow": "Edit workflow",
+  "saveDialogDescription": "Give your workflow a name and description",
+  "workflowNameLabel": "Workflow name",
+  "workflowDescriptionLabel": "Description (optional)",
+  "workflowDescriptionPlaceholder": "Describe what this workflow does...",
+  "cancel": "Cancel",
+
+  "myWorkflows": "My workflows",
+  "manageYourWorkflows": "Manage your saved workflows",
+  "workflowsCount": "{{count}} workflow(s)",
+  "new": "New",
+  "noSavedWorkflows": "No saved workflows",
+  "createFirstWorkflow": "Create your first workflow and save it",
+
+  "nodesCount": "{{count}} nodes",
+  "edgesCount": "{{count}} connections",
+
+  "copiedToClipboard": "Copied to clipboard!",
+  "copyError": "Error copying to clipboard",
+  "fileDownloaded": "File {{filename}} downloaded!",
+
+  "exportWorkflow": "Export workflow",
+  "exportWorkflowDescription": "Export your workflow in different formats to share or backup.",
+
+  "templateTitle": "Workflow template",
+  "templateDescription": "This workflow can be reused as a template to create similar processes.",
+
+  "name": "Name",
+  "nodes": "Nodes",
+  "edges": "Connections",
+
+  "running": "Running...",
+  "runAction": "Run",
+  "executionInProgress": "Workflow execution started...",
+  "executionSuccess": "Workflow executed successfully!",
+  "workflowLoaded": "Workflow '{{name}}' loaded",
+  "newWorkflowCreated": "New workflow created",
+  "configSaved": "Configuration saved",
+  "importedWorkflowLoaded": "Workflow '{{name}}' imported successfully",
+  "importedDefaultName": "Imported",
+
+  "errors": {
+    "noNodesToRun": "Please add at least one node to run the workflow",
+    "validationErrors": "Validation errors: {{errors}}"
+  },
+
+  "templateLabel": "Template",
+  "template": {
+    "welcome": "Welcome",
+    "offer": "Commercial offer",
+    "confirmation": "Confirmation",
+    "reminder": "Reminder"
+  },
+
+  "recipientType": "Recipient type",
+  "recipient": {
+    "contact": "Primary contact",
+    "team": "Team",
+    "custom": "Custom"
+  },
+
+  "sendDelay": "Send delay",
+  "delay": {
+    "immediate": "Immediate",
+    "1h": "Delay 1h",
+    "24h": "Delay 24h",
+    "custom": "Custom"
+  },
+
+  "model": "Model",
+  "prompt": "Prompt",
+  "parameters": "Parameters",
+  "llmModel": "LLM Model",
+
+  "general": "General",
+  "fields": "Fields",
+  "validation": "Validation",
+  "processName": "Process name",
+  "description": "Description",
+  "processDescriptionPlaceholder": "Describe what this process does...",
+  "requiredFields": "Required fields",
+
+  "subject": "Subject",
+  "chooseTemplate": "Choose a template",
+  "templateTab": "Template",
+  "recipientsTab": "Recipients",
+  "timingTab": "Timing",
+
+  "template-business": { "label": "Full Workflow", "desc": "Contact → Offer → Sale → Service" },
+
+  "fieldToTest": "Field to test",
+  "operatorLabel": "Operator",
+  "operator": {
+    "equals": "Equals",
+    "not_equals": "Not equals",
+    "contains": "Contains",
+    "not_contains": "Does not contain",
+    "greater_than": "Greater than",
+    "less_than": "Less than",
+    "is_empty": "Is empty",
+    "is_not_empty": "Is not empty"
+  },
+
+  "comparisonValue": "Comparison value",
+
+  "node": {
+    "contact": { "label": "New Contact", "desc": "Create a new contact" },
+    "offer": { "label": "Create Offer", "desc": "Generate a commercial offer" },
+    "sale": { "label": "Sale", "desc": "Convert to sale" },
+    "service-order": { "label": "Service Order", "desc": "Schedule service order" },
+    "dispatch": { "label": "Dispatch", "desc": "Assign a technician" },
+    "email": { "label": "Email", "desc": "Send a standard email" },
+    "email-template": { "label": "Email Template", "desc": "Send templated email" },
+    "email-llm": { "label": "AI Email", "desc": "Personalized email generated by AI" },
+    "llm-writer": { "label": "AI Writer", "desc": "Generate content automatically" },
+    "llm-analyzer": { "label": "AI Analyzer", "desc": "Analyze and process data" },
+    "llm-personalizer": { "label": "AI Personalizer", "desc": "Personalize content using AI" },
+    "trigger": { "label": "Trigger", "desc": "Start the workflow manually" },
+    "webhook": { "label": "Webhook", "desc": "Triggered by an API call" },
+    "scheduled": { "label": "Scheduled", "desc": "Run on a schedule" },
+    "if-else": { "label": "If / Else", "desc": "Simple conditional with two outputs" },
+    "switch": { "label": "Switch", "desc": "Multiple branches based on a value" },
+    "loop": { "label": "Loop", "desc": "Repeat actions in a loop" },
+    "parallel": { "label": "Parallel", "desc": "Run tasks concurrently" },
+    "try-catch": { "label": "Try / Catch", "desc": "Handle errors with retries" },
+    "action": { "label": "Action", "desc": "Custom action" },
+    "database": { "label": "Database", "desc": "Database operation" },
+    "api": { "label": "API", "desc": "External API call" },
+    "template-business": { "label": "Full Workflow", "desc": "Contact → Offer → Sale → Service" },
+    "condition": { "label": "Condition", "desc": "Test a condition and route the flow" },
+    "filter": { "label": "Filter", "desc": "Filter items based on criteria" },
+    "default": { "desc": "Custom node" }
+  }
+  ,
+  "nodeHelp": {
+    "contact": {
+      "title": "New Contact",
+      "fullDescription": "Creates a contact record in the CRM. Useful to capture lead information coming from forms, imports or manual entries.",
+      "configureDescription": "Create or update a contact; map required fields and dedupe.",
+      "how": "Use this node to create or update a contact. Map incoming fields (name, email, phone) and set deduplication rules.",
+      "examples": ["Create contact when a form is submitted","Update contact when an incoming webhook provides an email"]
+    },
+    "offer": {
+      "title": "Create Offer",
+      "fullDescription": "Generates a commercial offer document (PDF) using selected items and pricing rules.",
+      "configureDescription": "Generate an offer from selected items and pricing rules.",
+      "how": "Select items and pricing, then render an offer. You can attach the generated offer to a contact or send it by email.",
+      "examples": ["Auto-generate an offer after a pricing approval","Create offer when a sales rep selects items"]
+    },
+    "email": {
+      "title": "Email",
+      "fullDescription": "Sends an email based on a template or free text. Supports attachments and recipient selection.",
+      "configureDescription": "Choose template, recipients and timing for the email.",
+      "how": "Choose a template, set recipients and timing. Use variables to personalize the content.",
+      "examples": ["Send welcome email to new contact","Send invoice when sale is confirmed"]
+    },
+    "sale": {
+      "title": "Sale",
+      "fullDescription": "Creates a sale record from an offer or other source. Handles financial details, customer assignment, and can trigger invoicing or inventory reservation.",
+      "configureDescription": "Map offer fields to create a sale and choose invoicing/stock behavior.",
+      "how": "Map the offer fields (items, prices, customer) and configure whether to automatically generate an invoice or reserve stock. Use this node after an offer is accepted or when auto-converting quotes.",
+      "examples": [
+        "Convert an accepted offer into a sale and send invoice",
+        "Automatically create a sale when an offer reaches 'accepted' status",
+        "Reserve stock and notify warehouse upon sale creation"
+      ]
+    },
+    "dispatch": {
+      "title": "Dispatch",
+      "fullDescription": "Creates or updates a dispatch entry to assign field technicians, schedule jobs, and track the status of service tasks. Integrates with calendar and map views for planning and routing.",
+      "configureDescription": "Create or update dispatches; configure assignment rules and notifications.",
+      "how": "Map the source data (service order, customer, address, time window) to create a dispatch. Configure technician assignment rules, priority, and notifications. Use this node when a service needs scheduling or when an order requires field execution.",
+      "examples": [
+        "Create a dispatch when a service order is confirmed",
+        "Assign technician automatically based on skills and availability",
+        "Update dispatch status and notify the customer when technician is en route"
+      ]
+    },
+    "loop": {
+      "title": "Loop",
+      "fullDescription": "Repeats a set of actions either for a fixed number of iterations or while a condition holds true. Useful for processing lists or retrying operations.",
+      "configureDescription": "Process items or retry operations; configure iteration mode and max attempts.",
+      "how": "Configure the iteration mode (count or condition), map the loop body actions, and set termination rules or maximum iterations. Use loops to process arrays, retry transient failures, or perform batch operations.",
+      "examples": [
+        "Process each item in an invoice's items list",
+        "Retry an API call up to 3 times until it succeeds",
+        "Iterate over customer subscriptions to apply a billing update"
+      ]
+    }
+    ,
+    "service-order": {
+      "title": "Service Order",
+      "fullDescription": "Creates or schedules a service order to manage field operations, tasks, and customer requests.",
+      "how": "Map customer, items and preferred time windows to create a service order. Configure technicians, priorities and notifications for execution.",
+      "examples": ["Create a service order when a customer requests an installation","Schedule maintenance visits automatically based on contract terms"]
+    },
+    "email-template": {
+      "title": "Email Template",
+      "fullDescription": "Sends an email using a selected template, with variables and attachments support.",
+      "how": "Select a template, map variables and choose recipients. Useful for standardized communications like invoices or confirmations.",
+      "examples": ["Send invoice email using the invoice template","Send appointment confirmation using a template"]
+    },
+    "email-llm": {
+      "title": "AI Email",
+      "fullDescription": "Generates personalized email content using an LLM model and sends it to recipients.",
+      "how": "Provide a prompt or template and let the model generate the email body. Review or auto-send based on workflow rules.",
+      "examples": ["Generate a personalized outreach email for a lead","Create a follow-up message based on recent activity"]
+    },
+    "llm-writer": {
+      "title": "AI Writer",
+      "fullDescription": "Generates text content using a language model for emails, descriptions, or other text fields.",
+      "how": "Provide a prompt and parameters (tone, length). The model will generate content which you can review or send automatically.",
+      "examples": ["Generate an email follow-up for a lead","Create a product description from item details"]
+    },
+    "llm-analyzer": {
+      "title": "AI Analyzer",
+      "fullDescription": "Analyzes text or data using an AI model to extract insights, summaries, or classifications.",
+      "how": "Feed data or text to the analyzer and configure the output type (summary, tags, sentiment). Use results to drive workflow decisions.",
+      "examples": ["Summarize customer feedback","Classify support tickets by topic"]
+    },
+    "llm-personalizer": {
+      "title": "AI Personalizer",
+      "fullDescription": "Personalizes messages or content per recipient using AI-driven data and templates.",
+      "how": "Provide recipient data and a template; the personalizer fills variables and adapts tone or content for each recipient.",
+      "examples": ["Personalize email body with customer details","Adjust marketing copy by segment"]
+    },
+    "trigger": {
+      "title": "Trigger",
+      "fullDescription": "Starts the workflow based on a manual action, event, or schedule.",
+      "how": "Choose how the workflow should start: manually, via webhook, scheduled or based on external events.",
+      "examples": ["Run workflow manually from UI","Start workflow when a new order is created"]
+    },
+    "webhook": {
+      "title": "Webhook",
+      "fullDescription": "Starts or interacts with the workflow when an external system sends an HTTP request.",
+      "how": "Expose an endpoint or use an existing webhook integration to trigger the workflow and map payload fields to node inputs.",
+      "examples": ["Trigger workflow when payment provider posts a webhook","Receive form submissions via webhook"]
+    },
+    "scheduled": {
+      "title": "Scheduled",
+      "fullDescription": "Runs the workflow on a defined schedule (cron or time-based rules).",
+      "how": "Define cron expressions or time windows to automatically run workflows at specific times or intervals.",
+      "examples": ["Run nightly maintenance workflows","Send weekly summary emails"]
+    },
+    "if-else": {
+      "title": "If / Else",
+      "fullDescription": "Evaluates a condition and routes the workflow through two branches: true or false.",
+      "how": "Define a condition based on fields or data and configure actions for both true and false paths.",
+      "examples": ["If customer credit > 1000 then approve","If order total is 0 then skip payment step"]
+    },
+    "switch": {
+      "title": "Switch",
+      "fullDescription": "Routes execution across multiple branches depending on a value.",
+      "how": "Provide the field to switch on and define cases for each possible value to route the flow.",
+      "examples": ["Route by country to different handlers","Switch based on payment method"]
+    },
+    "parallel": {
+      "title": "Parallel",
+      "fullDescription": "Runs multiple branches concurrently and can wait for all or the first to complete.",
+  "how": "Configure multiple branches and choose whether to wait for all to finish or proceed on the first completion.",
+  "configureDescription": "Run branches concurrently; choose wait-for-all or proceed-on-first.",
+      "examples": ["Run multiple checks in parallel","Fan-out processing of items"]
+    },
+    "try-catch": {
+      "title": "Try / Catch",
+      "fullDescription": "Attempts an action and provides error handling branches on failure.",
+      "how": "Wrap risky operations in try-catch and configure retries, fallback actions or error notifications.",
+      "examples": ["Retry API call on transient failure","Fallback to alternative service on error"]
+    },
+    "action": {
+      "title": "Action",
+      "fullDescription": "Performs a custom action, such as updating records, calling APIs, or running scripts.",
+      "how": "Configure the action type and provide necessary parameters. Use actions to mutate data or trigger side effects.",
+      "examples": ["Update CRM record","Call external API to push data"]
+    },
+    "database": {
+      "title": "Database",
+      "fullDescription": "Performs database operations like create, update, delete or query records.",
+      "how": "Configure the database action, table/collection and field mappings. Use queries to fetch data for decisions.",
+      "examples": ["Insert a record on new lead","Update status after processing"]
+    },
+    "api": {
+      "title": "API",
+      "fullDescription": "Calls external APIs to fetch or push data as part of the workflow.",
+      "how": "Configure endpoint, method, headers and body. Map responses to workflow variables and handle errors.",
+      "examples": ["Call payment gateway to charge card","Fetch product info by SKU"]
+    },
+    "condition": {
+      "title": "Condition",
+      "fullDescription": "Evaluates a condition to decide workflow routing based on data or fields.",
+      "how": "Define operators and comparison values. Use condition results to route flow branches.",
+      "examples": ["If customer type is premium then route to priority flow","Check if inventory > 0 before creating a dispatch"]
+    },
+    "filter": {
+      "title": "Filter",
+      "fullDescription": "Filters items based on criteria to pass only matching items down the flow.",
+      "how": "Define filter conditions and pass-through settings. Useful to prune lists or events before processing.",
+      "examples": ["Filter orders with total > 100","Filter leads from specific campaigns"]
+    }
+  }
+  ,
+  "nodeRemoved": "Node removed"
+  ,
+  "nodeUi": {
+    "clickToConfigure": "Click to configure",
+    "yes": "YES",
+    "no": "NO",
+    "basedOn": "Based on",
+    "moreCases": "more cases",
+    "addCases": "Add cases",
+    "default": "Default",
+    "repeatTimes": "Repeat {{count}} times",
+    "whileCondition": "While {{condition}}",
+    "loopBody": "Loop body",
+    "branches": "Branches",
+    "waitForAll": "Wait for all",
+    "firstCompleted": "First completed",
+    "branch": "Branch",
+    "attempts": "Attempts",
+    "delay": "Delay",
+    "try": "Try",
+    "onError": "On error",
+    "finished": "Finished"
+  }
+  ,
+  "dispatch": {
+    "title": "Dispatch Board",
+    "subtitle": "Manage dispatches by status",
+    "scheduled": "Scheduled",
+    "enRoute": "En route",
+    "inProgress": "In progress",
+    "cancelled": "Cancelled",
+    "calendarView": "Calendar view",
+    "mapView": "Map view",
+    "newDispatch": "New dispatch"
+  }
+  ,
+  "quickCreate": {
+  "description": "Offer {{offerId}} created{{saleId, ''}}",
+  "itemsTitle": "Items & Services",
+  "pricingTitle": "Pricing",
+  "deliveryTitle": "Delivery & Location",
+  "notificationsTitle": "Notifications",
+  "reviewTitle": "Review & Send",
+  "addItemButton": "Add item",
+  "itemCodeLabel": "Item code",
+  "itemNameLabel": "Name",
+  "itemNamePlaceholder": "Item name",
+  "typeLabel": "Type",
+  "typeOptionArticle": "Article",
+  "typeOptionService": "Service",
+  "quantityLabel": "Quantity",
+  "removeButton": "Remove",
+  "unitPriceLabel": "Unit price (€)",
+  "totalPriceLabel": "Total price (€)",
+  "descriptionLabel": "Description (optional)",
+  "descriptionPlaceholder": "Item description",
+  "subtotalLabel": "Subtotal",
+  "discountLabel": "Discount (€)",
+  "taxLabel": "VAT (20%)",
+  "totalLabel": "Total",
+  "addressLabel": "Delivery address",
+  "addressPlaceholder": "Full delivery address",
+  "deliveryNotesLabel": "Delivery notes",
+  "deliveryNotesPlaceholder": "Special instructions, delivery times, etc.",
+  "summaryTitle": "Workflow summary",
+  "itemsSummaryTitle": "Items & Services ({{count}})",
+  "unnamedItem": "Unnamed item",
+  "totalTitle": "Total",
+  "enabledOptionsTitle": "Enabled options",
+  "badgeAutoSale": "Automatic sale",
+  "badgeNotifyCustomer": "Customer notification",
+  "badgeSendReminders": "Automatic reminders",
+  "prevButton": "Previous",
+  "nextButton": "Next",
+  "createButton": "Create workflow",
+  "creating": "Creating..."
+  }
+  ,
+  "howItWorks": "How it works"
+}

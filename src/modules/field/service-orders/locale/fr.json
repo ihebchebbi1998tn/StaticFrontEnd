@@ -1,0 +1,230 @@
+{
+  "service_orders": "Ordres de Service",
+  "service_order": "Ordre de Service",
+  "create_service_order": "Créer un Ordre de Service",
+  "service_order_details": "Détails de l'Ordre de Service",
+  "material_management": "Gestion des Matériaux",
+  
+  "order_number": "Numéro de Commande",
+  "customer_details": "Détails du Client",
+  "repair_details": "Détails de la Réparation",
+  "status": "Statut",
+  "priority": "Priorité",
+  "created_at": "Créé le",
+  "updated_at": "Mis à jour le",
+  
+  "statuses": {
+    "draft": "Brouillon",
+    "offer": "Offre",
+    "won": "Remporté",
+    "scheduled": "Planifié",
+    "in_progress": "En Cours",
+    "completed": "Terminé",
+    "cancelled": "Annulé",
+    "follow_up_pending": "Suivi en Attente"
+  },
+  
+  "priorities": {
+    "low": "Faible",
+    "medium": "Moyenne",
+    "high": "Élevée",
+    "urgent": "Urgente"
+  },
+  
+  "urgency_levels": {
+    "low": "Urgence Faible",
+    "medium": "Urgence Moyenne",
+    "high": "Urgence Élevée",
+    "urgent": "Urgent"
+  },
+  
+  "tabs": {
+    "overview": "Aperçu",
+    "jobs": "Tâches",
+    "dispatches": "Répartitions",
+    "time_expenses": "Temps & Frais",
+    "materials": "Matériaux",
+    "financials": "Financier",
+    "history": "Historique",
+    "communications": "Communications"
+  },
+
+  "time_booking": {
+    "title": "Suivi du Temps",
+    "new_entry": "Nouvelle Entrée",
+    "work_type": "Type de Travail",
+    "start_time": "Heure de Début",
+    "end_time": "Heure de Fin",
+    "duration": "Durée",
+    "billable": "Facturable",
+    "hourly_rate": "Taux Horaire",
+    "total_cost": "Coût Total",
+    "status": "Statut",
+    "book_time": "Réserver Temps",
+    "no_time_entries": "Aucune entrée de temps",
+    "types": {
+      "travel": "Déplacement",
+      "work": "Travail",
+      "waiting": "Attente",
+      "preparation": "Préparation",
+      "break": "Pause"
+    },
+    "statuses": {
+      "active": "Actif",
+      "completed": "Terminé",
+      "approved": "Approuvé",
+      "rejected": "Rejeté"
+    }
+  },
+
+  "expense_booking": {
+    "title": "Suivi des Frais",
+    "new_expense": "Nouveau Frais",
+    "expense_type": "Type de Frais",
+    "amount": "Montant",
+    "currency": "Devise",
+    "receipt": "Reçu",
+    "date": "Date",
+    "add_expense": "Ajouter Frais",
+    "no_expenses": "Aucun frais enregistré",
+    "upload_receipt": "Télécharger Reçu",
+    "types": {
+      "travel": "Déplacement",
+      "meal": "Repas",
+      "accommodation": "Hébergement",
+      "materials": "Matériaux",
+      "other": "Autre"
+    },
+    "statuses": {
+      "pending": "En Attente",
+      "approved": "Approuvé",
+      "rejected": "Rejeté"
+    }
+  },
+  
+  "company": "Entreprise",
+  "contact_person": "Personne de Contact",
+  "phone": "Téléphone",
+  "email": "Email",
+  "address": "Adresse",
+  "description": "Description",
+  "location": "Localisation",
+  "urgency_level": "Niveau d'Urgence",
+  "promised_repair_date": "Date de Réparation Promise",
+  "assigned_technicians": "Techniciens Assignés",
+  "technicians": "Techniciens",
+  
+  "dispatches": "Dispatches",
+  "create_dispatch": "Créer un Dispatch",
+  "required_skills": "Compétences Requises",
+  "workload_hours": "Heures de Charge",
+  "auto_assign": "Assignation Automatique",
+  
+  "work_details": "Détails du Travail",
+  "steps_performed": "Étapes Réalisées",
+  "time_tracking": "Suivi du Temps",
+  "photos_attachments": "Photos et Pièces Jointes",
+  "checklists": "Listes de Contrôle",
+  
+  "materials_resources": "Matériaux et Ressources",
+  "materials_used": "Matériaux Utilisés",
+  "add_material": "Ajouter Matériau",
+  "remove_material": "Retirer Matériau",
+  "quantity": "Quantité",
+  "unit_cost": "Coût Unitaire",
+  "total_cost": "Coût Total",
+  "materials": "Matériaux",
+  
+  "financials": "Financier",
+  "estimated_cost": "Coût Estimé",
+  "actual_cost": "Coût Réel",
+  "labor_cost": "Coût de la Main-d'œuvre",
+  "discounts": "Remises",
+  "total_invoice_amount": "Montant Total de Facture",
+  "payment_status": "Statut de Paiement",
+  
+  "follow_up": "Suivi",
+  "reminders": "Rappels",
+  "maintenance_notes": "Notes de Maintenance",
+  
+  "change_log": "Journal des Modifications",
+  "communications": "Communications",
+  
+  "search_placeholder": "Rechercher des ordres de service...",
+  "filter_by_status": "Filtrer par Statut",
+  "filter_by_priority": "Filtrer par Priorité",
+  "filter_by_technician": "Filtrer par Technicien",
+  "filter_by_customer": "Filtrer par Client",
+  "date_range": "Plage de Dates",
+  
+  "no_service_orders": "Aucun ordre de service trouvé",
+  "no_service_orders_description": "Créez votre premier ordre de service pour commencer.",
+  
+  "save": "Sauvegarder",
+  "cancel": "Annuler",
+  "edit": "Modifier",
+  "delete": "Supprimer",
+  "view_details": "Voir les Détails",
+  "add": "Ajouter",
+  "remove": "Retirer",
+  "complete": "Terminer",
+  "assign": "Assigner",
+
+  "list": {
+    "title": "Ordres de Service",
+    "subtitle": "Afficher et gérer les travaux de service planifiés et en cours",
+    "create_service_order": "Créer un Ordre de Service",
+    "total_orders": "Total des Ordres",
+    "active_orders": "Ordres Actifs",
+    "completed": "Terminés",
+    "total_value": "Valeur Totale",
+    "filters": "Filtres",
+    "export": "Exporter",
+    "list": "Liste",
+    "table": "Tableau",
+    "all_statuses": "Tous les Statuts",
+    "all_priorities": "Toutes les Priorités",
+    "all_technicians": "Tous les Techniciens",
+    "any_date": "N'importe quelle Date",
+    "last_7_days": "7 Derniers Jours",
+    "last_30_days": "30 Derniers Jours",
+    "last_year": "Dernière Année"
+  },
+
+  "detail": {
+    "back": "Retour",
+    "download_report": "Télécharger le Rapport",
+    "share": "Partager",
+    "edit": "Modifier",
+    "change_status": "Changer le Statut",
+    "open": "Ouvert",
+    "ready_for_planning": "Prêt pour Planification",
+    "planned": "Planifié",
+    "technically_completed": "Techniquement Terminé",
+    "invoiced": "Facturé",
+    "closed": "Fermé",
+    "overview": "Aperçu",
+    "time_expenses": "Temps & Frais",
+    "materials": "Matériaux",
+    "attachments": "Pièces Jointes",
+    "notes": "Notes",
+    "communications": "Communications",
+    "history": "Historique",
+    "all": "Tout",
+    "duration_minutes": "minutes",
+    "active_time_entries": "Entrées de temps actives",
+    "pending_expenses": "Frais en attente",
+    "no_activity": "Aucune activité trouvée",
+    "no_activity_description": "Il n'y a aucune activité enregistrée correspondant à votre filtre actuel.",
+    "installation_details": "Détails de l'Installation",
+    "model": "Modèle",
+    "manufacturer": "Fabricant",
+    "serial_number": "Numéro de Série",
+    "installation_date": "Date d'Installation",
+    "warranty_expiration": "Expiration de la Garantie",
+    "operational": "Opérationnel",
+    "non_operational": "Non Opérationnel",
+    "maintenance": "Maintenance",
+    "decommissioned": "Déclassé"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "title": "Time & Expenses",
+  "subtitle": "Track and manage time entries and expenses for technicians",
+  "overview": "Overview",
+  "calendar": "Calendar",
+  "summary": "Summary",
+  "details": "Details",
+  "filters": {
+    "title": "Filters",
+    "date_range": "Date Range",
+    "users": "Technicians",
+    "all_users": "All Technicians",
+    "select_users": "Select Technicians",
+    "entry_types": "Entry Types",
+    "status": "Status",
+    "view_type": "View Type"
+  },
+  "view_types": {
+    "day": "Day View",
+    "week": "Week View", 
+    "month": "Month View"
+  },
+  "entry_types": {
+    "time": "Time Only",
+    "expense": "Expense Only",
+    "both": "Time & Expense"
+  },
+  "status": {
+    "pending": "Pending",
+    "approved": "Approved",
+    "rejected": "Rejected"
+  },
+  "totals": {
+    "total_time": "Total Time",
+    "total_expenses": "Total Expenses",
+    "total_earnings": "Total Earnings",
+    "average_hourly": "Average Hourly Rate",
+    "entries_count": "Total Entries"
+  },
+  "time_format": {
+    "hours": "hours",
+    "minutes": "minutes",
+    "hour_short": "h",
+    "minute_short": "m"
+  },
+  "calendar": {
+    "today": "Today",
+    "previous": "Previous",
+    "next": "Next",
+    "no_entries": "No entries for this date",
+    "select_date": "Select a date to view entries"
+  },
+  "summary_cards": {
+    "time_booked": "Time Booked",
+    "expenses_total": "Total Expenses", 
+    "earnings_total": "Total Earnings",
+    "technicians_active": "Active Technicians"
+  },
+  "table": {
+    "technician": "Technician",
+    "date": "Date",
+    "time_booked": "Time Booked",
+    "expenses": "Expenses",
+    "earnings": "Earnings",
+    "description": "Description",
+    "type": "Type",
+    "status": "Status",
+    "service_order": "Service Order",
+    "dispatch": "Dispatch",
+    "hourly_rate": "Hourly Rate"
+  },
+  "empty_states": {
+    "no_entries": "No Time & Expense Entries",
+    "no_entries_description": "No entries found for the selected filters.",
+    "no_data": "No data available",
+    "select_filters": "Please select filters to view data"
+  },
+  "export": {
+    "title": "Export Time & Expenses",
+    "format": "Export Format",
+    "csv": "CSV File",
+    "pdf": "PDF Report",
+    "excel": "Excel File",
+    "date_range": "Date Range",
+    "include_summary": "Include Summary",
+    "include_details": "Include Details"
+  }
+}

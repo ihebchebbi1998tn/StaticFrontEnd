@@ -1,0 +1,99 @@
+{
+  "title": "Détails de l'Intervention",
+  "loading_message": "Chargement des détails de l'intervention...",
+  "not_found_title": "Intervention Non Trouvée",
+  "not_found_message": "L'intervention avec cet ID n'a pas pu être trouvée.",
+  "back_to_dispatcher": "Retour au Répartiteur",
+  "job_details": "Détails de l'Intervention",
+  "service_order": "Ordre de Service",
+  "description": "Description",
+  "work_location": "Lieu d'Intervention",
+  "scheduled_start": "Début Planifié",
+  "scheduled_end": "Fin Planifiée",
+  "estimated_duration": "Durée Estimée",
+  "customer_details": "Détails Client",
+  "company": "Entreprise",
+  "contact_person": "Personne de Contact",
+  "time_booked": "Temps Réservé",
+  "expenses": "Frais",
+  "scheduled_date": "Date Planifiée",
+  "technicians": "Techniciens",
+  "edit": "Modifier l'Intervention",
+  "mark_complete": "Marquer Terminé",
+  "cancel_job": "Annuler l'Intervention",
+  "statuses": {
+    "pending": "En Attente",
+    "assigned": "Assigné",
+  "approved": "Approuvé",
+    "acknowledged": "Accusé",
+    "en_route": "En Route",
+    "on_site": "Sur Site",
+    "in_progress": "En Cours",
+    "completed": "Terminé",
+    "cancelled": "Annulé"
+  },
+  "priorities": {
+    "low": "Faible",
+    "medium": "Moyenne",
+    "high": "Élevée",
+    "urgent": "Urgente"
+  },
+  "tabs": {
+    "overview": "Aperçu",
+    "time_expenses": "Temps & Frais",
+    "attachments": "Pièces Jointes",
+    "notes": "Notes",
+    "articles": "Articles",
+  "logs": "Journal",
+    "technician": "Technicien"
+  }
+  ,
+  "new_entry": "Nouvelle Entrée",
+  "start_time": "Heure de Début",
+  "end_time": "Heure de Fin",
+  "new_expense": "Nouveau Frais",
+  "total": "Total",
+  "billable": "Facturable",
+  "take_photo": "Prendre une Photo",
+  "upload_files": "Téléverser des Fichiers",
+  "no_attachments": "Aucune pièce jointe",
+  "add_note": "Ajouter une Note",
+  "categories": {
+    "work_performed": "Travail Réalisé"
+  },
+  "created_by": "Créé Par",
+  "created_at": "Créé Le",
+  "skills": "Compétences",
+  "call": "Appel",
+  "email_action": "Email",
+  "locate": "Localiser",
+  "types": {
+    "work": "Travail",
+    "materials": "Matériaux"
+  },
+
+  "dispatch_detail": {
+    "loading": "Chargement de l'intervention...",
+    "not_found": "Intervention Non Trouvée",
+    "not_found_message": "L'intervention demandée n'a pas pu être trouvée.",
+    "back_to_dispatcher": "Retour au Répartiteur",
+    "pending": "En Attente",
+    "assigned": "Assigné",
+    "acknowledged": "Accusé",
+    "en_route": "En Route",
+    "on_site": "Sur Site",
+    "in_progress": "En Cours",
+    "cancelled": "Annulé",
+    "mark_complete": "Marquer Terminé",
+    "cancel_dispatch": "Annuler l'Intervention",
+    "assigned_to": "Assigné à :",
+    "overview": "Aperçu",
+    "materials": "Matériaux",
+    "photos": "Photos"
+  },
+  "detail": {
+    "share": "Partager",
+    "edit": "Modifier",
+    "download_report": "Télécharger le Rapport"
+  }
+}

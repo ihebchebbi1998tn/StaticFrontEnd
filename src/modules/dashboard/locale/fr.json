@@ -1,0 +1,50 @@
+{
+  "dashboard": "Tableau de Bord",
+  "contacts": "Contacts",
+  "offers": "Offres", 
+  "sales": "Ventes",
+  "inventory": "Inventaire",
+  "articles": "Articles",
+  "projects": "Projets",
+  "calendar": "Calendrier",
+  "analytics": "Analyses",
+  "orders": "Commandes",
+  "dispatch": "Répartiteur",
+  "planner": "Planificateur",
+  "customers": "Clients",
+  "reports": "Rapports",
+  "lookups": "Données de référence",
+  "settings": "Paramètres",
+  "documents": "Documents",
+  "workflow": "Workflow",
+  "onboarding": {
+    "progress": "Progression de la configuration",
+    "step": "Étape {{current}} sur {{total}}",
+    "steps": {
+      "personal": {
+        "title": "Informations Personnelles",
+        "description": "Parlez-nous un peu de vous pour personnaliser votre expérience",
+        "fields": {
+          "firstName": "Prénom",
+          "firstNamePlaceholder": "Entrez votre prénom",
+          "lastName": "Nom de famille",
+          "lastNamePlaceholder": "Entrez votre nom de famille",
+          "phone": "Numéro de téléphone",
+          "phonePlaceholder": "Entrez votre numéro de téléphone",
+          "country": "Pays",
+          "countryPlaceholder": "Sélectionnez votre pays"
+        },
+        "button": "Continuer"
+      },
+      "preferences": {
+        "title": "Vos Préférences"
+      },
+      "workArea": {
+        "title": "Configuration de l'Espace de Travail"
+      },
+      "company": {
+        "finalize": "Configuration de l'Entreprise Terminée"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+/* Reduce text size for workflow module by ~15% to fit labels better */
+.workflow-module {
+  font-size: 85%;
+  /* preserve relative sizing for descendants */
+  line-height: 1.4;
+}
+
+/* Keep dialogs consistent when imported directly */
+.workflow-module .dialog, .workflow-modal {
+  font-size: 85%;
+}

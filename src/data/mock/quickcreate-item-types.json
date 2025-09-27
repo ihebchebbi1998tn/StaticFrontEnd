@@ -1,0 +1,4 @@
+[
+  { "id": "article", "name": "Article" },
+  { "id": "service", "name": "Service" }
+]

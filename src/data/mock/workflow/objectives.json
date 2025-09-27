@@ -1,0 +1,6 @@
+[
+  { "id": "write", "name": "Write" },
+  { "id": "analyze", "name": "Analyze" },
+  { "id": "personalize", "name": "Personalize" },
+  { "id": "translate", "name": "Translate" }
+]

@@ -1,0 +1,110 @@
+{
+  "title": "Articles & Matériaux",
+  "subtitle": "Gérez votre inventaire, niveaux de stock et utilisation des matériaux",
+  "add_article": "Ajouter un Article",
+  "no_articles_found": "Aucun article trouvé",
+  "no_articles_description": "Essayez d'ajuster vos critères de recherche",
+  "no_articles_description_empty": "Commencez par ajouter votre premier article",
+  "search_placeholder": "Rechercher des articles...",
+  
+  "stats": {
+    "total_articles": "Articles Totaux",
+    "available": "Disponibles",
+    "low_stock": "Stock Faible",
+    "total_value": "Valeur Totale"
+  },
+
+  "filters": {
+    "filters": "Filtres",
+    "export": "Exporter",
+    "list": "Liste",
+    "grid": "Grille",
+    "filter_by_status": "Filtrer par Statut",
+    "filter_by_category": "Filtrer par Catégorie",
+    "all_statuses": "Tous les Statuts",
+    "all_categories": "Toutes les Catégories"
+  },
+
+  "statuses": {
+    "available": "Disponible",
+    "low_stock": "Stock Faible",
+    "out_of_stock": "Rupture de Stock"
+  },
+
+  "categories": {
+    "tools": "Outils",
+    "electrical": "Électrique",
+    "safety": "Sécurité", 
+    "plumbing": "Plomberie"
+  },
+
+  "actions": {
+    "view_details": "Voir les Détails",
+    "edit_article": "Modifier l'Article",
+    "transfer": "Transférer",
+    "delete": "Supprimer"
+  },
+
+  "fields": {
+    "sku": "Référence",
+    "stock": "Stock",
+    "price": "Prix",
+    "location": "Emplacement",
+    "last": "Dernier",
+    "units": "unités"
+  },
+
+  "detail": {
+    "back_to_articles": "Retour aux Articles",
+    "overview": "Aperçu",
+    "inventory": "Inventaire",
+    "activity": "Activité",
+    "invalid_quantity": "Quantité Invalide",
+    "invalid_quantity_message": "Veuillez saisir une quantité valide.",
+    "reason_required": "Raison Requise",
+    "reason_required_message": "Veuillez fournir une raison pour l'ajustement du stock.",
+    "stock_updated": "Stock Mis à Jour",
+    "stock_updated_message_add": "{{quantity}} unités ajoutées avec succès.",
+    "stock_updated_message_remove": "{{quantity}} unités retirées avec succès."
+  },
+
+  "add": {
+    "title": "Ajouter un Nouvel Article",
+    "subtitle": "Ajouter un nouvel élément à votre inventaire",
+    "quick_add": "Ajout Rapide",
+    "detailed_form": "Formulaire Détaillé",
+    "basic_information": "Informations de Base",
+    "inventory_pricing": "Inventaire & Tarification",
+    "additional_information": "Informations Supplémentaires",
+    "article_name": "Nom de l'Article",
+    "article_name_placeholder": "Saisir le nom de l'article",
+    "sku_placeholder": "Saisir le code de référence",
+    "description": "Description",
+    "description_placeholder": "Saisir la description de l'article",
+    "category": "Catégorie",
+    "select_category": "Sélectionner une catégorie",
+    "select_location": "Sélectionner un emplacement",
+    "current_stock": "Stock Actuel",
+    "minimum_stock": "Stock Minimum",
+    "cost_price": "Prix de Coût",
+    "sell_price": "Prix de Vente",
+    "supplier": "Fournisseur",
+    "supplier_placeholder": "Saisir le nom du fournisseur",
+    "notes": "Notes",
+    "notes_placeholder": "Toute note ou spécification supplémentaire",
+    "cancel": "Annuler",
+    "save_article": "Sauvegarder l'Article",
+    "success": "Succès",
+    "success_message": "L'article a été ajouté avec succès.",
+    "error": "Erreur",
+    "error_message": "Échec de l'ajout de l'article. Veuillez réessayer."
+  },
+
+  "edit": {
+    "title": "Modifier l'Article",
+    "subtitle": "Mettre à jour les informations de l'élément",
+    "update_article": "Mettre à Jour l'Article",
+    "success_message": "L'article a été mis à jour avec succès.",
+    "error_message": "Échec de la mise à jour de l'article. Veuillez réessayer."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "title": "Réservation de Temps",
+  "new_entry": "Nouvelle Entrée de Temps",
+  "work_type": "Type de Travail",
+  "start_time": "Heure de Début",
+  "end_time": "Heure de Fin",
+  "duration": "Durée",
+  "billable": "Facturable",
+  "hourly_rate": "Taux Horaire",
+  "total_cost": "Coût Total",
+  "status": "Statut",
+  "book_time": "Réserver Temps",
+  "no_time_entries": "Aucune entrée de temps enregistrée",
+  "description": "Description",
+  "work_description_placeholder": "Décrivez le travail effectué...",
+  "types": {
+    "travel": "Déplacement",
+    "work": "Travail",
+    "waiting": "Attente",
+    "preparation": "Préparation",
+    "break": "Pause"
+  },
+  "statuses": {
+    "active": "Actif",
+    "completed": "Terminé",
+    "approved": "Approuvé",
+    "rejected": "Rejeté"
+  }
+  ,
+  "edit_entry": "Modifier l'entrée de temps",
+  "save_changes": "Enregistrer les modifications"
+}

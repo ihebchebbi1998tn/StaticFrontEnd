@@ -1,0 +1,18 @@
+{
+  "title": "Clients Terrain",
+  "subtitle": "Gérer les clients sur le terrain — clients et tâches",
+  "add_client": "Ajouter un client",
+  "search_placeholder": "Rechercher des clients...",
+  "filters": "Filtres",
+  "list": "Liste",
+  "grid": "Grille",
+  "all_clients": "Tous les clients",
+  "clients_count": "{{count}} clients dans votre base",
+  "view_details": "Voir les détails",
+  "edit": "Modifier",
+  "delete": "Supprimer",
+  "overview": "Aperçu",
+  "todos": "Tâches",
+  "documents": "Documents",
+  "service_orders": "Ordres de service"
+}

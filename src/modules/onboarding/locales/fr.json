@@ -1,0 +1,161 @@
+{
+  "onboarding": {
+    "progress": "Progression de la configuration",
+    "step": "Étape {{current}} sur {{total}}",
+    "back": "Retour",
+    "continue": "Continuer",
+    "finish": "Terminer la configuration",
+    "complete": "Terminer",
+    "loading": "Configuration de votre espace de travail...",
+    
+    "steps": {
+      "personal": {
+        "title": "Faisons connaissance",
+        "description": "Nous utiliserons ces informations pour personnaliser votre expérience",
+        "fields": {
+          "firstName": "Prénom",
+          "lastName": "Nom de famille",
+          "phone": "Numéro de téléphone (Optionnel)",
+          "country": "Pays",
+          "firstNamePlaceholder": "Entrez votre prénom",
+          "lastNamePlaceholder": "Entrez votre nom de famille",
+          "phonePlaceholder": "Entrez votre numéro de téléphone", 
+          "countryPlaceholder": "Sélectionnez votre pays"
+        },
+        "validation": {
+          "firstNameRequired": "Le prénom est requis",
+          "lastNameRequired": "Le nom de famille est requis",
+          "countryRequired": "Veuillez sélectionner votre pays"
+        },
+        "button": "Continuer vers les préférences"
+      },
+      
+      "preferences": {
+        "title": "Personnalisez votre espace de travail",
+        "description": "Choisissez l'apparence et le comportement de FlowSolution",
+        "theme": {
+          "title": "Choisissez votre thème",
+          "description": "Sélectionnez l'apparence de FlowSolution. Vous pourrez toujours la modifier plus tard.",
+          "light": "Clair",
+          "lightDesc": "Interface propre et lumineuse",
+          "dark": "Sombre",
+          "darkDesc": "Repose les yeux",
+          "system": "Système",
+          "systemDesc": "S'adapte aux paramètres de votre appareil"
+        },
+        "language": {
+          "title": "Sélectionnez votre langue",
+          "description": "Choisissez votre langue préférée pour l'interface.",
+          "placeholder": "Sélectionnez votre langue préférée"
+        },
+        "color": {
+          "title": "Choisissez votre couleur principale",
+          "description": "Sélectionnez une couleur qui représente votre marque ou votre préférence."
+        },
+        "layout": {
+          "title": "Préférence de disposition",
+          "description": "Choisissez comment vous préférez naviguer dans l'application.",
+          "sidebar": "Navigation latérale",
+          "sidebarDesc": "Navigation classique sur le côté gauche",
+          "topbar": "Navigation supérieure",
+          "topbarDesc": "Barre de navigation horizontale moderne"
+        },
+        "dataView": {
+          "title": "Vue de données par défaut",
+          "description": "Comment souhaitez-vous afficher vos données par défaut ?",
+          "table": "Vue tableau",
+          "tableDesc": "Lignes et colonnes structurées",
+          "list": "Vue liste",
+          "listDesc": "Liste verticale simplifiée"
+        },
+        "button": "Continuer vers l'industrie"
+      },
+      
+      "workArea": {
+        "title": "Quel est votre secteur d'activité ?",
+        "description": "Cela nous aide à adapter les fonctionnalités à vos besoins spécifiques",
+        "placeholder": "Recherchez votre secteur d'activité...",
+        "button": "Continuer vers les informations de l'entreprise"
+      },
+      
+      "company": {
+        "title": "Détails de l'entreprise",
+        "description": "Optionnel : Ajoutez votre image de marque pour la personnaliser",
+        "finalize": "Finaliser la configuration",
+        "finalizeDesc": "Détails de l'entreprise et configuration",
+        "fields": {
+          "name": "Nom de l'entreprise",
+          "namePlaceholder": "Entrez le nom de votre entreprise",
+          "website": "Site web (Optionnel)",
+          "websitePlaceholder": "https://votreentreprise.com",
+          "logo": "Logo de l'entreprise (Optionnel)",
+          "logoDesc": "Téléchargez votre logo pour personnaliser les documents et rapports",
+          "logoButton": "Télécharger le logo",
+          "logoChange": "Changer le logo"
+        },
+        "validation": {
+          "websiteInvalid": "Veuillez entrer une URL de site web valide"
+        },
+        "button": "Terminer la configuration"
+      },
+      
+      "setup": {
+        "title": "Tout est prêt !",
+        "description": "Création de votre espace de travail personnalisé",
+        "loading": "Configuration de votre espace de travail...",
+        "complete": "Bienvenue dans FlowSolution !"
+      }
+    },
+    
+    "countries": {
+      "US": "États-Unis",
+      "CA": "Canada",
+      "GB": "Royaume-Uni", 
+      "FR": "France",
+      "DE": "Allemagne",
+      "AU": "Australie",
+      "JP": "Japon",
+      "CN": "Chine",
+      "IN": "Inde",
+      "BR": "Brésil"
+    },
+    
+    "languages": {
+      "en": "English",
+      "fr": "Français",
+      "de": "Deutsch"
+    },
+    
+    "colors": {
+      "blue": "Bleu océan",
+      "red": "Rouge rubis",
+      "green": "Vert forêt",
+      "purple": "Violet royal",
+      "orange": "Orange coucher de soleil",
+      "indigo": "Indigo profond"
+    },
+    
+    "industries": {
+      "technology": "Technologie et logiciels",
+      "healthcare": "Santé et médical",
+      "finance": "Finance et banque",
+      "education": "Éducation et formation",
+      "retail": "Commerce de détail et e-commerce",
+      "manufacturing": "Fabrication et production",
+      "construction": "Construction et ingénierie",
+      "consulting": "Conseil et services",
+      "real-estate": "Immobilier",
+      "transportation": "Transport et logistique",
+      "hospitality": "Hôtellerie et tourisme",
+      "media": "Médias et divertissement",
+      "nonprofit": "Organisation à but non lucratif",
+      "government": "Gouvernement et secteur public",
+      "other": "Autre"
+    },
+    
+    "languageSwitcher": {
+      "title": "Langue",
+      "tooltip": "Changer de langue"
+    }
+  }
+}

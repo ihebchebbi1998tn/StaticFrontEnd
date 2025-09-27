@@ -1,0 +1,6 @@
+[
+  { "id": "welcome", "name": "Welcome" },
+  { "id": "offer", "name": "Offer" },
+  { "id": "confirmation", "name": "Confirmation" },
+  { "id": "reminder", "name": "Reminder" }
+]

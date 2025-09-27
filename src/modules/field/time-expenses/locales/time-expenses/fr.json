@@ -1,0 +1,88 @@
+{
+  "title": "Temps & Dépenses",
+  "subtitle": "Suivre et gérer les entrées de temps et les dépenses des techniciens",
+  "overview": "Aperçu",
+  "calendar": "Calendrier",
+  "summary": "Résumé",
+  "details": "Détails",
+  "filters": {
+    "title": "Filtres",
+    "date_range": "Période",
+    "users": "Techniciens",
+    "all_users": "Tous les Techniciens",
+    "select_users": "Sélectionner Techniciens",
+    "entry_types": "Types d'Entrées",
+    "status": "Statut",
+    "view_type": "Type de Vue"
+  },
+  "view_types": {
+    "day": "Vue Journalière",
+    "week": "Vue Hebdomadaire",
+    "month": "Vue Mensuelle"
+  },
+  "entry_types": {
+    "time": "Temps Seulement",
+    "expense": "Dépense Seulement", 
+    "both": "Temps & Dépense"
+  },
+  "status": {
+    "pending": "En Attente",
+    "approved": "Approuvé",
+    "rejected": "Rejeté"
+  },
+  "totals": {
+    "total_time": "Temps Total",
+    "total_expenses": "Dépenses Totales",
+    "total_earnings": "Gains Totaux",
+    "average_hourly": "Taux Horaire Moyen",
+    "entries_count": "Total Entrées"
+  },
+  "time_format": {
+    "hours": "heures",
+    "minutes": "minutes",
+    "hour_short": "h",
+    "minute_short": "m"
+  },
+  "calendar": {
+    "today": "Aujourd'hui",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "no_entries": "Aucune entrée pour cette date",
+    "select_date": "Sélectionnez une date pour voir les entrées"
+  },
+  "summary_cards": {
+    "time_booked": "Temps Réservé",
+    "expenses_total": "Dépenses Totales",
+    "earnings_total": "Gains Totaux", 
+    "technicians_active": "Techniciens Actifs"
+  },
+  "table": {
+    "technician": "Technicien",
+    "date": "Date",
+    "time_booked": "Temps Réservé",
+    "expenses": "Dépenses",
+    "earnings": "Gains",
+    "description": "Description",
+    "type": "Type",
+    "status": "Statut",
+    "service_order": "Ordre de Service",
+    "dispatch": "Répartition",
+    "hourly_rate": "Taux Horaire"
+  },
+  "empty_states": {
+    "no_entries": "Aucune Entrée Temps & Dépenses",
+    "no_entries_description": "Aucune entrée trouvée pour les filtres sélectionnés.",
+    "no_data": "Aucune donnée disponible",
+    "select_filters": "Veuillez sélectionner des filtres pour voir les données"
+  },
+  "export": {
+    "title": "Exporter Temps & Dépenses",
+    "format": "Format d'Export",
+    "csv": "Fichier CSV",
+    "pdf": "Rapport PDF",
+    "excel": "Fichier Excel",
+    "date_range": "Période",
+    "include_summary": "Inclure le Résumé",
+    "include_details": "Inclure les Détails"
+  }
+}

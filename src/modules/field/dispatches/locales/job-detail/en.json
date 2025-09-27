@@ -1,0 +1,99 @@
+{
+  "title": "Job Details",
+  "loading_message": "Loading job details...",
+  "not_found_title": "Job Not Found",
+  "not_found_message": "The dispatch job with this ID could not be found.",
+  "back_to_dispatcher": "Back to Dispatcher",
+  "job_details": "Job Details",
+  "service_order": "Service Order",
+  "description": "Description", 
+  "work_location": "Work Location",
+  "scheduled_start": "Scheduled Start",
+  "scheduled_end": "Scheduled End",
+  "estimated_duration": "Estimated Duration",
+  "customer_details": "Customer Details",
+  "company": "Company",
+  "contact_person": "Contact Person",
+  "time_booked": "Time Booked",
+  "expenses": "Expenses",
+  "scheduled_date": "Scheduled Date",
+  "technicians": "Technicians",
+  "edit": "Edit Job",
+  "mark_complete": "Mark Complete",
+  "cancel_job": "Cancel Job",
+  "statuses": {
+    "pending": "Pending",
+    "assigned": "Assigned",
+  "approved": "Approved",
+    "acknowledged": "Acknowledged",
+    "en_route": "En Route",
+    "on_site": "On Site",
+    "in_progress": "In Progress",
+    "completed": "Completed",
+    "cancelled": "Cancelled"
+  },
+  "priorities": {
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High",
+    "urgent": "Urgent"
+  },
+  "tabs": {
+    "overview": "Overview",
+    "time_expenses": "Time & Expenses",
+    "attachments": "Attachments",
+    "notes": "Notes",
+  "articles": "Articles",
+  "logs": "Logs",
+    "technician": "Technician"
+  }
+  ,
+  "new_entry": "New Entry",
+  "start_time": "Start Time",
+  "end_time": "End Time",
+  "new_expense": "New Expense",
+  "total": "Total",
+  "billable": "Billable",
+  "take_photo": "Take Photo",
+  "upload_files": "Upload Files",
+  "no_attachments": "No attachments",
+  "add_note": "Add Note",
+  "categories": {
+    "work_performed": "Work Performed"
+  },
+  "created_by": "Created By",
+  "created_at": "Created At",
+  "skills": "Skills",
+  "call": "Call",
+  "email_action": "Email",
+  "locate": "Locate",
+  "types": {
+    "work": "Work",
+    "materials": "Materials"
+  },
+
+  "dispatch_detail": {
+    "loading": "Loading dispatch...",
+    "not_found": "Dispatch Not Found",
+    "not_found_message": "The requested dispatch could not be found.",
+    "back_to_dispatcher": "Back to Dispatcher",
+    "pending": "Pending",
+    "assigned": "Assigned",
+    "acknowledged": "Acknowledged",
+    "en_route": "En Route",
+    "on_site": "On Site",
+    "in_progress": "In Progress",
+    "cancelled": "Cancelled",
+    "mark_complete": "Mark Complete",
+    "cancel_dispatch": "Cancel Dispatch",
+    "assigned_to": "Assigned to:",
+    "overview": "Overview",
+    "materials": "Materials",
+    "photos": "Photos"
+  },
+  "detail": {
+    "share": "Share",
+    "edit": "Edit",
+    "download_report": "Download Report"
+  }
+}

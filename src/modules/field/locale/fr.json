@@ -1,0 +1,12 @@
+{
+  "field": {
+    "service_orders": "Ordres de Service", 
+    "dispatches": "Répartitions",
+    "dispatch": "Répartitions",
+    "dispatch_placeholder": "Calendrier interactif et carte, glisser-déposer des affectations, disponibilité des techniciens.",
+    "customers_lite": "Customer Management",
+    "inventory": "Inventory & Asset Management",
+    "reports": "Reporting & Analytics",
+    "time-expenses": "Temps & Dépenses"
+  }
+}
