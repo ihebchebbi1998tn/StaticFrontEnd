@@ -17,16 +17,9 @@ export function ClerkWrapper({ children, fallback }: ClerkWrapperProps) {
     return <>{fallback}</>;
   }
   
+  // Always render children - no API key message
   if (!hasValidClerk) {
-    return (
-      <div className="space-y-3">
-        <div className="text-center p-4 bg-muted/50 rounded-lg border border-dashed">
-          <p className="text-sm text-muted-foreground">
-            OAuth login will be available once you set up your Clerk API key
-          </p>
-        </div>
-      </div>
-    );
+    return <>{children}</>;
   }
   
   return <>{children}</>;

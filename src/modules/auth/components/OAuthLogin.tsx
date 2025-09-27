@@ -15,7 +15,19 @@ function ClerkOAuthButtons() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleOAuthSignIn = async (strategy: 'oauth_google' | 'oauth_microsoft') => {
-    if (!signIn) return;
+    if (!signIn) {
+      // Show static behavior when Clerk is not available
+      setIsLoading(true);
+      setTimeout(() => {
+        toast({
+          title: 'Demo Mode',
+          description: 'OAuth login is not configured. This is a demo interface.',
+          variant: 'default',
+        });
+        setIsLoading(false);
+      }, 1000);
+      return;
+    }
     
     setIsLoading(true);
     try {
