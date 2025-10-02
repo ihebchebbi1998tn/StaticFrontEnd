@@ -216,9 +216,9 @@ export function ContactDetailModal({ contact, isOpen, onClose }: ContactDetailMo
                     </CardHeader>
                     <CardContent>
                       <div className="flex flex-wrap gap-2">
-                        {contact.tags.map((tag, index) => (
+                        {contact.tags?.map((tag: any, index: number) => (
                           <Badge key={index} variant="secondary" className="text-xs">
-                            {tag}
+                            {typeof tag === 'string' ? tag : tag.name}
                           </Badge>
                         ))}
                         <Button variant="outline" size="sm" className="h-6 px-2 text-xs">

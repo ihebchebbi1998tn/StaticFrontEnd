@@ -1,36 +1,75 @@
-import { useState } from 'react';
-import { useDataLoading } from '@/shared/hooks/useDataLoading';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { contactsApi, type ContactSearchParams } from '@/services/contactsApi';
 
-type ContactSearchRequest = ContactSearchParams & {
+export type ContactSearchRequest = ContactSearchParams & {
   searchTerm?: string;
   status?: string;
   type?: string;
   pageSize?: number;
 };
 
-// Fetch contacts from API with search parameters
+// Fetch contacts from static mock with transformed params
 const fetchContacts = async (searchParams?: ContactSearchRequest) => {
-  const response = await contactsApi.getAllContacts(searchParams);
-  return response.contacts;
+  const apiParams: ContactSearchParams = {
+    search: searchParams?.searchTerm,
+    page: 1,
+    limit: searchParams?.pageSize ?? 100,
+    sortBy: undefined,
+    sortOrder: undefined,
+  };
+  const response = await contactsApi.getAllContacts(apiParams);
+  let list = response.contacts;
+
+  // Client-side filters to mimic server filtering
+  if (searchParams?.status && searchParams.status !== 'all') {
+    const s = String(searchParams.status).toLowerCase();
+    list = list.filter((c: any) => String(c.status || '').toLowerCase() === s);
+  }
+  if (searchParams?.type && searchParams.type !== 'all') {
+    const t = String(searchParams.type).toLowerCase();
+    list = list.filter((c: any) => String(c.type || '').toLowerCase() === t);
+  }
+
+  return list;
 };
 
 export const useContactsData = (searchParams?: ContactSearchRequest) => {
+  const [data, setData] = useState<any[] | null>(null);
+  const [error, setError] = useState<Error | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [refreshKey, setRefreshKey] = useState(0);
-  
-  const result = useDataLoading(
-    () => fetchContacts(searchParams),
-    [searchParams, refreshKey], // dependencies include search params and refresh key
-    {
-      loadingMessage: 'Loading contacts...',
-      minLoadingTime: 800
+  const inFlight = useRef(0);
+
+  const load = useCallback(async () => {
+    const myId = ++inFlight.current;
+    try {
+      setIsLoading(true);
+      setError(null);
+      const result = await fetchContacts(searchParams);
+      // Only apply latest result
+      if (inFlight.current === myId) {
+        setData(result);
+      }
+    } catch (err) {
+      if (inFlight.current === myId) {
+        setError(err as Error);
+      }
+    } finally {
+      if (inFlight.current === myId) {
+        setIsLoading(false);
+      }
     }
-  );
+  }, [searchParams]);
 
-  const refresh = () => setRefreshKey(prev => prev + 1);
+  useEffect(() => {
+    load();
+    return () => {
+      // invalidate previous loads
+      inFlight.current++;
+    };
+  }, [load, refreshKey]);
 
-  return {
-    ...result,
-    refresh
-  };
+  const refresh = () => setRefreshKey((k) => k + 1);
+
+  return { data, error, isLoading, refresh };
 };

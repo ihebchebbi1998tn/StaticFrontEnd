@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { usePaginatedData } from "@/shared/hooks/usePagination";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -30,13 +30,13 @@ export function ContactsList() {
   const [filterTimeframe, setFilterTimeframe] = useState('all');
   const [deleteContactId, setDeleteContactId] = useState<number | null>(null);
 
-  // Build search parameters for API
-  const searchParams = {
+  // Build search parameters for API - memoized to prevent infinite loops
+  const searchParams = useMemo(() => ({
     searchTerm: searchTerm || undefined,
     status: filterStatus !== 'all' ? filterStatus : undefined,
     type: filterType !== 'all' ? filterType : undefined,
     pageSize: 100, // Load more for local filtering
-  };
+  }), [searchTerm, filterStatus, filterType]);
 
   // Fetch contacts from API
   const { data: contacts, error, isLoading: loading, refresh } = useContactsData(searchParams);
@@ -368,7 +368,7 @@ export function ContactsList() {
                         </div>
                         <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-xs sm:text-sm text-muted-foreground mb-2">
                           <span className="truncate">{contact.position} at {contact.company}</span>
-                          {contact.type === 'company' && contact.tags.length && (
+                          {contact.type === 'company' && contact.tags?.length && (
                             <span className="text-xs">
                               {contact.tags.length} tags
                             </span>
@@ -393,12 +393,12 @@ export function ContactsList() {
                     
                     <div className="flex items-center justify-between sm:justify-end gap-2 mt-2 sm:mt-0">
                       <div className="flex gap-1 flex-wrap flex-1 sm:flex-none">
-                        {contact.tags.slice(0, 1).map((tag, index) => (
+                        {contact.tags?.slice(0, 1).map((tag: any, index: number) => (
                           <Badge key={index} variant="outline" className="text-xs px-1.5 py-0.5">
-                            {tag.name}
+                            {typeof tag === 'string' ? tag : tag.name}
                           </Badge>
                         ))}
-                        {contact.tags.length > 1 && (
+                        {(contact.tags?.length || 0) > 1 && (
                           <Badge variant="outline" className="text-xs px-1.5 py-0.5">
                             +{contact.tags.length - 1}
                           </Badge>
@@ -540,8 +540,10 @@ export function ContactsList() {
                       title: 'Tags',
                       render: (contact: any) => (
                         <div className="flex gap-1 flex-wrap">
-                          {contact.tags.slice(0, 2).map((tag: string, index: number) => (
-                            <Badge key={index} variant="outline" className="text-xs px-1.5 py-0.5">{tag}</Badge>
+                          {contact.tags.slice(0, 2).map((tag: any, index: number) => (
+                            <Badge key={index} variant="outline" className="text-xs px-1.5 py-0.5">
+                              {typeof tag === 'string' ? tag : tag.name}
+                            </Badge>
                           ))}
                           {contact.tags.length > 2 && <Badge variant="outline" className="text-xs px-1.5 py-0.5">+{contact.tags.length - 2}</Badge>}
                         </div>

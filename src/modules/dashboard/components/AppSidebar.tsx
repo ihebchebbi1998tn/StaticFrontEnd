@@ -96,9 +96,9 @@ export function AppSidebar() {
 
   const collapsed = state === "collapsed";
   const location = useLocation();
+  const navigate = useNavigate();
   const { theme: _theme } = useTheme();
   const currentPath = location.pathname;
-  const navigate = useNavigate();
 
   const [isDark, setIsDark] = useState(() => document.documentElement.classList.contains('dark'));
   
@@ -111,26 +111,15 @@ export function AppSidebar() {
   }, []);
 
   const initialConfigured: import('../services/sidebar.service').SidebarItemConfig[] = loadSidebarConfig() ?? [];
-  const [configuredItems, setConfiguredItems] = useState<import('../services/sidebar.service').SidebarItemConfig[]>(() => initialConfigured);
-
-  useEffect(() => {
-    // Force clear and re-seed sidebar to pick up new unified structure
-    console.log('Resetting sidebar config for unified structure...');
-    
-    // Force clear localStorage to ensure fresh config
-    localStorage.removeItem('app-sidebar-config');
-    resetSidebarConfig();
-    
-    // Seed from JSON defaults (unified structure)
-    seedSidebarDefaultsIfEmpty();
-    
-    // Force reload configured items from storage
-    const reloaded = loadSidebarConfig();
-    if (reloaded) {
-      setConfiguredItems(reloaded);
-      console.log('Loaded unified sidebar items:', reloaded.map(r => `${r.title}: ${r.icon || 'no-icon'}`));
+  const [configuredItems, setConfiguredItems] = useState<import('../services/sidebar.service').SidebarItemConfig[]>(() => {
+    // Initialize once: check if config exists, if not seed it
+    const existing = loadSidebarConfig();
+    if (!existing || existing.length === 0) {
+      seedSidebarDefaultsIfEmpty();
+      return loadSidebarConfig() ?? [];
     }
-  }, []);
+    return existing;
+  });
 
   const workspaceItems = configuredItems
     .filter(i => i.group === 'workspace' && i.active)
@@ -245,7 +234,7 @@ export function AppSidebar() {
                         {resolveDescription(item.title, item.description)}
                       </div>
                   </div>
-                    <Plus className={`h-4 w-4 transition-transform ${isDropdownOpen ? 'rotate-45' : ''} ${itemIsActive ? 'text-primary' : 'text-sidebar-foreground/60'}`} />
+                  <ChevronRight className={`h-4 w-4 transition-transform ${isDropdownOpen ? 'rotate-90' : ''} ${itemIsActive ? 'text-primary' : 'text-sidebar-foreground/60'}`} />
                 </>
               )}
             </CollapsibleTrigger>
@@ -255,7 +244,8 @@ export function AppSidebar() {
                   {item.dropdown.map((subItem: any) => (
                     <SidebarMenuSubItem key={subItem.url} className="mb-0.5">
                       <SidebarMenuSubButton asChild className={`h-7 px-0 py-1 transition-colors duration-200 ${isActive(subItem.url) ? 'text-primary font-medium' : 'text-sidebar-foreground/60 hover:text-sidebar-foreground/80'}`}>
-                        <NavLink to={subItem.url} end={subItem.url === "/dashboard"} className="flex items-center">
+                        <NavLink to={subItem.url} end={subItem.url === "/dashboard"} className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50" />
                           <span className="text-xs font-normal">{subItem.title}</span>
                         </NavLink>
                       </SidebarMenuSubButton>
@@ -334,53 +324,65 @@ export function AppSidebar() {
           </div>
         </div>
 
-        {/* Main Navigation - Single scrollable container for all content */}
-        <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden">
-          <div className="px-2 py-0.5">
+        {/* Main Navigation - Collapsible Groups */}
+        <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-2 py-4">
+          {/* Workspace Section */}
+          <Collapsible open={workspaceOpen} onOpenChange={setWorkspaceOpen}>
             {!collapsed && (
-              <div className="text-sidebar-foreground/50 font-semibold uppercase tracking-wide mb-1 px-2 text-[0.70rem]">
-                Workspace
-              </div>
+              <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mb-2 rounded-lg hover:bg-sidebar-accent/30 text-sidebar-foreground/70 transition-colors group">
+                <div className="flex items-center gap-2">
+                  <Building className="h-4 w-4" />
+                  <span className="text-xs font-semibold uppercase tracking-wider">Workspace</span>
+                </div>
+                <ChevronDown className={`h-4 w-4 transition-transform ${workspaceOpen ? '' : '-rotate-90'}`} />
+              </CollapsibleTrigger>
             )}
             
-            {/* Workspace Items */}
-            <div className={`transition-transform duration-200 ease-in-out will-change-transform ${
-              workspaceOpen ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-4 opacity-0'
-            }`}>
-              <div className="-space-y-0.5">
+            <CollapsibleContent>
+              <SidebarMenu className="-space-y-0.5">
                 {workspaceItems.map(renderNavigationItem)}
-              </div>
-            </div>
-          </div>
+              </SidebarMenu>
+            </CollapsibleContent>
+          </Collapsible>
 
           {/* System Section */}
-          <div className="px-2 py-0.5 mt-4">
+          <Collapsible open={systemOpen} onOpenChange={setSystemOpen} className="mt-6">
             {!collapsed && (
-              <div className="flex items-center justify-between mb-1 px-2">
-                <div className="text-sidebar-foreground/50 font-semibold uppercase tracking-wide text-[0.70rem]">
-                  System
+              <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mb-2 rounded-lg hover:bg-sidebar-accent/30 text-sidebar-foreground/70 transition-colors group">
+                <div className="flex items-center gap-2">
+                  <Settings className="h-4 w-4" />
+                  <span className="text-xs font-semibold uppercase tracking-wider">System</span>
                 </div>
-                <button 
-                  onClick={toggleSystem} 
-                  aria-expanded={systemOpen} 
-                  title={systemOpen ? 'Collapse system' : 'Expand system'}
-                  className="text-sidebar-foreground/60 hover:text-sidebar-foreground"
-                >
-                  {systemOpen ? <ChevronDown className="size-4" /> : <ChevronRight className="size-4" />}
-                </button>
-              </div>
+                <ChevronDown className={`h-4 w-4 transition-transform ${systemOpen ? '' : '-rotate-90'}`} />
+              </CollapsibleTrigger>
             )}
             
-            {/* System Items */}
-            <div className={`transition-transform duration-200 ease-in-out will-change-transform ${
-              systemOpen ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-4 opacity-0'
-            }`}>
-              <div className="-space-y-0.5">
+            <CollapsibleContent>
+              <SidebarMenu className="-space-y-0.5">
                 {systemItems.map(renderNavigationItem)}
-              </div>
-            </div>
-          </div>
+              </SidebarMenu>
+            </CollapsibleContent>
+          </Collapsible>
         </div>
+
+        {/* User Section - Bottom */}
+        {!collapsed && (
+          <div className="flex-shrink-0 border-t border-sidebar-border/50 px-3 py-3">
+            <button 
+              className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl hover:bg-sidebar-accent/50 transition-all duration-300 group"
+              onClick={() => navigate('/dashboard/settings')}
+            >
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center flex-shrink-0 shadow-soft">
+                <span className="text-primary text-sm font-bold">SA</span>
+              </div>
+              <div className="flex-1 text-left">
+                <div className="text-sm font-semibold text-sidebar-foreground group-hover:text-primary transition-colors">Super Admin</div>
+                <div className="text-xs text-sidebar-foreground/60">System Administrator</div>
+              </div>
+              <ChevronDown className="h-4 w-4 text-sidebar-foreground/40 group-hover:text-primary/60 transition-colors" />
+            </button>
+          </div>
+        )}
       </SidebarContent>
     </Sidebar>
   );

@@ -22,7 +22,6 @@ import LookupsPage from "@/modules/lookups/pages/LookupsPage";
 import HelpModule from "./HelpModule";
 
 export function DashboardContent() {
-  console.log("DashboardContent rendering, current path:", window.location.pathname);
   return (
     <div>
       <Routes>

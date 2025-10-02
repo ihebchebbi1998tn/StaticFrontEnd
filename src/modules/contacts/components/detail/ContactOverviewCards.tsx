@@ -73,9 +73,9 @@ export function ContactOverviewCards({ contact, tags, onAddTag }: {
         </CardHeader>
         <CardContent>
           <div className="flex flex-wrap gap-2">
-            {tags.map((tag, index) => (
+            {tags?.map((tag: any, index: number) => (
               <Badge key={index} variant="secondary" className="text-xs">
-                {tag}
+                {typeof tag === 'string' ? tag : tag.name || tag}
               </Badge>
             ))}
             <button onClick={onAddTag} className="h-6 px-2 text-xs border rounded-md">Add Tag</button>

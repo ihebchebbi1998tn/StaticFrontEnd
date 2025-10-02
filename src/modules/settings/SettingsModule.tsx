@@ -1,12 +1,11 @@
-
 import { Routes, Route } from "react-router-dom";
-import { SettingsLayout } from "./components/SettingsLayout";
+import { SettingsLayoutNew } from "./components/SettingsLayoutNew";
 import DatabaseFullView from "./pages/DatabaseFullView";
 
 export function SettingsModule() {
   return (
     <Routes>
-      <Route index element={<SettingsLayout />} />
+      <Route index element={<SettingsLayoutNew />} />
       <Route path="database-full-view" element={<DatabaseFullView />} />
     </Routes>
   );
