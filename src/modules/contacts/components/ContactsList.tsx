@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { usePaginatedData } from "@/shared/hooks/usePagination";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -19,6 +19,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 export function ContactsList() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
   const { toast } = useToast();
   const [viewMode, setViewMode] = useState<'list' | 'table'>('table');
   const [searchTerm, setSearchTerm] = useState('');
@@ -29,6 +30,16 @@ export function ContactsList() {
   const [filterCompany, setFilterCompany] = useState<'all' | string>('all');
   const [filterTimeframe, setFilterTimeframe] = useState('all');
   const [deleteContactId, setDeleteContactId] = useState<number | null>(null);
+
+  // Read URL query parameters and set initial filter
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const typeParam = params.get('type');
+    if (typeParam && (typeParam === 'company' || typeParam === 'person')) {
+      setFilterType(typeParam);
+      setSelectedStat(typeParam);
+    }
+  }, [location.search]);
 
   // Build search parameters for API - memoized to prevent infinite loops
   const searchParams = useMemo(() => ({
@@ -112,11 +123,11 @@ export function ContactsList() {
     color: "chart-2",
     filter: 'active'
   }, {
-    label: "Customers",
-    value: contacts?.filter(c => c.status === 'customer').length || 0,
+    label: "Persons",
+    value: contacts?.filter(c => c.type === 'person').length || 0,
     icon: Users,
     color: "chart-3",
-    filter: 'customer'
+    filter: 'person'
   }, {
     label: "Companies",
     value: contacts?.filter(c => c.type === 'company').length || 0,
@@ -154,8 +165,8 @@ export function ContactsList() {
     if (stat.filter === 'all') {
       setFilterStatus('all');
       setFilterType('all');
-    } else if (stat.filter === 'company') {
-      setFilterType('company');
+    } else if (stat.filter === 'company' || stat.filter === 'person') {
+      setFilterType(stat.filter);
       setFilterStatus('all');
     } else {
       setFilterStatus(stat.filter);
@@ -302,16 +313,16 @@ export function ContactsList() {
               <div className="relative">
                 <select className="border rounded px-3 py-2 pr-10 appearance-none bg-background text-foreground w-full" value={filterStatus} onChange={e => { setFilterStatus(e.target.value); }}>
                   <option value="all">All Statuses</option>
-                  <option value="Customer">Customer</option>
-                  <option value="Lead">Lead</option>
-                  <option value="Prospect">Prospect</option>
+                  <option value="active">Active</option>
+                  <option value="lead">Lead</option>
+                  <option value="prospect">Prospect</option>
                 </select>
                 <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               </div>
               <div className="relative">
                 <select className="border rounded px-3 py-2 pr-10 appearance-none bg-background text-foreground w-full" value={filterType} onChange={e => { setFilterType(e.target.value); }}>
                   <option value="all">All Types</option>
-                  <option value="individual">Individual</option>
+                  <option value="person">Person</option>
                   <option value="company">Company</option>
                 </select>
                 <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />

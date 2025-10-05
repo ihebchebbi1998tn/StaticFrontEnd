@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,6 +15,15 @@ export function CompanySettings() {
     fax: "",
     website: "",
   });
+  const [logoPreview, setLogoPreview] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Load saved logo from localStorage
+    const savedLogo = localStorage.getItem('company-logo');
+    if (savedLogo) {
+      setLogoPreview(savedLogo);
+    }
+  }, []);
 
   const handleInputChange = (field: string, value: string) => {
     setCompanyData(prev => ({ ...prev, [field]: value }));
@@ -27,11 +36,44 @@ export function CompanySettings() {
     });
   };
 
-  const handleFileUpload = (type: 'logo' | 'favicon') => {
-    toast({
-      title: "Upload feature",
-      description: `${type === 'logo' ? 'Logo' : 'Favicon'} upload will be implemented.`,
-    });
+  const handleFileUpload = () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    
+    input.onchange = (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (file) {
+        // Validate file size (max 5MB)
+        if (file.size > 5 * 1024 * 1024) {
+          toast({
+            title: "File too large",
+            description: "Please select an image smaller than 5MB.",
+            variant: "destructive",
+          });
+          return;
+        }
+
+        // Convert to base64 and save
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const base64String = reader.result as string;
+          localStorage.setItem('company-logo', base64String);
+          setLogoPreview(base64String);
+          
+          // Dispatch custom event to update sidebar immediately
+          window.dispatchEvent(new CustomEvent('logo-updated', { detail: base64String }));
+          
+          toast({
+            title: "Logo uploaded",
+            description: "Company logo has been updated successfully.",
+          });
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+    
+    input.click();
   };
 
   return (
@@ -117,16 +159,20 @@ export function CompanySettings() {
           <Card className="border border-border">
             <CardContent className="p-6">
               <div className="flex flex-col items-center justify-center space-y-4">
-                <div className="w-24 h-24 rounded-lg border-2 border-dashed border-border flex items-center justify-center bg-muted/50">
-                  <ImageIcon className="h-8 w-8 text-muted-foreground" />
+                <div className="w-24 h-24 rounded-lg border-2 border-dashed border-border flex items-center justify-center bg-muted/50 overflow-hidden">
+                  {logoPreview ? (
+                    <img src={logoPreview} alt="Company Logo" className="w-full h-full object-contain" />
+                  ) : (
+                    <ImageIcon className="h-8 w-8 text-muted-foreground" />
+                  )}
                 </div>
                 
                 <Button 
-                  onClick={() => handleFileUpload('logo')}
+                  onClick={handleFileUpload}
                   className="bg-primary hover:bg-primary/90 text-white"
                 >
                   <Upload className="h-4 w-4 mr-2" />
-                  Upload File
+                  {logoPreview ? 'Change Logo' : 'Upload File'}
                 </Button>
                 
                 <p className="text-xs text-center text-muted-foreground">

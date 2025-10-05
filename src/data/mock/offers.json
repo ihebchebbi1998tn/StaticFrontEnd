@@ -21,7 +21,6 @@
     "amount": 2850.00,
     "currency": "USD",
     "status": "accepted",
-    "priority": "high",
     "category": "big_project",
     "source": "direct_customer",
     "description": "Complete server maintenance and optimization package",
@@ -75,9 +74,7 @@
     "updatedAt": "2024-01-20T14:20:00.000Z",
     "createdBy": "user-001",
     "modifiedBy": "user-001",
-    "convertedToSaleId": "sale-001",
-    "isRecurring": true,
-    "recurringInterval": "annually"
+    "convertedToSaleId": "sale-001"
   },
   {
     "id": "offer-002",
@@ -101,7 +98,6 @@
     "amount": 4750.00,
     "currency": "USD",
     "status": "sent",
-    "priority": "medium",
     "category": "likely_to_close",
     "source": "referral",
     "description": "Complete network infrastructure design and implementation",
@@ -176,7 +172,6 @@
     "amount": 6200.00,
     "currency": "USD",
     "status": "declined",
-    "priority": "medium",
     "category": "unlikely_to_close",
     "source": "email_marketing",
     "description": "Custom API integration and workflow automation",
@@ -240,7 +235,6 @@
     "amount": 3200.00,
     "currency": "USD",
     "status": "renewed",
-    "priority": "medium",
     "category": "follow_up_required",
     "source": "social_media",
     "description": "Cost-optimized version of network infrastructure setup",

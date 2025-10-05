@@ -5,8 +5,8 @@
     "email": "john@example.com",
     "phone": "+1 234 567 8900",
     "company": "Acme Corp",
-    "status": "Customer",
-    "type": "individual",
+    "status": "Active",
+    "type": "person",
     "tags": ["VIP", "Hot Lead"],
     "lastContact": "2024-01-15",
     "favorite": true
@@ -18,7 +18,7 @@
     "phone": "+1 234 567 8901",
     "company": "Tech Startup Inc",
     "status": "Lead",
-    "type": "individual",
+    "type": "person",
     "tags": ["Enterprise", "Tech"],
     "lastContact": "2024-01-12",
     "favorite": false
@@ -30,7 +30,7 @@
     "phone": "+1 234 567 8902",
     "company": "Consulting LLC",
     "status": "Prospect",
-    "type": "individual",
+    "type": "person",
     "tags": ["Follow-up", "Consulting"],
     "lastContact": "2024-01-10",
     "favorite": false
@@ -41,7 +41,7 @@
     "email": "contact@acme.com",
     "phone": "+1 555 123 4567",
     "company": "Acme Corporation",
-    "status": "Customer",
+    "status": "Active",
     "type": "company",
     "keyUsers": ["John Doe", "Sarah Wilson", "Mark Brown"],
     "tags": ["Enterprise", "Key Account", "Fortune 500"],

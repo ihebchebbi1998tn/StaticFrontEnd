@@ -48,6 +48,7 @@ import { useToast } from '@/hooks/use-toast';
 import { ICON_REGISTRY, IconName } from './sidebarIcons';
 
 export function AppSidebar() {
+  const [companyLogo, setCompanyLogo] = useState<string | null>(null);
   const { state } = useSidebar();
   const { t } = useTranslation();
 
@@ -110,11 +111,50 @@ export function AppSidebar() {
     return () => observer.disconnect();
   }, []);
 
+  // Load company logo from localStorage
+  useEffect(() => {
+    const loadLogo = () => {
+      const savedLogo = localStorage.getItem('company-logo');
+      setCompanyLogo(savedLogo);
+    };
+    
+    const handleLogoUpdate = (event: CustomEvent) => {
+      setCompanyLogo(event.detail);
+    };
+    
+    loadLogo();
+    
+    // Listen for custom logo update event
+    window.addEventListener('logo-updated', handleLogoUpdate as EventListener);
+    // Listen for storage changes to update logo in real-time
+    window.addEventListener('storage', loadLogo);
+    
+    return () => {
+      window.removeEventListener('logo-updated', handleLogoUpdate as EventListener);
+      window.removeEventListener('storage', loadLogo);
+    };
+  }, []);
+
   const initialConfigured: import('../services/sidebar.service').SidebarItemConfig[] = loadSidebarConfig() ?? [];
   const [configuredItems, setConfiguredItems] = useState<import('../services/sidebar.service').SidebarItemConfig[]>(() => {
     // Initialize once: check if config exists, if not seed it
     const existing = loadSidebarConfig();
-    if (!existing || existing.length === 0) {
+    
+    // Migration: v2 grouping - move Articles + Contacts to workspace, Todo to CRM, remove Calendar
+    // Migration: v3 contacts dropdown - update Person URL from /dashboard/contacts/person to query param
+    const needsMigration =
+      !existing ||
+      existing.length === 0 ||
+      existing.some((item) =>
+        (item.title === 'articles' && item.group !== 'workspace') ||
+        (item.title === 'contacts' && item.group !== 'workspace') ||
+        (item.title === 'todo' && item.group !== 'crm') ||
+        item.title === 'calendar' ||
+        (item.title === 'contacts' && item.dropdown?.some(d => d.url === '/dashboard/contacts/person'))
+      );
+    
+    if (needsMigration) {
+      resetSidebarConfig();
       seedSidebarDefaultsIfEmpty();
       return loadSidebarConfig() ?? [];
     }
@@ -126,6 +166,32 @@ export function AppSidebar() {
     .map(i => {
       const iconName = i.icon as IconName | undefined;
       let IconComp = iconName && (ICON_REGISTRY as any)[iconName] ? (ICON_REGISTRY as any)[iconName] : Home;
+      
+      return { 
+        ...i,
+        icon: IconComp,
+        dropdown: i.dropdown || undefined
+      };
+    });
+
+  const crmItems = configuredItems
+    .filter(i => i.group === 'crm' && i.active)
+    .map(i => {
+      const iconName = i.icon as IconName | undefined;
+      let IconComp = iconName && (ICON_REGISTRY as any)[iconName] ? (ICON_REGISTRY as any)[iconName] : Users;
+      
+      return { 
+        ...i,
+        icon: IconComp,
+        dropdown: i.dropdown || undefined
+      };
+    });
+
+  const serviceItems = configuredItems
+    .filter(i => i.group === 'service' && i.active)
+    .map(i => {
+      const iconName = i.icon as IconName | undefined;
+      let IconComp = iconName && (ICON_REGISTRY as any)[iconName] ? (ICON_REGISTRY as any)[iconName] : Wrench;
       
       return { 
         ...i,
@@ -169,16 +235,18 @@ export function AppSidebar() {
 
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
     isActive 
-      ? "bg-primary/10 text-primary border-r-2 border-primary font-semibold shadow-sm" 
+      ? "bg-primary/10 text-primary font-semibold shadow-sm" 
       : "text-sidebar-foreground/80 hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground";
 
   const getDropdownNavCls = (itemIsActive: boolean) =>
     itemIsActive 
-      ? "bg-primary/10 text-primary border-r-2 border-primary font-semibold shadow-sm" 
+      ? "bg-primary/10 text-primary font-semibold shadow-sm" 
       : "text-sidebar-foreground/80 hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground";
 
   // per-group collapse state (persisted)
   const [workspaceOpen, setWorkspaceOpen] = useState(() => (localStorage.getItem('sidebar-group-workspace') ?? 'open') === 'open');
+  const [crmOpen, setCrmOpen] = useState(() => (localStorage.getItem('sidebar-group-crm') ?? 'open') === 'open');
+  const [serviceOpen, setServiceOpen] = useState(() => (localStorage.getItem('sidebar-group-service') ?? 'open') === 'open');
   const [systemOpen, setSystemOpen] = useState(() => (localStorage.getItem('sidebar-group-system') ?? 'open') === 'open');
 
   // dropdown states
@@ -188,6 +256,22 @@ export function AppSidebar() {
     setWorkspaceOpen((v) => {
       const next = !v;
       localStorage.setItem('sidebar-group-workspace', next ? 'open' : 'closed');
+      return next;
+    });
+  };
+
+  const toggleCrm = () => {
+    setCrmOpen((v) => {
+      const next = !v;
+      localStorage.setItem('sidebar-group-crm', next ? 'open' : 'closed');
+      return next;
+    });
+  };
+
+  const toggleService = () => {
+    setServiceOpen((v) => {
+      const next = !v;
+      localStorage.setItem('sidebar-group-service', next ? 'open' : 'closed');
       return next;
     });
   };
@@ -217,7 +301,7 @@ export function AppSidebar() {
         <Collapsible key={item.title} open={isDropdownOpen} onOpenChange={() => toggleDropdown(item.id)}>
           <SidebarMenuItem>
             <CollapsibleTrigger 
-              className={`transition-all duration-300 hover:shadow-medium ${collapsed ? 'h-[2.4rem] mx-0.5 justify-center -ml-1' : 'h-[2.4rem] rounded-xl mb-1 gap-3 px-3 py-2.5'} w-full flex items-center ${itemIsActive ? 'bg-primary/10 text-primary border-r-2 border-primary font-semibold shadow-sm' : 'text-sidebar-foreground/80 hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground'}`}
+              className={`transition-all duration-300 hover:shadow-medium ${collapsed ? 'h-[2rem] mx-0.5 justify-center -ml-1' : 'h-[2.5rem] rounded-xl gap-3 px-5 py-2.5'} w-full flex items-center ${itemIsActive ? 'bg-primary/10 text-primary font-semibold shadow-sm' : 'text-sidebar-foreground/80 hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground'}`}
             >
               {collapsed ? (
                 <item.icon className={`h-[24px] w-[24px] transition-all duration-300 ${itemIsActive ? 'text-primary scale-110' : 'text-sidebar-foreground/80 hover:text-primary hover:scale-105'}`} />
@@ -240,11 +324,11 @@ export function AppSidebar() {
             </CollapsibleTrigger>
             {!collapsed && (
               <CollapsibleContent>
-                <SidebarMenuSub className="ml-8 mt-1">
+                <SidebarMenuSub className="ml-8 mt-1 border-l-0 border-r-0">
                   {item.dropdown.map((subItem: any) => (
                     <SidebarMenuSubItem key={subItem.url} className="mb-0.5">
-                      <SidebarMenuSubButton asChild className={`h-7 px-0 py-1 transition-colors duration-200 ${isActive(subItem.url) ? 'text-primary font-medium' : 'text-sidebar-foreground/60 hover:text-sidebar-foreground/80'}`}>
-                        <NavLink to={subItem.url} end={subItem.url === "/dashboard"} className="flex items-center gap-2">
+                      <SidebarMenuSubButton asChild className={`h-7 px-0 py-1 transition-colors duration-200 border-r-0 ${isActive(subItem.url) ? 'text-primary font-medium' : 'text-sidebar-foreground/60 hover:text-sidebar-foreground/80'}`}>
+                        <NavLink to={subItem.url} end={subItem.url === "/dashboard"} className="flex items-center gap-2 border-r-0">
                           <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50" />
                           <span className="text-xs font-normal">{subItem.title}</span>
                         </NavLink>
@@ -261,12 +345,12 @@ export function AppSidebar() {
 
     return (
       <SidebarMenuItem key={item.title}>
-        <SidebarMenuButton asChild className={`transition-all duration-300 hover:shadow-medium ${collapsed ? 'h-[2.4rem] mx-0.5 flex items-center justify-center' : 'h-[2.4rem] rounded-xl mb-1'}`}>
+        <SidebarMenuButton asChild className={`transition-all duration-300 hover:shadow-medium ${collapsed ? 'h-[2rem] mx-0.5 flex items-center justify-center' : 'h-[2.5rem] rounded-xl'}`}>
           <NavLink 
             to={item.url} 
             end={item.url === "/dashboard"}
             className={({ isActive }) => 
-              `flex items-center ${isActive ? 'bg-primary/10 text-primary border-r-2 border-primary font-semibold shadow-sm' : 'text-sidebar-foreground/80 hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground'} ${collapsed ? 'justify-center w-full -ml-1' : 'gap-3 px-3 py-2.5'}`
+              `flex items-center ${isActive ? 'bg-primary/10 text-primary font-semibold shadow-sm' : 'text-sidebar-foreground/80 hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground'} ${collapsed ? 'justify-center w-full -ml-1' : 'gap-3 px-5 py-2.5'}`
             }
           >
             {collapsed ? (
@@ -310,16 +394,26 @@ export function AppSidebar() {
             <div className="absolute inset-0 bg-sidebar/60 dark:bg-sidebar/70" />
             
             <div className="relative z-10 flex items-center justify-center h-full w-full">
-              <img 
-                src="/lovable-uploads/c403237c-2c76-4f0c-8c9f-882975ce290f.png" 
-                alt="Logo" 
-                className="h-12 dark:block hidden"
-              />
-              <img 
-                src="/lovable-uploads/54cf69f6-1a17-4c11-bf6f-0fef42eb25bb.png" 
-                alt="Logo" 
-                className="h-12 dark:hidden block"
-              />
+              {companyLogo ? (
+                <img 
+                  src={companyLogo} 
+                  alt="Company Logo" 
+                  className="h-12 object-contain"
+                />
+              ) : (
+                <>
+                  <img 
+                    src="/lovable-uploads/c403237c-2c76-4f0c-8c9f-882975ce290f.png" 
+                    alt="Logo" 
+                    className="h-12 dark:block hidden"
+                  />
+                  <img 
+                    src="/lovable-uploads/54cf69f6-1a17-4c11-bf6f-0fef42eb25bb.png" 
+                    alt="Logo" 
+                    className="h-12 dark:hidden block"
+                  />
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -339,14 +433,52 @@ export function AppSidebar() {
             )}
             
             <CollapsibleContent>
-              <SidebarMenu className="-space-y-0.5">
+              <SidebarMenu className="space-y-0">
                 {workspaceItems.map(renderNavigationItem)}
               </SidebarMenu>
             </CollapsibleContent>
           </Collapsible>
 
+          {/* CRM Section */}
+          <Collapsible open={crmOpen} onOpenChange={setCrmOpen} className="mt-2">
+            {!collapsed && (
+              <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mb-2 rounded-lg hover:bg-sidebar-accent/30 text-sidebar-foreground/70 transition-colors group">
+                <div className="flex items-center gap-2">
+                  <Users className="h-4 w-4" />
+                  <span className="text-xs font-semibold uppercase tracking-wider">CRM</span>
+                </div>
+                <ChevronDown className={`h-4 w-4 transition-transform ${crmOpen ? '' : '-rotate-90'}`} />
+              </CollapsibleTrigger>
+            )}
+            
+            <CollapsibleContent>
+              <SidebarMenu className="space-y-0">
+                {crmItems.map(renderNavigationItem)}
+              </SidebarMenu>
+            </CollapsibleContent>
+          </Collapsible>
+
+          {/* Service Section */}
+          <Collapsible open={serviceOpen} onOpenChange={setServiceOpen} className="mt-2">
+            {!collapsed && (
+              <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mb-2 rounded-lg hover:bg-sidebar-accent/30 text-sidebar-foreground/70 transition-colors group">
+                <div className="flex items-center gap-2">
+                  <Wrench className="h-4 w-4" />
+                  <span className="text-xs font-semibold uppercase tracking-wider">Service</span>
+                </div>
+                <ChevronDown className={`h-4 w-4 transition-transform ${serviceOpen ? '' : '-rotate-90'}`} />
+              </CollapsibleTrigger>
+            )}
+            
+            <CollapsibleContent>
+              <SidebarMenu className="space-y-0">
+                {serviceItems.map(renderNavigationItem)}
+              </SidebarMenu>
+            </CollapsibleContent>
+          </Collapsible>
+
           {/* System Section */}
-          <Collapsible open={systemOpen} onOpenChange={setSystemOpen} className="mt-6">
+          <Collapsible open={systemOpen} onOpenChange={setSystemOpen} className="mt-2">
             {!collapsed && (
               <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mb-2 rounded-lg hover:bg-sidebar-accent/30 text-sidebar-foreground/70 transition-colors group">
                 <div className="flex items-center gap-2">
@@ -358,31 +490,13 @@ export function AppSidebar() {
             )}
             
             <CollapsibleContent>
-              <SidebarMenu className="-space-y-0.5">
+              <SidebarMenu className="space-y-0">
                 {systemItems.map(renderNavigationItem)}
               </SidebarMenu>
             </CollapsibleContent>
           </Collapsible>
         </div>
 
-        {/* User Section - Bottom */}
-        {!collapsed && (
-          <div className="flex-shrink-0 border-t border-sidebar-border/50 px-3 py-3">
-            <button 
-              className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl hover:bg-sidebar-accent/50 transition-all duration-300 group"
-              onClick={() => navigate('/dashboard/settings')}
-            >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center flex-shrink-0 shadow-soft">
-                <span className="text-primary text-sm font-bold">SA</span>
-              </div>
-              <div className="flex-1 text-left">
-                <div className="text-sm font-semibold text-sidebar-foreground group-hover:text-primary transition-colors">Super Admin</div>
-                <div className="text-xs text-sidebar-foreground/60">System Administrator</div>
-              </div>
-              <ChevronDown className="h-4 w-4 text-sidebar-foreground/40 group-hover:text-primary/60 transition-colors" />
-            </button>
-          </div>
-        )}
       </SidebarContent>
     </Sidebar>
   );

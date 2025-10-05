@@ -17,8 +17,8 @@ interface ConnectionLog {
 const connectionLogs: ConnectionLog[] = [
   {
     id: '1',
-    name: 'Demo Account',
-    email: 'demo@demo.com',
+    name: 'Hend Kharez',
+    email: 'hend@gmail.com',
     role: 'user',
     time: '20.1.2024, 12:30:00',
     ip: 'N/A',
@@ -26,8 +26,8 @@ const connectionLogs: ConnectionLog[] = [
   },
   {
     id: '2',
-    name: 'Admin User',
-    email: 'admin@flowsolution.com',
+    name: 'Hend Kharez',
+    email: 'hend@gmail.com',
     role: 'admin',
     time: '20.1.2024, 10:15:00',
     ip: 'N/A',
@@ -35,8 +35,8 @@ const connectionLogs: ConnectionLog[] = [
   },
   {
     id: '3',
-    name: 'John Doe',
-    email: 'user@example.com',
+    name: 'Hend Kharez',
+    email: 'hend@gmail.com',
     role: 'user',
     time: '19.1.2024, 17:45:00',
     ip: 'N/A',

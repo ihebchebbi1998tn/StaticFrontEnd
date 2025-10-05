@@ -127,7 +127,6 @@ export interface Offer {
     hasLocation: number;
   };
   status: string;
-  priority: 'low' | 'medium' | 'high' | 'urgent';
   amount: number;
   currency: string;
 }
@@ -139,7 +138,7 @@ export function mapOffersToMapItems(offers: Offer[]): MapItem[] {
       id: offer.id,
       title: offer.title,
       subtitle: `${offer.contactCompany || 'Unknown Company'} - ${offer.amount} ${offer.currency}`,
-      priority: offer.priority,
+      priority: 'medium' as const,
       status: offer.status,
       location: {
         latitude: offer.contactLocation!.latitude,

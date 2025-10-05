@@ -139,12 +139,6 @@ export function OfferDetail() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            {offer.isRecurring && (
-              <Button variant="outline" size="sm" onClick={handleRenewOffer}>
-                <RefreshCw className="h-4 w-4 mr-2" />
-                {t('renew_offer')}
-              </Button>
-            )}
             <Button variant="outline" size="sm" onClick={() => setIsPDFModalOpen(true)}>
               <FileDown className="h-4 w-4 mr-2" />
               {t('download_pdf')}

@@ -31,13 +31,6 @@ export function OffersSearchControls({ filters, onFiltersChange }: OffersSearchC
     });
   };
 
-  const handlePriorityChange = (value: string) => {
-    onFiltersChange({ 
-      ...filters, 
-      priority: value === 'all' ? undefined : value 
-    });
-  };
-
   const handleCategoryChange = (value: string) => {
     onFiltersChange({ 
       ...filters, 
@@ -52,19 +45,12 @@ export function OffersSearchControls({ filters, onFiltersChange }: OffersSearchC
     });
   };
 
-  const handleRecurringFilter = () => {
-    onFiltersChange({ 
-      ...filters, 
-      isRecurring: filters.isRecurring === undefined ? true : undefined 
-    });
-  };
-
   const clearAllFilters = () => {
     setSearchTerm('');
     onFiltersChange({});
   };
 
-  const hasActiveFilters = filters.status || filters.priority || filters.category || filters.source || filters.isRecurring !== undefined || filters.search;
+  const hasActiveFilters = filters.status || filters.category || filters.source || filters.search;
 
   return (
     <div className="space-y-4">
@@ -88,18 +74,6 @@ export function OffersSearchControls({ filters, onFiltersChange }: OffersSearchC
               <SelectItem value="all">{t('filters.all_offers')}</SelectItem>
               {offerStatuses.map(s => (
                 <SelectItem key={s.id} value={s.id}>{s.name}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-
-          <Select value={filters.priority || 'all'} onValueChange={handlePriorityChange}>
-            <SelectTrigger className="w-[150px]">
-              <SelectValue placeholder={t('filters.by_priority')} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">{t('filters.all_priorities') || 'All priorities'}</SelectItem>
-              {priorities.map(p => (
-                <SelectItem key={p.id} value={p.id}>{p.name}</SelectItem>
               ))}
             </SelectContent>
           </Select>
@@ -134,15 +108,6 @@ export function OffersSearchControls({ filters, onFiltersChange }: OffersSearchC
               <SelectItem value="other">Other</SelectItem>
             </SelectContent>
           </Select>
-
-          <Button
-            variant={filters.isRecurring ? "default" : "outline"}
-            onClick={handleRecurringFilter}
-            className="whitespace-nowrap"
-          >
-            <Filter className="h-4 w-4 mr-2" />
-            {t('filters.recurring_only')}
-          </Button>
         </div>
       </div>
 
@@ -158,15 +123,6 @@ export function OffersSearchControls({ filters, onFiltersChange }: OffersSearchC
               />
             </Badge>
           )}
-          {filters.priority && (
-            <Badge variant="secondary" className="gap-1">
-              Priority: {t(`priority.${filters.priority}`)}
-              <X 
-                className="h-3 w-3 cursor-pointer" 
-                onClick={() => handlePriorityChange('all')}
-              />
-            </Badge>
-           )}
            {filters.category && (
              <Badge variant="secondary" className="gap-1">
                Category: {filters.category.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}
@@ -185,16 +141,7 @@ export function OffersSearchControls({ filters, onFiltersChange }: OffersSearchC
                />
              </Badge>
            )}
-           {filters.isRecurring && (
-             <Badge variant="secondary" className="gap-1">
-               {t('filters.recurring_only')}
-               <X 
-                 className="h-3 w-3 cursor-pointer" 
-                 onClick={handleRecurringFilter}
-               />
-             </Badge>
-           )}
-          <Button 
+          <Button
             variant="ghost" 
             size="sm" 
             onClick={clearAllFilters}

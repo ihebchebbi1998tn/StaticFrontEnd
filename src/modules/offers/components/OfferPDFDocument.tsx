@@ -502,17 +502,12 @@ export function OfferPDFDocument({ offer, formatCurrency, settings }: OfferPDFDo
                   )}
                 </View>
               )}
-              
               {config.showElements?.quoteInfo !== false && (
                 <View style={styles.quoteDetailsCard}>
                   <Text style={dynamicStyles.sectionTitle}>Quote Details</Text>
                   <View style={styles.statusRow}>
                     <Text style={styles.statusLabel}>Status:</Text>
                     <Text style={styles.infoValue}>{offer.status?.toUpperCase() || 'DRAFT'}</Text>
-                  </View>
-                  <View style={styles.statusRow}>
-                    <Text style={styles.statusLabel}>Priority:</Text>
-                    <Text style={styles.infoValue}>{offer.priority?.toUpperCase() || 'MEDIUM'}</Text>
                   </View>
                   <View style={styles.statusRow}>
                     <Text style={styles.statusLabel}>Created:</Text>

@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { OffersService } from "../services/offers.service";
 import { OfferItemsSelectorAdvanced } from "../components/OfferItemsSelectorAdvanced";
-import { ContactSelectorAdvanced } from "../components/ContactSelectorAdvanced";
+import { ContactSelectorWithType } from "../components/ContactSelectorWithType";
 import { CreateOfferData, OfferItem } from "../types";
 import { useLookups } from '@/shared/contexts/LookupsContext';
 
@@ -34,12 +34,6 @@ const currencies = [
   { value: "USD", label: "USD - US Dollar" },
   { value: "EUR", label: "EUR - Euro" },
   { value: "GBP", label: "GBP - British Pound" }
-];
-
-const recurringIntervals = [
-  "monthly",
-  "quarterly", 
-  "annually"
 ];
 
 export function AddOffer() {
@@ -59,7 +53,6 @@ export function AddOffer() {
     contactPhone: "",
     contactAddress: "",
     status: "draft",
-    priority: "medium",
     category: "potential",
     source: "direct_customer",
     amount: 0,
@@ -68,9 +61,7 @@ export function AddOffer() {
     items: [],
     notes: "",
     taxes: 0,
-    discount: 0,
-    isRecurring: false,
-    recurringInterval: undefined
+    discount: 0
   });
 
   const handleInputChange = (field: string, value: string | number | boolean) => {
@@ -176,38 +167,21 @@ export function AddOffer() {
             {/* Offer Information */}
             <Card>
               <CardContent className="space-y-4 pt-6">
+                <div className="space-y-2">
+                  <Label htmlFor="title" className="inline-flex items-center gap-2">
+                    {t("offer_title")} * 
+                    <InfoTip title={t("offer_title")} description="A descriptive name for this offer" tooltip="What is this?" />
+                  </Label>
+                  <Input
+                    id="title"
+                    value={formData.title}
+                    onChange={(e) => handleInputChange("title", e.target.value)}
+                    placeholder="e.g. Enterprise Software Package"
+                    required
+                  />
+                </div>
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="title" className="inline-flex items-center gap-2">
-                      {t("offer_title")} * 
-                      <InfoTip title={t("offer_title")} description="A descriptive name for this offer" tooltip="What is this?" />
-                    </Label>
-                    <Input
-                      id="title"
-                      value={formData.title}
-                      onChange={(e) => handleInputChange("title", e.target.value)}
-                      placeholder="e.g. Enterprise Software Package"
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="priority" className="inline-flex items-center gap-2">
-                      {t("offer_priority")} * 
-                      <InfoTip title={t("offer_priority")} description="Priority level of this offer" tooltip="What is this?" />
-                    </Label>
-                    <Select value={formData.priority} onValueChange={(value) => handleInputChange("priority", value)}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select priority" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {lookupPriorities.map((p) => (
-                          <SelectItem key={p.id} value={p.id}>
-                            {p.name}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                     </Select>
-                  </div>
                   
                   <div className="space-y-2">
                     <Label htmlFor="category" className="inline-flex items-center gap-2">
@@ -270,7 +244,7 @@ export function AddOffer() {
             {/* Contact Information */}
             <Card>
               <CardContent className="pt-6">
-                <ContactSelectorAdvanced
+                <ContactSelectorWithType
                   onContactSelect={handleContactSelect}
                   selectedContact={formData.contactName ? {
                     id: formData.contactId,
@@ -343,38 +317,6 @@ export function AddOffer() {
                       />
                     </PopoverContent>
                   </Popover>
-                </div>
-
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="isRecurring"
-                      checked={formData.isRecurring}
-                      onCheckedChange={(checked) => handleInputChange("isRecurring", !!checked)}
-                    />
-                    <Label htmlFor="isRecurring">{t("is_recurring")}</Label>
-                  </div>
-
-                  {formData.isRecurring && (
-                    <div className="space-y-2">
-                      <Label htmlFor="recurringInterval">{t("interval")}</Label>
-                      <Select 
-                        value={formData.recurringInterval} 
-                        onValueChange={(value) => handleInputChange("recurringInterval", value)}
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select interval" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {recurringIntervals.map((interval) => (
-                            <SelectItem key={interval} value={interval}>
-                              {t(interval)}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  )}
                 </div>
               </CardContent>
             </Card>

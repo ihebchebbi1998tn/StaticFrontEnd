@@ -41,6 +41,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useTheme } from "@/hooks/useTheme";
 import { useState, useEffect } from "react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Building2 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
@@ -62,6 +63,7 @@ export function TopNavigation() {
   const [isQuickCreateModalOpen, setIsQuickCreateModalOpen] = useState(false);
   const [configuredItems, setConfiguredItems] = useState<import('@/modules/dashboard/services/sidebar.service').SidebarItemConfig[]>([]);
   const [dropdownStates, setDropdownStates] = useState<Record<string, boolean>>({});
+  const [companyLogo, setCompanyLogo] = useState<string | null>(null);
 
   useEffect(() => {
     const observer = new MutationObserver(() => {
@@ -78,6 +80,30 @@ export function TopNavigation() {
     seedSidebarDefaultsIfEmpty(); // This will now seed all unified items with updated titles
     const items = loadSidebarConfig() || [];
     setConfiguredItems(items);
+  }, []);
+
+  // Load company logo from localStorage
+  useEffect(() => {
+    const loadLogo = () => {
+      const savedLogo = localStorage.getItem('company-logo');
+      setCompanyLogo(savedLogo);
+    };
+    
+    const handleLogoUpdate = (event: CustomEvent) => {
+      setCompanyLogo(event.detail);
+    };
+    
+    loadLogo();
+    
+    // Listen for custom logo update event
+    window.addEventListener('logo-updated', handleLogoUpdate as EventListener);
+    // Listen for storage changes to update logo in real-time
+    window.addEventListener('storage', loadLogo);
+    
+    return () => {
+      window.removeEventListener('logo-updated', handleLogoUpdate as EventListener);
+      window.removeEventListener('storage', loadLogo);
+    };
   }, []);
 
   const resolveTitle = (key: string) => {
@@ -182,6 +208,30 @@ export function TopNavigation() {
     .map(i => {
       const iconName = i.icon as IconName | undefined;
       let IconComp = iconName && (ICON_REGISTRY as any)[iconName] ? (ICON_REGISTRY as any)[iconName] : Home;
+      return { 
+        ...i,
+        icon: IconComp,
+        dropdown: i.dropdown || undefined
+      };
+    });
+
+  const crmItems = configuredItems
+    .filter(i => i.group === 'crm' && i.active)
+    .map(i => {
+      const iconName = i.icon as IconName | undefined;
+      let IconComp = iconName && (ICON_REGISTRY as any)[iconName] ? (ICON_REGISTRY as any)[iconName] : TrendingUp;
+      return { 
+        ...i,
+        icon: IconComp,
+        dropdown: i.dropdown || undefined
+      };
+    });
+
+  const serviceItems = configuredItems
+    .filter(i => i.group === 'service' && i.active)
+    .map(i => {
+      const iconName = i.icon as IconName | undefined;
+      let IconComp = iconName && (ICON_REGISTRY as any)[iconName] ? (ICON_REGISTRY as any)[iconName] : Wrench;
       return { 
         ...i,
         icon: IconComp,
@@ -315,12 +365,23 @@ export function TopNavigation() {
                     }}
                   >
                     <div className="absolute inset-0 bg-sidebar/60 dark:bg-sidebar/70" />
-                    <div className="relative z-10 flex items-center gap-3">
-                      <div>
-                        <p className="text-sm text-sidebar-foreground/70 drop-shadow-sm">
-                          
-                        </p>
-                      </div>
+                    <div className="relative z-10 flex items-center justify-center gap-3">
+                      {companyLogo ? (
+                        <div className="w-32 h-16 flex items-center justify-center">
+                          <img 
+                            src={companyLogo} 
+                            alt="Company Logo" 
+                            className="max-w-full max-h-full object-contain drop-shadow-lg"
+                          />
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-2">
+                          <Building2 className="h-8 w-8 text-sidebar-foreground/70" />
+                          <p className="text-sm text-sidebar-foreground/70 drop-shadow-sm font-medium">
+                            Company Name
+                          </p>
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -453,7 +514,7 @@ export function TopNavigation() {
       <div className="px-6 py-3 flex items-center justify-between">
         <div className="flex items-center gap-6 min-w-0">
           <nav className="flex items-center gap-0 overflow-x-auto">{/* Reduced gap from gap-1 to gap-0 */}
-            {[...workspaceItems, ...systemItems].map((item: any) => {
+            {[...workspaceItems, ...crmItems, ...serviceItems, ...systemItems].map((item: any) => {
               const active = item.dropdown ? isDropdownActive(item.dropdown) : isActive(item.url);
               if (item.dropdown && item.dropdown.length > 0) {
                 return (
@@ -465,17 +526,17 @@ export function TopNavigation() {
                         {active && <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />}
                       </div>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="start" className="min-w-48 py-2">
+                    <DropdownMenuContent align="start" className="min-w-48 py-2 bg-background border border-border">
                       {item.dropdown.map((sub: any, index: number) => (
                         <DropdownMenuItem key={sub.url} asChild>
                           <NavLink
                             to={sub.url}
                             end={sub.url === "/dashboard"}
                             className={({ isActive }) => 
-                              `block px-4 py-2.5 text-sm font-medium transition-all duration-200 ${
+                              `block px-4 py-2.5 text-sm font-medium transition-colors ${
                                 isActive 
-                                  ? 'text-primary bg-primary/5 border-r-2 border-primary' 
-                                  : 'text-foreground/80 hover:text-foreground hover:bg-muted/50'
+                                  ? 'text-primary' 
+                                  : 'text-foreground/70 hover:text-foreground hover:bg-muted/50'
                               }`
                             }
                           >

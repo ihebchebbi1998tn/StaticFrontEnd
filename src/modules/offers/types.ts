@@ -11,7 +11,6 @@ export interface Offer {
   amount: number;
   currency: 'USD' | 'EUR' | 'GBP' | 'TND';
   status: 'draft' | 'sent' | 'accepted' | 'declined' | 'cancelled' | 'modified';
-  priority: 'low' | 'medium' | 'high' | 'urgent';
   category: 'potential' | 'big_project' | 'likely_to_close' | 'unlikely_to_close' | 'follow_up_required';
   source: 'direct_customer' | 'social_media' | 'email_marketing' | 'referral' | 'website' | 'trade_show' | 'cold_call' | 'other';
   description?: string;
@@ -25,10 +24,6 @@ export interface Offer {
   updatedAt: Date;
   createdBy: string;
   lastActivity?: Date;
-  // Recurrence settings
-  isRecurring?: boolean;
-  recurringInterval?: 'monthly' | 'quarterly' | 'annually';
-  nextRenewal?: Date;
   // Conversion tracking
   convertedToSaleId?: string;
   convertedToServiceOrderId?: string;
@@ -65,7 +60,6 @@ export interface CreateOfferData {
   contactPhone: string;
   contactAddress: string;
   status: 'draft' | 'sent';
-  priority: 'low' | 'medium' | 'high' | 'urgent';
   category: 'potential' | 'big_project' | 'likely_to_close' | 'unlikely_to_close' | 'follow_up_required';
   source: 'direct_customer' | 'social_media' | 'email_marketing' | 'referral' | 'website' | 'trade_show' | 'cold_call' | 'other';
   amount: number;
@@ -75,8 +69,6 @@ export interface CreateOfferData {
   notes: string;
   taxes: number;
   discount: number;
-  isRecurring: boolean;
-  recurringInterval?: 'monthly' | 'quarterly' | 'annually';
 }
 
 export interface OfferActivity {
@@ -103,14 +95,12 @@ export interface OfferStats {
 
 export interface OfferFilters {
   status?: string;
-  priority?: string;
   category?: string;
   source?: string;
   contactId?: string;
   dateFrom?: Date;
   dateTo?: Date;
   search?: string;
-  isRecurring?: boolean;
 }
 
 export interface ConvertOfferData {

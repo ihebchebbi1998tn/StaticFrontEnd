@@ -10,11 +10,11 @@ interface SetupLoadingStepProps {
 }
 
 const setupSteps = [
-  { id: 'profile', label: 'Creating your profile', duration: 1000 },
-  { id: 'preferences', label: 'Setting up preferences', duration: 1500 },
-  { id: 'workspace', label: 'Preparing workspace', duration: 2000 },
-  { id: 'features', label: 'Configuring features', duration: 1200 },
-  { id: 'finalize', label: 'You\'re all set!\nCreating your personalized workspace', duration: 800 }
+  { id: 'profile', label: 'Creating your profile', duration: 400 },
+  { id: 'preferences', label: 'Setting up preferences', duration: 400 },
+  { id: 'workspace', label: 'Preparing workspace', duration: 400 },
+  { id: 'features', label: 'Configuring features', duration: 400 },
+  { id: 'finalize', label: 'You\'re all set!\nCreating your personalized workspace', duration: 400 }
 ];
 
 export function SetupLoadingStep({ data, onComplete }: SetupLoadingStepProps) {
@@ -195,48 +195,6 @@ useEffect(() => {
           </p>
         </div>
 
-        {/* Progress Steps */}
-        <div className="space-y-4">
-          {setupSteps.map((step, index) => {
-            const isCompleted = completedSteps.includes(step.id);
-            const isCurrent = currentStep === index && !isCompleted;
-            
-            return (
-              <div
-                key={step.id}
-                className={`flex items-center gap-4 p-4 rounded-xl transition-all duration-500 ${
-                  isCompleted 
-                    ? 'bg-green-50 dark:bg-green-950/20 text-green-700 dark:text-green-300'
-                    : isCurrent
-                    ? 'bg-primary/10 text-primary'
-                    : 'bg-muted/50 text-muted-foreground'
-                }`}
-              >
-                <div className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-all ${
-                  isCompleted
-                    ? 'bg-green-500 text-white'
-                    : isCurrent
-                    ? 'bg-primary text-white'
-                    : 'bg-muted-foreground/30'
-                }`}>
-                  {isCompleted ? (
-                    <CheckCircle className="h-4 w-4" />
-                  ) : isCurrent ? (
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                  ) : (
-                    <span className="text-xs font-semibold">{index + 1}</span>
-                  )}
-                </div>
-                
-                <span className="font-medium whitespace-pre-line text-left">{step.label}</span>
-                
-                {isCompleted && (
-                  <Sparkles className="h-4 w-4 ml-auto text-green-500 animate-pulse" />
-                )}
-              </div>
-            );
-          })}
-        </div>
 
         {/* Progress Bar */}
         <div className="w-full bg-muted rounded-full h-2 overflow-hidden">

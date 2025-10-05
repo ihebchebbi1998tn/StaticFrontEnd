@@ -70,7 +70,7 @@ let mockContacts: Contact[] = (contactsData as any[]).map(contact => ({
     typeof tag === 'string' ? { id: index + 1, name: tag } : tag
   ) || [],
   status: contact.status || 'active',
-  type: contact.type || 'lead',
+  type: contact.type || 'person',
   favorite: contact.favorite || false,
   lastContactDate: contact.lastContactDate || new Date().toISOString(),
   address: contact.address || ''

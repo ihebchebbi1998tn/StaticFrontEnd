@@ -48,7 +48,6 @@ export function OffersList() {
   const [viewMode, setViewMode] = useState<'list' | 'table'>('table');
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState<'all' | string>('all');
-  const [filterPriority, setFilterPriority] = useState<'all' | string>('all');
   const [showFilterBar, setShowFilterBar] = useState(false);
   const [filterAssigned, setFilterAssigned] = useState<'all' | string>('all');
   const [filterDateRange, setFilterDateRange] = useState<'any' | '7' | '30' | '365'>('any');
@@ -76,7 +75,6 @@ export function OffersList() {
         offer.contactName.toLowerCase().includes(searchTerm.toLowerCase()) ||
         offer.description?.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesStatus = filterStatus === 'all' || offer.status === filterStatus;
-      const matchesPriority = filterPriority === 'all' || offer.priority === filterPriority;
       const matchesAssigned = filterAssigned === 'all' || (offer.assignedToName || '').toLowerCase() === filterAssigned.toLowerCase();
       // simple date range filter on createdAt
       const matchesDate = (() => {
@@ -94,9 +92,9 @@ export function OffersList() {
       if (selectedStat === 'accepted') return matchesSearch && offer.status === 'accepted';
       if (selectedStat === 'declined') return matchesSearch && ['declined', 'cancelled'].includes(offer.status);
       
-  return matchesSearch && matchesStatus && matchesPriority && matchesAssigned && matchesDate;
+  return matchesSearch && matchesStatus && matchesAssigned && matchesDate;
     });
-  }, [offers, searchTerm, filterStatus, filterPriority, selectedStat, filterAssigned, filterDateRange]);
+  }, [offers, searchTerm, filterStatus, selectedStat, filterAssigned, filterDateRange]);
 
   const pagination = usePaginatedData(filteredOffers, 5);
 
@@ -131,7 +129,6 @@ export function OffersList() {
       'Contact Company': offer.contactCompany,
       'Contact Email': offer.contactEmail || 'N/A',
       'Status': offer.status,
-      'Priority': offer.priority,
       'Total Amount': offer.totalAmount || offer.amount,
       'Currency': offer.currency || 'TND',
       'Valid Until': offer.validUntil ? new Date(offer.validUntil).toLocaleDateString() : 'Not set',
@@ -194,7 +191,6 @@ export function OffersList() {
     setSelectedStat(stat.filter);
     if (stat.filter === 'all') {
       setFilterStatus('all');
-      setFilterPriority('all');
     }
   };
 
@@ -325,12 +321,9 @@ export function OffersList() {
               <Button variant="outline" size="sm" className="gap-1 sm:gap-2 px-2 sm:px-3" onClick={() => setShowFilterBar(s => !s)}>
                 <Filter className="h-4 w-4" />
                 <span className="hidden sm:inline">Filters</span>
-                {(filterStatus !== 'all' || filterPriority !== 'all') && (
+                {filterStatus !== 'all' && (
                   <Badge variant="secondary" className="ml-2 h-4 px-1 text-xs">
-                    {[
-                      filterStatus !== 'all' ? 1 : 0,
-                      filterPriority !== 'all' ? 1 : 0
-                    ].reduce((a, b) => a + b, 0)}
+                    1
                   </Badge>
                 )}
               </Button>
@@ -388,15 +381,6 @@ export function OffersList() {
                 <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               </div>
               <div className="relative">
-                <select className="border rounded px-3 py-2 pr-10 appearance-none bg-background text-foreground w-full text-sm" value={filterPriority} onChange={e => setFilterPriority(e.target.value)}>
-                  <option value="all">All Priorities</option>
-                  {lookupPriorities.map((p: any) => (
-                    <option key={p.id} value={p.id}>{p.name}</option>
-                  ))}
-                </select>
-                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              </div>
-              <div className="relative">
                 <select className="border rounded px-3 py-2 pr-10 appearance-none bg-background text-foreground w-full text-sm" value={filterAssigned} onChange={e => setFilterAssigned(e.target.value)}>
                   <option value="all">All Assignees</option>
                   {assignedOptions.map((a, i) => (
@@ -416,7 +400,7 @@ export function OffersList() {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <button className="px-3 py-1 rounded-full border border-border text-sm" onClick={() => { setFilterStatus('all'); setFilterPriority('all'); setFilterAssigned('all'); setFilterDateRange('any'); setShowFilterBar(false); }}>{t('clear')}</button>
+              <button className="px-3 py-1 rounded-full border border-border text-sm" onClick={() => { setFilterStatus('all'); setFilterAssigned('all'); setFilterDateRange('any'); setShowFilterBar(false); }}>{t('clear')}</button>
             </div>
           </div>
         </div>
@@ -453,25 +437,13 @@ export function OffersList() {
                               <FileText className="h-4 w-4 sm:h-6 sm:w-6" />
                             </AvatarFallback>
                           </Avatar>
-                          
-                          <div className="flex-1 min-w-0">
-                            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-1">
-                              <div className="flex items-center gap-2">
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 mb-1">
                                 <h3 className="font-semibold text-foreground text-sm sm:text-base truncate">{offer.title}</h3>
                                 <Badge className={`${getStatusColor(offer.status)} text-xs`}>
                                   {t(offer.status)}
                                 </Badge>
                               </div>
-                              <Badge className={`${getPriorityColor(offer.priority)} text-xs`}>
-                                {t(offer.priority)}
-                              </Badge>
-                              {offer.isRecurring && (
-                                <Badge variant="outline" className="text-xs">
-                                  <RefreshCw className="h-3 w-3 mr-1" />
-                                  {t(offer.recurringInterval || 'monthly')}
-                                </Badge>
-                              )}
-                            </div>
                             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-xs sm:text-sm text-muted-foreground mb-2">
                               <span className="truncate">{offer.contactName} - {offer.contactCompany}</span>
                               <span className="font-semibold text-foreground">
@@ -597,7 +569,6 @@ export function OffersList() {
                         <TableHead className="font-semibold text-foreground">Contact</TableHead>
                         <TableHead className="font-semibold text-foreground">Amount</TableHead>
                         <TableHead className="font-semibold text-foreground">Status</TableHead>
-                        <TableHead className="font-semibold text-foreground">Priority</TableHead>
                         <TableHead className="font-semibold text-foreground">Valid Until</TableHead>
                         <TableHead className="w-[50px] font-semibold text-foreground"></TableHead>
                       </TableRow>
@@ -636,11 +607,6 @@ export function OffersList() {
                           <TableCell>
                             <Badge className={getStatusColor(offer.status)}>
                               {t(offer.status)}
-                            </Badge>
-                          </TableCell>
-                          <TableCell>
-                            <Badge className={getPriorityColor(offer.priority)}>
-                              {t(offer.priority)}
                             </Badge>
                           </TableCell>
                           <TableCell>

@@ -19,7 +19,6 @@ const initializeMockData = () => {
         amount: 25000,
         currency: 'USD',
         status: 'sent',
-        priority: 'high',
         category: 'big_project',
         source: 'direct_customer',
         description: 'Complete enterprise software solution with support',
@@ -56,8 +55,7 @@ const initializeMockData = () => {
         validUntil: new Date('2024-02-10'),
         taxes: 2000,
         discount: 1000,
-        totalAmount: 26000,
-        isRecurring: false
+        totalAmount: 26000
       },
       {
         id: 'OFFER-002',
@@ -71,7 +69,6 @@ const initializeMockData = () => {
         amount: 5000,
         currency: 'USD',
         status: 'accepted',
-        priority: 'medium',
         category: 'likely_to_close',
         source: 'referral',
         description: 'Monthly consulting and support services',
@@ -109,9 +106,6 @@ const initializeMockData = () => {
         taxes: 400,
         discount: 0,
         totalAmount: 5400,
-        isRecurring: true,
-        recurringInterval: 'monthly',
-        nextRenewal: new Date('2024-02-05'),
         convertedToSaleId: 'SALE-001',
         convertedAt: new Date('2024-01-20')
       },
@@ -127,7 +121,6 @@ const initializeMockData = () => {
         amount: 15000,
         currency: 'USD',
         status: 'draft',
-        priority: 'medium',
         category: 'potential',
         source: 'email_marketing',
         description: 'Custom API integration and data migration',
@@ -164,8 +157,7 @@ const initializeMockData = () => {
         validUntil: new Date('2024-03-20'),
         taxes: 1200,
         discount: 500,
-        totalAmount: 15700,
-        isRecurring: false
+        totalAmount: 15700
       }
     ];
   }
@@ -182,9 +174,6 @@ export class OffersService {
       if (filters.status) {
         filteredOffers = filteredOffers.filter(offer => offer.status === filters.status);
       }
-      if (filters.priority) {
-        filteredOffers = filteredOffers.filter(offer => offer.priority === filters.priority);
-      }
       if (filters.category) {
         filteredOffers = filteredOffers.filter(offer => offer.category === filters.category);
       }
@@ -193,9 +182,6 @@ export class OffersService {
       }
       if (filters.contactId) {
         filteredOffers = filteredOffers.filter(offer => offer.contactId === filters.contactId);
-      }
-      if (filters.isRecurring !== undefined) {
-        filteredOffers = filteredOffers.filter(offer => offer.isRecurring === filters.isRecurring);
       }
       if (filters.search) {
         const searchLower = filters.search.toLowerCase();
@@ -233,7 +219,6 @@ export class OffersService {
       amount: data.amount,
       currency: data.currency as 'USD' | 'EUR' | 'GBP' | 'TND',
       status: data.status as 'draft' | 'sent',
-      priority: data.priority,
       category: data.category,
       source: data.source,
       notes: data.notes,
@@ -247,10 +232,7 @@ export class OffersService {
       validUntil: data.validUntil,
       taxes: data.taxes,
       discount: data.discount,
-      totalAmount: data.amount + data.taxes - data.discount,
-      isRecurring: data.isRecurring,
-      recurringInterval: data.recurringInterval,
-      nextRenewal: data.isRecurring && data.recurringInterval ? this.calculateNextRenewal(data.recurringInterval) : undefined
+      totalAmount: data.amount + data.taxes - data.discount
     };
     
     mockOffers.push(newOffer);
@@ -363,8 +345,7 @@ export class OffersService {
       status: 'draft',
       createdAt: new Date(),
       updatedAt: new Date(),
-      validUntil: originalOffer.recurringInterval ? this.calculateNextRenewal(originalOffer.recurringInterval) : undefined,
-      nextRenewal: originalOffer.recurringInterval ? this.calculateNextRenewal(originalOffer.recurringInterval, 2) : undefined,
+      validUntil: undefined,
       convertedToSaleId: undefined,
       convertedToServiceOrderId: undefined,
       convertedAt: undefined
@@ -372,20 +353,6 @@ export class OffersService {
 
     mockOffers.push(renewedOffer);
     return renewedOffer;
-  }
-
-  private static calculateNextRenewal(interval: 'monthly' | 'quarterly' | 'annually', multiplier: number = 1): Date {
-    const now = new Date();
-    switch (interval) {
-      case 'monthly':
-        return new Date(now.setMonth(now.getMonth() + multiplier));
-      case 'quarterly':
-        return new Date(now.setMonth(now.getMonth() + (3 * multiplier)));
-      case 'annually':
-        return new Date(now.setFullYear(now.getFullYear() + multiplier));
-      default:
-        return now;
-    }
   }
 }
 

@@ -4,7 +4,7 @@ export type SidebarItemConfig = {
   icon?: string; // icon name from registry
   description?: string;
   active?: boolean;
-  group?: 'workspace' | 'system';
+  group?: 'workspace' | 'crm' | 'service' | 'system';
   id?: string;
   dropdown?: Array<{
     title: string;
@@ -79,7 +79,10 @@ export function seedSidebarDefaultsIfEmpty() {
       description: it.description,
       icon: it.iconName ?? it.iconId ?? undefined,
       active: it.active ?? true,
-      ...(it.group === 'system' ? { group: 'system' } : { group: 'workspace' }),
+      ...(it.group === 'system' ? { group: 'system' } : 
+          it.group === 'crm' ? { group: 'crm' } :
+          it.group === 'service' ? { group: 'service' } :
+          { group: 'workspace' }),
       dropdown: it.dropdown ?? undefined,
       meta: it.meta ?? {},
     }));

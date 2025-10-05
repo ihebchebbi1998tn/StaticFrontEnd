@@ -44,6 +44,57 @@
       "meta": {}
     },
     {
+      "id": "articles-1111-1111-1111-111111111111",
+      "tenantId": null,
+      "title": "articles",
+      "url": "/dashboard/inventory-services",
+      "description": "Product catalog",
+      "iconId": "a4444444-4444-4444-4444-444444444444",
+      "iconName": "Package",
+      "group": "workspace",
+      "position": 1,
+      "active": true,
+      "meta": {}
+    },
+    {
+      "id": "contacts-1111-1111-1111-111111111111",
+      "tenantId": null,
+      "title": "contacts",
+      "url": "/dashboard/contacts",
+      "description": "Customer database",
+      "iconId": "a2222222-2222-2222-2222-222222222222",
+      "iconName": "Users",
+      "group": "workspace",
+      "position": 2,
+      "active": true,
+      "dropdown": [
+        {
+          "title": "Company",
+          "url": "/dashboard/contacts?type=company",
+          "description": "Company contacts"
+        },
+        {
+          "title": "Person",
+          "url": "/dashboard/contacts?type=person",
+          "description": "Individual contacts"
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "id": "documents-1111-1111-1111-111111111111",
+      "tenantId": null,
+      "title": "documents",
+      "url": "/dashboard/documents",
+      "description": "Document management",
+      "iconId": "adocumen-1111-1111-1111-111111111111",
+      "iconName": "Folder",
+      "group": "workspace",
+      "position": 3,
+      "active": true,
+      "meta": {}
+    },
+    {
       "id": "salesoffers-1111-1111-1111-111111111111",
       "tenantId": null,
       "title": "sales",
@@ -51,8 +102,8 @@
       "description": "Sales & offers",
       "iconId": "a3333333-3333-3333-3333-333333333333",
       "iconName": "TrendingUp",
-      "group": "workspace",
-      "position": 1,
+      "group": "crm",
+      "position": 0,
       "active": true,
       "dropdown": [
         {
@@ -69,6 +120,31 @@
       "meta": {}
     },
     {
+      "id": "todo-1111-1111-1111-111111111111",
+      "tenantId": null,
+      "title": "todo",
+      "url": "/dashboard/tasks/daily",
+      "description": "Task management",
+      "iconId": "checksqu-1111-1111-1111-111111111111",
+      "iconName": "CheckSquare",
+      "group": "crm",
+      "position": 1,
+      "active": true,
+      "dropdown": [
+        {
+          "title": "Daily Tasks",
+          "url": "/dashboard/tasks/daily",
+          "description": "Daily todo list"
+        },
+        {
+          "title": "Projects",
+          "url": "/dashboard/tasks/projects",
+          "description": "Project management"
+        }
+      ],
+      "meta": {}
+    },
+    {
       "id": "serviceorders-1111-1111-1111-111111111111",
       "tenantId": null,
       "title": "services",
@@ -76,8 +152,8 @@
       "description": "Service management",
       "iconId": "a7777777-7777-7777-7777-777777777777",
       "iconName": "Wrench",
-      "group": "workspace",
-      "position": 2,
+      "group": "service",
+      "position": 0,
       "active": true,
       "dropdown": [
         {
@@ -99,66 +175,15 @@
       "meta": {}
     },
     {
-      "id": "todo-1111-1111-1111-111111111111",
+      "id": "timeexpenses-1111-1111-1111-111111111111",
       "tenantId": null,
-      "title": "todo",
-      "url": "/dashboard/tasks/daily",
-      "description": "Task management",
-      "iconId": "checksqu-1111-1111-1111-111111111111",
-      "iconName": "CheckSquare",
-      "group": "workspace",
-      "position": 3,
-      "active": true,
-      "dropdown": [
-        {
-          "title": "Daily Tasks",
-          "url": "/dashboard/tasks/daily",
-          "description": "Daily todo list"
-        },
-        {
-          "title": "Projects",
-          "url": "/dashboard/tasks/projects",
-          "description": "Project management"
-        }
-      ],
-      "meta": {}
-    },
-    {
-      "id": "contacts-1111-1111-1111-111111111111",
-      "tenantId": null,
-      "title": "contacts",
-      "url": "/dashboard/contacts",
-      "description": "Customer database",
-      "iconId": "a2222222-2222-2222-2222-222222222222",
-      "iconName": "Users",
-      "group": "workspace",
-      "position": 4,
-      "active": true,
-      "meta": {}
-    },
-    {
-      "id": "articles-1111-1111-1111-111111111111",
-      "tenantId": null,
-      "title": "articles",
-      "url": "/dashboard/inventory-services",
-      "description": "Product catalog",
-      "iconId": "a4444444-4444-4444-4444-444444444444",
-      "iconName": "Package",
-      "group": "workspace",
-      "position": 5,
-      "active": true,
-      "meta": {}
-    },
-    {
-      "id": "calendar-1111-1111-1111-111111111111",
-      "tenantId": null,
-      "title": "calendar",
-      "url": "/dashboard/calendar",
-      "description": "Events scheduling",
-      "iconId": "a5555555-5555-5555-5555-555555555555",
-      "iconName": "Calendar",
-      "group": "workspace",
-      "position": 6,
+      "title": "time-expenses",
+      "url": "/dashboard/field/time-expenses",
+      "description": "Time & expense tracking",
+      "iconId": "clock111-1111-1111-1111-111111111111",
+      "iconName": "Clock",
+      "group": "service",
+      "position": 1,
       "active": true,
       "meta": {}
     },
@@ -170,34 +195,8 @@
       "description": "Planning interface",
       "iconId": "caldays-1111-1111-1111-111111111111",
       "iconName": "CalendarDays",
-      "group": "workspace",
-      "position": 7,
-      "active": true,
-      "meta": {}
-    },
-    {
-      "id": "timeexpenses-1111-1111-1111-111111111111",
-      "tenantId": null,
-      "title": "time-expenses",
-      "url": "/dashboard/field/time-expenses",
-      "description": "Time & expense tracking",
-      "iconId": "clock111-1111-1111-1111-111111111111",
-      "iconName": "Clock",
-      "group": "workspace",
-      "position": 8,
-      "active": true,
-      "meta": {}
-    },
-    {
-      "id": "documents-1111-1111-1111-111111111111",
-      "tenantId": null,
-      "title": "documents",
-      "url": "/dashboard/documents",
-      "description": "Document management",
-      "iconId": "adocumen-1111-1111-1111-111111111111",
-      "iconName": "Folder",
-      "group": "workspace",
-      "position": 9,
+      "group": "service",
+      "position": 2,
       "active": true,
       "meta": {}
     },

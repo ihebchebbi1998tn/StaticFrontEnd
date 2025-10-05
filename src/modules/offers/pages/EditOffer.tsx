@@ -13,7 +13,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import offerStatuses from '@/data/mock/offer-statuses.json';
 import currencies from '@/data/mock/currencies.json';
 import { useLookups } from '@/shared/contexts/LookupsContext';
-import recurringIntervals from '@/data/mock/recurring-intervals.json';
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
 import { Calendar } from "@/components/ui/calendar";
@@ -38,13 +37,10 @@ const offerSchema = z.object({
   amount: z.number().min(0, "Amount must be positive"),
   currency: z.string().min(1, "Currency is required"),
   status: z.enum(["draft", "sent"]),
-  priority: z.enum(["low", "medium", "high", "urgent"]),
   validUntil: z.date().optional(),
   notes: z.string().optional(),
   taxes: z.number().min(0).default(0),
-  discount: z.number().min(0).default(0),
-  isRecurring: z.boolean().default(false),
-  recurringInterval: z.enum(["monthly", "quarterly", "annually"]).optional(),
+  discount: z.number().min(0).default(0)
 });
 
 type OfferFormData = z.infer<typeof offerSchema>;
@@ -72,11 +68,9 @@ export function EditOffer() {
       amount: 0,
       currency: "USD",
       status: "draft",
-      priority: "medium",
       notes: "",
       taxes: 0,
-      discount: 0,
-      isRecurring: false,
+      discount: 0
     },
   });
 
@@ -107,12 +101,9 @@ export function EditOffer() {
           amount: offerData.amount,
           currency: offerData.currency,
           status: offerData.status as "draft" | "sent",
-          priority: offerData.priority,
           notes: offerData.notes || "",
           taxes: offerData.taxes || 0,
           discount: offerData.discount || 0,
-          isRecurring: offerData.isRecurring || false,
-          recurringInterval: offerData.recurringInterval,
           validUntil: offerData.validUntil ? new Date(offerData.validUntil) : undefined,
         });
 
@@ -136,7 +127,6 @@ export function EditOffer() {
     fetchOffer();
   }, [id, form, navigate, t]);
 
-  const watchIsRecurring = form.watch("isRecurring");
   const watchAmount = form.watch("amount");
   const watchTaxes = form.watch("taxes");
   const watchDiscount = form.watch("discount");
@@ -164,14 +154,11 @@ export function EditOffer() {
         amount: itemsTotal > 0 ? itemsTotal : data.amount,
         currency: data.currency as 'USD' | 'EUR' | 'GBP' | 'TND',
         status: shouldSend ? 'sent' : data.status,
-        priority: data.priority,
         notes: data.notes,
         validUntil: data.validUntil,
         taxes: data.taxes,
         discount: data.discount,
         totalAmount: totalAmount,
-        isRecurring: data.isRecurring,
-        recurringInterval: data.isRecurring ? data.recurringInterval : undefined,
         items: offerItems,
       };
 
@@ -367,24 +354,6 @@ export function EditOffer() {
                   </Select>
                 </div>
 
-                <div>
-                  <Label htmlFor="priority">{t('offers.offer_priority')} *</Label>
-                  <Select
-                    value={form.watch("priority")}
-                    onValueChange={(value: "low" | "medium" | "high" | "urgent") => 
-                      form.setValue("priority", value)
-                    }
-                  >
-                    <SelectTrigger className="mt-1">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {useLookups().priorities.map((p:any) => (
-                        <SelectItem key={p.id} value={p.id}>{p.name}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
 
                 <div>
                   <Label htmlFor="currency">{t('offers.currency')} *</Label>
@@ -432,36 +401,6 @@ export function EditOffer() {
                     </PopoverContent>
                   </Popover>
                 </div>
-
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="isRecurring">{t('offers.is_recurring')}</Label>
-                  <Switch
-                    id="isRecurring"
-                    checked={form.watch("isRecurring")}
-                    onCheckedChange={(checked) => form.setValue("isRecurring", checked)}
-                  />
-                </div>
-
-                {watchIsRecurring && (
-                  <div>
-                    <Label htmlFor="recurringInterval">{t('offers.interval')}</Label>
-                    <Select
-                      value={form.watch("recurringInterval")}
-                      onValueChange={(value: "monthly" | "quarterly" | "annually") => 
-                        form.setValue("recurringInterval", value)
-                      }
-                    >
-                      <SelectTrigger className="mt-1">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {recurringIntervals.map((r:any) => (
-                          <SelectItem key={r.id} value={r.id}>{t(`offers.${r.id}`) || r.name}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                )}
               </CardContent>
             </Card>
 

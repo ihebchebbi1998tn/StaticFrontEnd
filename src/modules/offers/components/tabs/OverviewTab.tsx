@@ -166,15 +166,6 @@ export function OverviewTab({ offer }: OverviewTabProps) {
               </div>
 
               <div>
-                <label className="text-sm font-medium text-muted-foreground">Priority Level</label>
-                <div className="mt-1">
-                  <Badge className={`${getPriorityColor(offer.priority)} font-medium`}>
-                    {t(offer.priority)}
-                  </Badge>
-                </div>
-              </div>
-
-              <div>
                 <label className="text-sm font-medium text-muted-foreground">Current Status</label>
                 <div className="mt-1">
                   <Badge className={`${getStatusColor(offer.status)} font-medium`}>

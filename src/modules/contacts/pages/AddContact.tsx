@@ -33,7 +33,7 @@ export default function AddContact() {
     company: "",
     position: "",
     status: "",
-    type: "individual",
+    type: "person",
     address: "",
     notes: "",
     favorite: false
@@ -76,7 +76,7 @@ export default function AddContact() {
         company: formData.company || undefined,
         position: formData.position || undefined,
         status: formData.status || undefined,
-        type: formData.type as "individual" | "company",
+        type: formData.type as "person" | "company",
         address: formData.address || undefined,
         favorite: formData.favorite
       });
@@ -223,13 +223,13 @@ export default function AddContact() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="type" className="inline-flex items-center gap-2">Contact Type <InfoTip title="Contact Type" description="Choose individual or company. This changes the avatar and relevant fields." tooltip="What's this?" /></Label>
+                    <Label htmlFor="type" className="inline-flex items-center gap-2">Contact Type <InfoTip title="Contact Type" description="Choose person or company. This changes the avatar and relevant fields." tooltip="What's this?" /></Label>
                     <Select value={formData.type} onValueChange={(value) => handleInputChange('type', value)}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="individual">Individual</SelectItem>
+                        <SelectItem value="person">Person</SelectItem>
                         <SelectItem value="company">Company</SelectItem>
                       </SelectContent>
                     </Select>
@@ -261,9 +261,9 @@ export default function AddContact() {
                         <SelectValue placeholder="Select status" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="Lead">Lead</SelectItem>
-                        <SelectItem value="Prospect">Prospect</SelectItem>
-                        <SelectItem value="Customer">Customer</SelectItem>
+                        <SelectItem value="lead">Lead</SelectItem>
+                        <SelectItem value="prospect">Prospect</SelectItem>
+                        <SelectItem value="active">Active</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
