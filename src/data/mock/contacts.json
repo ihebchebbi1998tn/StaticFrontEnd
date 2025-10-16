@@ -1,6 +1,6 @@
 [
   {
-    "id": "contact-001",
+    "id": 1,
     "name": "John Doe",
     "email": "john@acme.com",
     "phone": "+1 234 567 8900",
@@ -21,7 +21,7 @@
     "modifiedBy": "user-002"
   },
   {
-    "id": "contact-002",
+    "id": 2,
     "name": "Jane Smith",
     "email": "jane@techstartup.com",
     "phone": "+1 234 567 8901",
@@ -42,7 +42,7 @@
     "modifiedBy": "user-001"
   },
   {
-    "id": "contact-003",
+    "id": 3,
     "name": "Mike Johnson",
     "email": "mike@consulting.com",
     "phone": "+1 234 567 8902",
@@ -63,7 +63,7 @@
     "modifiedBy": "user-002"
   },
   {
-    "id": "contact-004",
+    "id": 4,
     "name": "Acme Corporation",
     "email": "contact@acme.com",
     "phone": "+1 555 123 4567",

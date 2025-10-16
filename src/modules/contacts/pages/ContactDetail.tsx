@@ -37,7 +37,8 @@ export default function ContactDetail() {
     
     const loadContact = async () => {
       try {
-        const contactData = await contactsApi.getContactById(parseInt(id));
+        // pass id through as string - mock API handles string or numeric ids
+        const contactData = await contactsApi.getContactById(id as unknown as number | string);
         setContact(contactData);
       } catch (error) {
         toast({

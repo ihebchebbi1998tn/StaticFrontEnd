@@ -4,7 +4,8 @@ import { contactsApi, contactNotesApi, contactTagsApi, type Contact, type Contac
 export const ContactService = {
   async getNotes(contactId: string): Promise<ContactNote[]> {
     try {
-      const response = await contactNotesApi.getNotesByContactId(parseInt(contactId));
+  // contactNotesApi mock accepts string or number IDs; cast to any to satisfy TS in this mock environment
+  const response = await (contactNotesApi as any).getNotesByContactId(contactId);
       return response.notes;
     } catch (error) {
       console.error('Failed to load notes:', error);
@@ -20,8 +21,8 @@ export const ContactService = {
 
   async getTags(contactId: string): Promise<string[]> {
     try {
-      const contact = await contactsApi.getContactById(parseInt(contactId));
-      return contact.tags.map(tag => tag.name);
+  const contact = await (contactsApi as any).getContactById(contactId);
+      return (contact.tags || []).map(tag => tag.name);
     } catch (error) {
       console.error('Failed to load tags:', error);
       return [];

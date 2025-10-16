@@ -63,11 +63,13 @@ export interface ContactsResponse {
 
 const delay = (ms: number = 400) => new Promise(resolve => setTimeout(resolve, ms));
 
-let mockContacts: Contact[] = (contactsData as any[]).map(contact => ({
+let mockContacts: Contact[] = (contactsData as any[]).map((contact, idx) => ({
   ...contact,
-  id: parseInt(contact.id) || Math.floor(Math.random() * 10000),
+  // Keep original id type (string or number) but normalize: ensure unique numeric fallback when missing
+  id: typeof contact.id === 'number' ? contact.id : (typeof contact.id === 'string' ? contact.id : `mock-${idx + 1}`),
+  // Normalize tags: accept string[] or object[]
   tags: contact.tags?.map((tag: any, index: number) => 
-    typeof tag === 'string' ? { id: index + 1, name: tag } : tag
+    typeof tag === 'string' ? { id: index + 1, name: tag } : (tag && typeof tag === 'object' ? tag : { id: index + 1, name: String(tag) })
   ) || [],
   status: contact.status || 'active',
   type: contact.type || 'person',
@@ -120,17 +122,20 @@ export const contactsApi = {
     };
   },
 
-  async getContactById(id: number): Promise<Contact> {
+  async getContactById(id: number | string): Promise<Contact> {
     await delay();
-    const contact = mockContacts.find(c => c.id === id);
+    // Compare as strings to tolerate numeric or string ids like "contact-001"
+    const idStr = String(id);
+    const contact = mockContacts.find(c => String((c as any).id) === idStr);
     if (!contact) throw new Error('Contact not found');
     return contact;
   },
 
   async createContact(contactData: Omit<Contact, 'id' | 'createdAt' | 'updatedAt'>): Promise<Contact> {
     await delay();
+    const newId = Math.max(0, ...mockContacts.map(c => typeof c.id === 'number' ? (c.id as number) : 0)) + 1;
     const newContact: Contact = {
-      id: Math.max(...mockContacts.map(c => c.id)) + 1,
+      id: newId,
       ...contactData,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
@@ -139,9 +144,10 @@ export const contactsApi = {
     return newContact;
   },
 
-  async updateContact(id: number, contactData: Partial<Contact>): Promise<Contact> {
+  async updateContact(id: number | string, contactData: Partial<Contact>): Promise<Contact> {
     await delay();
-    const index = mockContacts.findIndex(c => c.id === id);
+    const idStr = String(id);
+    const index = mockContacts.findIndex(c => String((c as any).id) === idStr);
     if (index === -1) throw new Error('Contact not found');
     
     mockContacts[index] = {
@@ -152,9 +158,10 @@ export const contactsApi = {
     return mockContacts[index];
   },
 
-  async deleteContact(id: number): Promise<void> {
+  async deleteContact(id: number | string): Promise<void> {
     await delay();
-    const index = mockContacts.findIndex(c => c.id === id);
+    const idStr = String(id);
+    const index = mockContacts.findIndex(c => String((c as any).id) === idStr);
     if (index === -1) throw new Error('Contact not found');
     mockContacts.splice(index, 1);
   },
@@ -176,17 +183,19 @@ export const contactsApi = {
 };
 
 export const contactNotesApi = {
-  async getNotesByContactId(contactId: number): Promise<ContactNotesResponse> {
+  async getNotesByContactId(contactId: number | string): Promise<ContactNotesResponse> {
     await delay();
-    const notes = mockNotes.filter(note => note.contactId === contactId);
+    const idStr = String(contactId);
+    const notes = mockNotes.filter(note => String(note.contactId) === idStr);
     return { notes, totalCount: notes.length };
   },
 
-  async createNote(contactId: number, content: string): Promise<ContactNote> {
+  async createNote(contactId: number | string, content: string): Promise<ContactNote> {
     await delay();
+    const numericId = Math.max(0, ...mockNotes.map(n => n.id)) + 1;
     const newNote: ContactNote = {
-      id: Math.max(0, ...mockNotes.map(n => n.id)) + 1,
-      contactId,
+      id: numericId,
+      contactId: typeof contactId === 'number' ? contactId : (isNaN(parseInt(String(contactId))) ? numericId : parseInt(String(contactId))),
       content,
       createdAt: new Date().toISOString()
     };
@@ -212,25 +221,27 @@ export const contactNotesApi = {
 };
 
 export const contactTagsApi = {
-  async getTagsByContactId(contactId: number): Promise<ContactTag[]> {
+  async getTagsByContactId(contactId: number | string): Promise<ContactTag[]> {
     await delay();
-    return mockTags.filter(tag => tag.contactId === contactId);
+    const idStr = String(contactId);
+    return mockTags.filter(tag => String(tag.contactId) === idStr);
   },
 
-  async addTagToContact(contactId: number, tagName: string): Promise<ContactTag> {
+  async addTagToContact(contactId: number | string, tagName: string): Promise<ContactTag> {
     await delay();
     const newTag: ContactTag = {
       id: Math.max(0, ...mockTags.map(t => t.id)) + 1,
       name: tagName,
-      contactId
+      contactId: typeof contactId === 'number' ? contactId as number : (isNaN(parseInt(String(contactId))) ? Math.max(0, ...mockTags.map(t => t.contactId)) + 1 : parseInt(String(contactId)))
     };
     mockTags.push(newTag);
     return newTag;
   },
 
-  async removeTagFromContact(contactId: number, tagId: number): Promise<void> {
+  async removeTagFromContact(contactId: number | string, tagId: number): Promise<void> {
     await delay();
-    const index = mockTags.findIndex(t => t.id === tagId && t.contactId === contactId);
+    const idStr = String(contactId);
+    const index = mockTags.findIndex(t => t.id === tagId && String(t.contactId) === idStr);
     if (index === -1) throw new Error('Tag not found');
     mockTags.splice(index, 1);
   }
