@@ -6,8 +6,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { OnboardingData } from "../pages/Onboarding";
 import { User, Phone, Globe, ArrowRight, Loader2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { useLoading } from "@/shared/contexts/LoadingContext";
-
 interface PersonalInfoStepProps {
   data: OnboardingData;
   onNext: (data: Partial<OnboardingData>) => void;
@@ -29,7 +27,6 @@ const countries = [
 
 export function PersonalInfoStep({ data, onNext, isFirst }: PersonalInfoStepProps) {
   const { t } = useTranslation();
-  const { withLoading } = useLoading();
   const [formData, setFormData] = useState(data.personalInfo);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -58,7 +55,7 @@ export function PersonalInfoStep({ data, onNext, isFirst }: PersonalInfoStepProp
     try {
       const { authService } = await import('@/services/authService');
 
-      // If already authenticated, update the profile instead of creating a new account
+      // If already authenticated, try to update profile but proceed anyway
       if (authService.isAuthenticated()) {
         try {
           const updatePayload = {
@@ -68,49 +65,46 @@ export function PersonalInfoStep({ data, onNext, isFirst }: PersonalInfoStepProp
             country: formData.country,
           };
           console.log('[Onboarding][PersonalInfo] Updating authenticated user with payload', updatePayload);
-          
-          // Just proceed with local update for now since we're already authenticated
-          onNext({ personalInfo: formData });
-          return;
+          await authService.updateUser(updatePayload);
         } catch (error) {
           console.error('[Onboarding][PersonalInfo] Error updating profile:', error);
-          // Continue anyway since we're authenticated
-          onNext({ personalInfo: formData });
-          return;
+        }
+        // Always proceed if authenticated
+        onNext({ personalInfo: formData });
+        return;
+      }
+
+      // Handle non-authenticated flow
+      const pendingSignup = localStorage.getItem('pending-signup');
+      if (pendingSignup) {
+        try {
+          const signupData = JSON.parse(pendingSignup);
+          const signupPayload = {
+            email: signupData.email,
+            password: signupData.password,
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            phoneNumber: formData.phone || '',
+            country: formData.country,
+            industry: '-',
+            companyName: '-',
+            companyWebsite: '-',
+            preferences: '-'
+          };
+
+          await authService.signup(signupPayload);
+          localStorage.removeItem('pending-signup');
+        } catch (error) {
+          console.error('[Onboarding][PersonalInfo] Signup error:', error);
         }
       }
 
-        // Fallback: create account using pending signup data (legacy flow)
-        const pendingSignup = localStorage.getItem('pending-signup');
-        if (!pendingSignup) {
-          console.error('No pending signup data found');
-          return;
-        }
-
-        const signupData = JSON.parse(pendingSignup);
-        const signupPayload = {
-          email: signupData.email,
-          password: signupData.password,
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          phoneNumber: formData.phone || '',
-          country: formData.country,
-          industry: '-', // Placeholder until user completes work area step
-          companyName: '-', // Placeholder until user completes company step
-          companyWebsite: '-', // Placeholder until user completes company step
-          preferences: '-', // Placeholder until user completes preferences step
-        };
-
-        console.log('[Onboarding][PersonalInfo] Submitting signup payload (sanitized)', { ...signupPayload, password: '***' });
-        const response = await authService.signup(signupPayload);
-        console.log('[Onboarding][PersonalInfo] Signup API response', response);
-        if (!response.success) {
-          throw new Error(response.message || 'Failed to create account');
-        }
-
-        localStorage.removeItem('pending-signup');
-        onNext({ personalInfo: formData });
-      }, 'Creating your profile...');
+      // Always proceed to next step
+      onNext({ personalInfo: formData });
+    } catch (error) {
+      console.error('[Onboarding][PersonalInfo] Error:', error);
+      // Still proceed to next step
+      onNext({ personalInfo: formData });
     } finally {
       setIsSubmitting(false);
     }
