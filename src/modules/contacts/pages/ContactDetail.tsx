@@ -30,6 +30,15 @@ export default function ContactDetail() {
   const [activeTab, setActiveTab] = useState("overview");
   const [contact, setContact] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  // IMPORTANT: call hooks unconditionally at top of component to preserve hook order
+  // Move useContactDetail here so it's invoked on every render (even while loading)
+  const { 
+  notes, setNotes, isAddNoteOpen, setIsAddNoteOpen, handleAddNote,
+  tags, setTags, isAddTagOpen, setIsAddTagOpen, handleAddTag,
+  offers: _offers, setOffers, isAddOfferOpen, setIsAddOfferOpen,
+  isEditStatusOpen, setIsEditStatusOpen, editingOffer, setEditingOffer,
+  openEditStatus, handleUpdateOfferStatus,
+  } = useContactDetail(contact, String(id));
 
   // Load contact data from API
   useEffect(() => {
@@ -79,15 +88,7 @@ export default function ContactDetail() {
     );
   }
 
-  const { 
-  notes, setNotes, isAddNoteOpen, setIsAddNoteOpen, handleAddNote,
-  tags, setTags, isAddTagOpen, setIsAddTagOpen, handleAddTag,
-  offers: _offers, setOffers, isAddOfferOpen, setIsAddOfferOpen,
-  isEditStatusOpen, setIsEditStatusOpen, editingOffer, setEditingOffer,
-  openEditStatus, handleUpdateOfferStatus,
-  } = useContactDetail(contact, String(id));
-
-
+  
 
   const _setNotes = setNotes; const _setTags = setTags; const _isAddOfferOpen = isAddOfferOpen; const _setIsAddOfferOpen = setIsAddOfferOpen; const _isEditStatusOpen = isEditStatusOpen; const _setIsEditStatusOpen = setIsEditStatusOpen; const _editingOffer = editingOffer; const _setEditingOffer = setEditingOffer; const _openEditStatus = openEditStatus; const _handleUpdateOfferStatus = handleUpdateOfferStatus;
 
