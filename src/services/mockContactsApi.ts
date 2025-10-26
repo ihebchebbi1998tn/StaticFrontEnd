@@ -63,21 +63,9 @@ export interface ContactsResponse {
 
 const delay = (ms: number = 400) => new Promise(resolve => setTimeout(resolve, ms));
 
-let mockContacts: Contact[] = (contactsData as any[]).map(contact => {
-  // Try to coerce provided id to a stable numeric id.
-  // Support ids like "123", numeric strings, or strings with trailing numbers like "contact-004".
-  let numericId: number = NaN;
-  if (typeof contact.id === 'number') numericId = contact.id;
-  if (typeof contact.id === 'string') {
-    // Extract continuous digits from the id string (e.g., 'contact-004' -> '004')
-    const digits = contact.id.match(/\d+/);
-    if (digits) numericId = parseInt(digits[0], 10);
-    else numericId = parseInt(contact.id as string, 10);
-  }
-
-  return {
-    ...contact,
-    id: Number.isFinite(numericId) ? numericId : Math.floor(Math.random() * 10000),
+let mockContacts: Contact[] = (contactsData as any[]).map(contact => ({
+  ...contact,
+  id: parseInt(contact.id) || Math.floor(Math.random() * 10000),
   tags: contact.tags?.map((tag: any, index: number) => 
     typeof tag === 'string' ? { id: index + 1, name: tag } : tag
   ) || [],
