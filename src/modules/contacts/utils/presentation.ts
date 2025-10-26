@@ -1,4 +1,13 @@
-export const getInitials = (name: string) => name.split(' ').map(n => n[0]).join('').toUpperCase();
+export const getInitials = (name?: string) => {
+  if (!name || typeof name !== 'string') return '';
+  return name
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .map(n => n[0])
+    .join('')
+    .toUpperCase();
+};
 
 export const getStatusColor = (status: string) => {
   switch (status) {
