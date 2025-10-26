@@ -120,9 +120,13 @@ export const contactsApi = {
     };
   },
 
-  async getContactById(id: number): Promise<Contact> {
+  // Accept numeric string ids as well as numbers to be resilient when route params
+  // are passed as strings (e.g. from useParams()). Coerce to number and try both
+  // numeric and strict equality to support mixed data shapes in the mock data.
+  async getContactById(id: number | string): Promise<Contact> {
     await delay();
-    const contact = mockContacts.find(c => c.id === id);
+    const numericId = typeof id === 'string' ? Number(id) : id;
+    const contact = mockContacts.find(c => c.id === numericId || c.id === id as any);
     if (!contact) throw new Error('Contact not found');
     return contact;
   },
@@ -176,9 +180,10 @@ export const contactsApi = {
 };
 
 export const contactNotesApi = {
-  async getNotesByContactId(contactId: number): Promise<ContactNotesResponse> {
+  async getNotesByContactId(contactId: number | string): Promise<ContactNotesResponse> {
     await delay();
-    const notes = mockNotes.filter(note => note.contactId === contactId);
+    const numericId = typeof contactId === 'string' ? Number(contactId) : contactId;
+    const notes = mockNotes.filter(note => note.contactId === numericId || note.contactId === contactId as any);
     return { notes, totalCount: notes.length };
   },
 
